@@ -1,47 +1,48 @@
+const estimateinfo=document.getElementById("estimateinfo");
+const Customerinfo=document.getElementById("Customerinfo");
+const vendorinfo=document.getElementById("vendorinfo");
+const newvendorinfo=document.getElementById("newvendorinfo");
+const transactiondetails=document.getElementById("transactiondetails");
 
 
 
+const but1=()=>{
+    estimateinfo.style.display="block";
+    Customerinfo.style.display="none"
+    vendorinfo.style.display="none"
+    newvendorinfo.style.display="none"
+    transactiondetails.style.display="none"
+}
 
+const but2=()=>{
+    estimateinfo.style.display="none";
+    Customerinfo.style.display="block"
+    vendorinfo.style.display="none"
+    newvendorinfo.style.display="none"
+    transactiondetails.style.display="none"
+}
 
+const but3=()=>{
+    estimateinfo.style.display="none";
+    Customerinfo.style.display="none"
+    vendorinfo.style.display="block"
+    newvendorinfo.style.display="none"
+    transactiondetails.style.display="none"
+}
 
-var drop2=new Vue({
-    el:'#drop2',
-    data:{
-        lists2:[
-            {name:"yadhu",age:'21',},
-            {name:"venkatesh",age:'21'},
-            {name:"venkat",age:'21'},
-            {name:"ve",age:'21'}
-        ],
-     height:"100vh"
-        
-    },
-    methods:{
+const but4=()=>{
+    estimateinfo.style.display="none";
+    Customerinfo.style.display="none"
+    vendorinfo.style.display="none"
+    newvendorinfo.style.display="block"
+    transactiondetails.style.display="none"
+}
 
-        drop12(id1){
-            var ids1 = document.getElementById(id1);
-           ids1.style.maxHeight=this.height;
+const but5=()=>{
+    estimateinfo.style.display="none";
+    Customerinfo.style.display="none"
+    vendorinfo.style.display="none"
+    newvendorinfo.style.display="none"
+    transactiondetails.style.display="block"
+}
 
-           console.log(ids1);
-
-        },
-        drop22(id2){
-            var ids2 = document.getElementById(id2);
-            // this.height="100px";
-        },
-                drop12(id1){
-            var ids1 = document.getElementById(id1);
-           ids1.style.maxHeight=this.height;
-
-           console.log(ids1);
-
-        },
-        drop22(id2){
-            var ids2 = document.getElementById(id2);
-            // this.height="100px";
-        }
-    },
-  
-   
-
-});
