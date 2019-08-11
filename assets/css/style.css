@@ -58,7 +58,7 @@ element.style {
 
 .component{
 	transition: all .5s;
-	max-height: 210px;
+	/* max-height: 210px; */
     overflow: hidden;
 	margin-bottom: 15px;
 	font-size: 1.2rem;
@@ -103,7 +103,9 @@ element.style {
 	}
   }
 
-
+.cardanimation{
+	animation: opacity .3s ease-in-out ;
+}
  
 
   .btn.btn-primary {
@@ -123,7 +125,7 @@ element.style {
 }
 
 .para1{
-	font-size: 1.2rem;
+	font-size: 0.85rem;
 	font-weight: 400;
 	border: 2px solid  #4caf50;
 	padding: 5px;
@@ -373,15 +375,21 @@ element.style {
 
 
   #modelview{
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  width: 100vw;
-	  height: 100vh;
-	 background: black;
+	/* position: absolute;
+	top: 0;
+	left: 0;
+	transform: translate(-30%,-15%); */
+	  width: 100%;
+	  height: auto;
+	 border:none;
 	  opacity: .8;
 	  z-index: 10;
   }
+
+  /* .modelform1{
+	  opacity: 1;
+	  margin-top:100px; 
+  } */
 
   .formedit{
 	display: none;

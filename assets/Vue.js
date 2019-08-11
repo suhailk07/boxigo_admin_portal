@@ -49,7 +49,7 @@ var drop=new Vue({
                 phoneno:"9889898799",
                 email:"fhiehfi@gmail.com",
                 dateofjoin:"3.4.19",
-                address:"karnataka",
+                address:"19th, A Ejipura, BangaloreCross",
             },
             {
                 name:"Sammitha"
@@ -231,55 +231,53 @@ var drop=new Vue({
      height:"300vh",
      height1:"100vh",
      count:0,
+     cart:"",
+     cart2:"",
      display:"none",
      display1:"block",
     colors:[],
     model:false,
+    id:""
         
     },
     methods:{
         
-        drop1(id1){
-            var ids1 = document.getElementById(id1);
-          if((this.count++)%2!=0 ){
-            console.log(this.count);
-                console.log("even");
-               return ids1.style.maxHeight=this.height1; 
-          }
-        
-            ids1.style.maxHeight=this.height;
-       
-           
-           
-        //    ids1.style.display=this.display1;
-        //    this.display="block"
-           
-       
+        drop1(id){
+        this.cart=id;
         },
-        drop2(id2,val){
+        drop2(id){
+            if(id === this.cart){
+                this.cart="";
+            }
             
-            var ids2 = document.getElementById(id2);
-            ids2.style.display=this.display;
         },
-        drop12(id1){
-            var ids1 = document.getElementById(id1);
-           ids1.style.maxHeight=this.height;
-            
-           console.log(ids1);
+        drop12(id){
+        this.cart2=id;
+           console.log(id);
 
-        },  drop22(id2){
-            var ids2 = document.getElementById(id2);
-            // this.height="100px";
+        }, 
+         drop22(id){
+            if(id === this.cart2){
+                console.log(id);
+                this.cart2="";
+            }  
         },
         modelclose(id){
             this.model=false;
-            console.log(id);
+            if(id === this.id){
+                this.id="";
+            }
         },
         modelopen(id){
             this.model=true;
-            var ids=document.getElementById(id);
-            ids.style.display="block"
-            console.log(id);
+
+            this.id=id;
+          
+        },
+        modelclose1(){
+           
+                this.id="";
+            
         }
         
         
