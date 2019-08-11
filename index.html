@@ -174,139 +174,147 @@
                         <div class="row ">
                             <div class="col-lg-12" >
                                     <div class="card">
-                                        <div class="card-body ">
-                                            <div class="card-header d-flex justify-content-center">
+                                      <div class="card-header d-flex justify-content-center">
                                               <p class="card-title my-0 ">Customer details</p>
                                             </div>
-                                            
-                                            <div class="twentypxdown1 justify-content-center row" >
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >Name</p>
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >Phone no</p>
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >Email</p>
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >Date Of Join</p>
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >Address</p>
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >&nbsp;</p>
-                                                
-                                                
-                                             </div>
-                                             
+                                        <div class="card-body d-flex justify-content-center">
                                             
                                             
+                                   
+                                             <table class="table table-responsive-lg  table-responsive-md tablefont justify-content-center">
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col" class="twentypxdown1 ">Name</th>
+                                                    <th scope="col" class="twentypxdown1 ">phoneno</th>
+                                                    <th scope="col" class="twentypxdown1 ">email</th>
+                                                    <th scope="col" class="twentypxdown1 ">date of join</th>
+                                                    <th scope="col" class="twentypxdown1 ">Adress</th>
+                                                    <th scope="col" class="twentypxdown1 ">&nbsp;</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody class="twentypxdown justify-content-between "  v-for="(custlist,index) in custlists">
+                                                  <tr>
+                                                    <td>{{custlist.name}}</td>
+                                                    <td>{{custlist.name}}</td>
+                                                    <td>{{custlist.name}}</td>
+                                                    <td>{{custlist.name}}</td>
+                                                    <td>{{custlist.name}}</td>
+                                                    <td><button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md tablefont1">
+                                                        Edit
+                                                   </button>
+                                                  </td>   
+                                                  </tr>
+                                                  <tr >
+                                                    <td style="text-align: center;" colspan="6">
+                                                                  <div>
+        <div id="modelview"  v-if="id === index + 1" >
 
-                                                <div class="twentypxdown justify-content-center row"  v-for="(custlist,index) in custlists">
-                                                    <div class="title my-0 col-lg-2 d-flex justify-content-center" ><p>{{custlist.name}}</p></div>
-                                                    <div class="title my-0 col-lg-2 d-flex justify-content-center" ><p>{{custlist.phoneno}}</p> </div>
-                                                    <div class="title my-0 col-lg-2 d-flex justify-content-center" ><p>{{custlist.email}}</p> </div>
-                                                    <div class="title my-0 col-lg-2 d-flex justify-content-center" ><p>{{custlist.dateofjoin}}</p> </div>
-                                                    <div class="title my-0 col-lg-2 d-flex justify-content-center" ><p>{{custlist.address}}</p> </div>
-                                                    <div class="col-lg-2">
-                                                        <button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md">
-                                                             Edit
-                                                        </button>
-                                                        
-                                                    </div>
+          <div class="modal-dialog modal-lg modelform1 cardanimation" role="document">
+            <div class="modal-content">
+            <div class="modal-body" v-bind:id="index + 1">
+              <form action="" method="P">
+                <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="material-icons">person</i>
+                            </span>
+                          </div>
+                          <input type="text" name="name" class="form-control" v-bind:value="custlist.name" placeholder="Your Name">
+                        </div>
+                      </div>
+    
+                      <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="material-icons">email</i>
+                            </span>
+                          </div>
+                          <input type="email" name="mailid" class="form-control" v-bind:value="custlist.email" placeholder="Your E-Mail">
+                        </div>
+                      </div>
+    
+                      <div class="form-group " >
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="material-icons">phone</i>
+                            </span>
+                          </div>
+                          <input type="tel" name="phoneno" pattern="[0-9]{10}" class="form-control" placeholder="Your Phone No" v-bind:value="custlist.phoneno">
+                        </div>
+                      </div>
+    
+                  </div>
+                  <div class="col-md-6 ">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="material-icons">group</i>
+                            </span>
+                          </div>
+                          <input type="text" name="date" class="form-control" placeholder="dateofjoin" v-bind:value="custlist.dateofjoin">
+                        </div>
+                      </div>
+    
+                      <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="material-icons">web</i>
+                            </span>
+                          </div>
+                          <input type="text" name="address" class="form-control" placeholder="Address" v-bind:value="custlist.address">
+                        </div>
+                      </div>
+    
 
-                                                    
-
-                                                    <div>
-                                                        <div id="modelview"  v-if="id === index + 1" >
-
-                                                          <div class="modal-dialog modal-lg modelform1 cardanimation" role="document">
-                                                            <div class="modal-content">
-                                                            <div class="modal-body" v-bind:id="index + 1">
-                                                              <form action="" method="P">
-                                                                <div class="row">
-                                                                  <div class="col-md-6">
-                                                                      <div class="form-group">
-                                                                        <div class="input-group">
-                                                                          <div class="input-group-prepend">
-                                                                            <span class="input-group-text">
-                                                                              <i class="material-icons">person</i>
-                                                                            </span>
-                                                                          </div>
-                                                                          <input type="text" name="name" class="form-control" v-bind:value="custlist.name" placeholder="Your Name">
-                                                                        </div>
-                                                                      </div>
-                                                    
-                                                                      <div class="form-group">
-                                                                        <div class="input-group">
-                                                                          <div class="input-group-prepend">
-                                                                            <span class="input-group-text">
-                                                                              <i class="material-icons">email</i>
-                                                                            </span>
-                                                                          </div>
-                                                                          <input type="email" name="mailid" class="form-control" v-bind:value="custlist.email" placeholder="Your E-Mail">
-                                                                        </div>
-                                                                      </div>
-                                                    
-                                                                      <div class="form-group " >
-                                                                        <div class="input-group">
-                                                                          <div class="input-group-prepend">
-                                                                            <span class="input-group-text">
-                                                                              <i class="material-icons">phone</i>
-                                                                            </span>
-                                                                          </div>
-                                                                          <input type="tel" name="phoneno" pattern="[0-9]{10}" class="form-control" placeholder="Your Phone No" v-bind:value="custlist.phoneno">
-                                                                        </div>
-                                                                      </div>
-                                                    
-                                                                  </div>
-                                                                  <div class="col-md-6 ">
-                                                                      <div class="form-group">
-                                                                        <div class="input-group">
-                                                                          <div class="input-group-prepend">
-                                                                            <span class="input-group-text">
-                                                                              <i class="material-icons">group</i>
-                                                                            </span>
-                                                                          </div>
-                                                                          <input type="text" name="date" class="form-control" placeholder="dateofjoin" v-bind:value="custlist.dateofjoin">
-                                                                        </div>
-                                                                      </div>
-                                                    
-                                                                      <div class="form-group">
-                                                                        <div class="input-group">
-                                                                          <div class="input-group-prepend">
-                                                                            <span class="input-group-text">
-                                                                              <i class="material-icons">web</i>
-                                                                            </span>
-                                                                          </div>
-                                                                          <input type="text" name="address" class="form-control" placeholder="Address" v-bind:value="custlist.address">
-                                                                        </div>
-                                                                      </div>
-                                                    
-                
-                                                                  </div>
-                                                                </div>
-                                                                <div class="row pl-1" id="otp" style="display: none">
-                                                                  <div class="col-sm-12">
-                                                                    <div class="form-group">
-                                                                        <div class="input-group">
-                                                                          <div class="input-group-prepend">
-                                                                            <span class="input-group-text">
-                                                                              <i class="fas fa-info-circle"></i>
-                                                                            </span>
-                                                                          </div>
-                                                                          <input type="text" class="form-control" placeholder="Enter the OTP sent to your number"><button class="btn btn-secondary btn-sm">resend OTP</button><button class="btn btn-success btn-sm">Verify OTP</button>
-                                                                        </div>
-                                                                      </div>
-                                                                  </div>
-                                                                </div>
-                                                                <div class="row ml-2 mt-2 d-flex justify-content-center">
-                                                                  <div class="modal-footer ">
-                                                                    <button type="Submit" class="btn btn-link btn-success">submit</button>
-                                                                    <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 1)">Close</button>
-                                                                  </div>
-                                                    
-                                                                </div>
-                                                              </form>
-                                                              </div>
-                                                            </div>
-                                                          </div>
+                  </div>
+                </div>
+                <div class="row pl-1" id="otp" style="display: none">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="fas fa-info-circle"></i>
+                            </span>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Enter the OTP sent to your number"><button class="btn btn-secondary btn-sm">resend OTP</button><button class="btn btn-success btn-sm">Verify OTP</button>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="row ml-2 mt-2 d-flex justify-content-center">
+                  <div class="modal-footer ">
+                    <button type="Submit" class="btn btn-link btn-success">submit</button>
+                    <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 1)">Close</button>
+                  </div>
+    
+                </div>
+              </form>
+              </div>
+            </div>
+          </div>
 
 
-                                                        </div>
-                                                      
-                                                    </div>
+        </div>
+      
+    </div>
+
+                                                    </td>
+                                                  </tr>
+                                                 
+                                                  
+                                                </tbody>
+                                              </table>
+
+                                            
+                                            
     
     
 
@@ -315,149 +323,171 @@
 
                                             
                                           </div>
-                                        </div>
-                            </div> 
+                                      </div>
+                             </div> 
                         </div>
-                </div>
+                
                 <div id="vendorinfo">
     
                              <div class="row">
                                 <div class="col-lg-12" >
                                     <div class="card">
-                                        <div class="card-body ">
-                                            <div class="card-header d-flex justify-content-center">
+                                       <div class="card-header d-flex justify-content-center">
                                               <p class="card-title my-0 ">Vendor details</p>
                                             </div>
+                                        <div class="card-body d-flex justify-content-center">
+                                           
                                             
-                                            <div class="twentypxdown1 justify-content-center row" >
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >Name</p>
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >Phone no</p>
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >Email</p>
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >Date Of Join</p>
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >Address</p>
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >&nbsp;</p>
-                                             </div>
-                                             
+                                         
+                                              <table class="table table-responsive-lg  table-responsive-md tablefont">
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col" class="twentypxdown1 ">Name</th>
+                                                    <th scope="col" class="twentypxdown1 ">phoneno</th>
+                                                    <th scope="col" class="twentypxdown1 ">email</th>
+                                                    <th scope="col" class="twentypxdown1 ">date of join</th>
+                                                    <th scope="col" class="twentypxdown1 ">Adress</th>
+                                                    <th scope="col" class="twentypxdown1 ">&nbsp;</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody class="twentypxdown justify-content-between " v-for="(vendlist,index) in vendlists">
+                                                  <tr>
+                                                    <td>{{vendlist.name}}</td>
+                                                    <td>{{vendlist.name}}</td>
+                                                    <td>{{vendlist.name}}</td>
+                                                    <td>{{vendlist.name}}</td>
+                                                    <td>{{vendlist.name}}</td>
+                                                    <td><button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md tablefont1">
+                                                        Edit
+                                                   </button>
+                                                  </td>   
+                                                  </tr>
+                                                  <tr >
+                                                    <td style="text-align: center;" colspan="6">
+                                                        
+                                                         <div>
+            <div id="modelview"  v-if="id === index + 1" >
+
+              <div class="modal-dialog modal-lg modelform1 cardanimation" role="document">
+                <div class="modal-content">
+                <div class="modal-body" v-bind:id="index + 1">
+
+                    <form action="" method="POST">
+                        <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                      <i class="material-icons">person</i>
+                                    </span>
+                                  </div>
+                                  <input type="text" name="name" class="form-control" v-bind:value="vendlist.name" placeholder="Your Name">
+                                </div>
+                              </div>
+            
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                      <i class="material-icons">email</i>
+                                    </span>
+                                  </div>
+                                  <input type="email" name="mailid" class="form-control" v-bind:value="vendlist.email" placeholder="Your E-Mail">
+                                </div>
+                              </div>
+            
+                              <div class="form-group " >
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                      <i class="material-icons">phone</i>
+                                    </span>
+                                  </div>
+                                  <input type="tel" name="phoneno" pattern="[0-9]{10}" class="form-control" placeholder="Your Phone No" v-bind:value="vendlist.phoneno">
+                                </div>
+                              </div>
+            
+                          </div>
+                          <div class="col-md-6 ">
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                      <i class="material-icons">group</i>
+                                    </span>
+                                  </div>
+                                  <input type="text" name="date" class="form-control" placeholder="dateofjoin" v-bind:value="vendlist.dateofjoin">
+                                </div>
+                              </div>
+            
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                      <i class="material-icons">web</i>
+                                    </span>
+                                  </div>
+                                  <input type="text" name="address" class="form-control" placeholder="Address" v-bind:value="vendlist.address">
+                                </div>
+                              </div>
+            
+
+                          </div>
+                        </div>
+                        <div class="row pl-1" id="otp" style="display: none">
+                          <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                      <i class="fas fa-info-circle"></i>
+                                    </span>
+                                  </div>
+                                  <input type="text" class="form-control" placeholder="Enter the OTP sent to your number"><button class="btn btn-secondary btn-sm">resend OTP</button><button class="btn btn-success btn-sm">Verify OTP</button>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="row ml-2 mt-2 d-flex justify-content-center">
+                          <div class="modal-footer ">
+                            <button type="Submit" class="btn btn-link btn-success">submit</button>
+                            <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 1)">Close</button>
+                          </div>
+            
+                        </div>
+                      </form>
+
+
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                                                    </td>
+                                                  </tr>
+                                                 
+                                                  
+                                                </tbody>
+                                              </table>
                                             
                                             
 
-                                                <div class="twentypxdown justify-content-center row"  v-for="(vendlist,index) in vendlists">
-                                                    <div class="title my-0 col-lg-2 d-flex justify-content-center" ><p>{{vendlist.name}}</p></div>
-                                                    <div class="title my-0 col-lg-2 d-flex justify-content-center" ><p>{{vendlist.phoneno}}</p> </div>
-                                                    <div class="title my-0 col-lg-2 d-flex justify-content-center" ><p>{{vendlist.email}}</p> </div>
-                                                    <div class="title my-0 col-lg-2 d-flex justify-content-center" ><p>{{vendlist.dateofjoin}}</p> </div>
-                                                    <div class="title my-0 col-lg-2 d-flex justify-content-center" ><p>{{vendlist.address}}</p> </div>
-                                                    <div class="col-lg-2">
-                                                        <button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md">
-                                                             Edit
-                                                        </button>
-                                                        
-                                                    </div>
-
-                                                    <div>
-                                                        <div id="modelview"  v-if="id === index + 1" >
-
-                                                          <div class="modal-dialog modal-lg modelform1 cardanimation" role="document">
-                                                            <div class="modal-content">
-                                                            <div class="modal-body" v-bind:id="index + 1">
-
-                                                                <form action="" method="POST">
-                                                                    <div class="row">
-                                                                      <div class="col-md-6">
-                                                                          <div class="form-group">
-                                                                            <div class="input-group">
-                                                                              <div class="input-group-prepend">
-                                                                                <span class="input-group-text">
-                                                                                  <i class="material-icons">person</i>
-                                                                                </span>
-                                                                              </div>
-                                                                              <input type="text" name="name" class="form-control" v-bind:value="vendlist.name" placeholder="Your Name">
-                                                                            </div>
-                                                                          </div>
-                                                        
-                                                                          <div class="form-group">
-                                                                            <div class="input-group">
-                                                                              <div class="input-group-prepend">
-                                                                                <span class="input-group-text">
-                                                                                  <i class="material-icons">email</i>
-                                                                                </span>
-                                                                              </div>
-                                                                              <input type="email" name="mailid" class="form-control" v-bind:value="vendlist.email" placeholder="Your E-Mail">
-                                                                            </div>
-                                                                          </div>
-                                                        
-                                                                          <div class="form-group " >
-                                                                            <div class="input-group">
-                                                                              <div class="input-group-prepend">
-                                                                                <span class="input-group-text">
-                                                                                  <i class="material-icons">phone</i>
-                                                                                </span>
-                                                                              </div>
-                                                                              <input type="tel" name="phoneno" pattern="[0-9]{10}" class="form-control" placeholder="Your Phone No" v-bind:value="vendlist.phoneno">
-                                                                            </div>
-                                                                          </div>
-                                                        
-                                                                      </div>
-                                                                      <div class="col-md-6 ">
-                                                                          <div class="form-group">
-                                                                            <div class="input-group">
-                                                                              <div class="input-group-prepend">
-                                                                                <span class="input-group-text">
-                                                                                  <i class="material-icons">group</i>
-                                                                                </span>
-                                                                              </div>
-                                                                              <input type="text" name="date" class="form-control" placeholder="dateofjoin" v-bind:value="vendlist.dateofjoin">
-                                                                            </div>
-                                                                          </div>
-                                                        
-                                                                          <div class="form-group">
-                                                                            <div class="input-group">
-                                                                              <div class="input-group-prepend">
-                                                                                <span class="input-group-text">
-                                                                                  <i class="material-icons">web</i>
-                                                                                </span>
-                                                                              </div>
-                                                                              <input type="text" name="address" class="form-control" placeholder="Address" v-bind:value="vendlist.address">
-                                                                            </div>
-                                                                          </div>
-                                                        
-                    
-                                                                      </div>
-                                                                    </div>
-                                                                    <div class="row pl-1" id="otp" style="display: none">
-                                                                      <div class="col-sm-12">
-                                                                        <div class="form-group">
-                                                                            <div class="input-group">
-                                                                              <div class="input-group-prepend">
-                                                                                <span class="input-group-text">
-                                                                                  <i class="fas fa-info-circle"></i>
-                                                                                </span>
-                                                                              </div>
-                                                                              <input type="text" class="form-control" placeholder="Enter the OTP sent to your number"><button class="btn btn-secondary btn-sm">resend OTP</button><button class="btn btn-success btn-sm">Verify OTP</button>
-                                                                            </div>
-                                                                          </div>
-                                                                      </div>
-                                                                    </div>
-                                                                    <div class="row ml-2 mt-2 d-flex justify-content-center">
-                                                                      <div class="modal-footer ">
-                                                                        <button type="Submit" class="btn btn-link btn-success">submit</button>
-                                                                        <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 1)">Close</button>
-                                                                      </div>
-                                                        
-                                                                    </div>
-                                                                  </form>
-
-
-                                                              </div>
-                                                            </div>
-                                                          </div>
-
-
-                                                        </div>
-                                                      
-                                                    </div>
-
-                                                 </div>
 
                                             
                                           </div>
@@ -470,144 +500,155 @@
                              <div class="row">
                                 <div class="col-lg-12" >
                                     <div class="card">
-                                        <div class="card-body ">
-                                            <div class="card-header d-flex justify-content-center">
+                                       <div class="card-header d-flex justify-content-center">
                                               <p class="card-title my-0 ">New Vendor details</p>
                                             </div>
+                                        <div class="card-body d-flex justify-content-center">
+                                           
                                             
-                                            <div class="twentypxdown1 justify-content-center row" >
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >Name</p>
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >Phone no</p>
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >Email</p>
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >Date Of Join</p>
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >Address</p>
-                                                <p class="title my-0 col-lg-2 d-flex justify-content-center" >&nbsp;</p>
-                                             </div>
+                                       
                                              
+                                             <table class="table table-responsive-lg  tablefont">
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col" class="twentypxdown1 ">Name</th>
+                                                    <th scope="col" class="twentypxdown1 ">phoneno</th>
+                                                    <th scope="col" class="twentypxdown1 ">email</th>
+                                                    <th scope="col" class="twentypxdown1 ">date of join</th>
+                                                    <th scope="col" class="twentypxdown1 ">Adress</th>
+                                                    <th scope="col" class="twentypxdown1 ">&nbsp;</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody class="twentypxdown justify-content-between " v-for="(newvendlist,index) in newvendlists">
+                                                  <tr>
+                                                    <td>{{newvendlist.name}}</td>
+                                                    <td>{{newvendlist.name}}</td>
+                                                    <td>{{newvendlist.name}}</td>
+                                                    <td>{{newvendlist.name}}</td>
+                                                    <td>{{newvendlist.name}}</td>
+                                                    <td><button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md tablefont1">
+                                                        Edit
+                                                   </button>
+                                                  </td>   
+                                                  </tr>
+                                                  <tr >
+                                                    <td style="text-align: center;" colspan="6">
+                                                        
+                                                       <div>
+                <div id="modelview"  v-if="id === index + 1" >
+
+                  <div class="modal-dialog modal-lg modelform1 cardanimation" role="document">
+                    <div class="modal-content">
+                    <div class="modal-body" v-bind:id="index + 1">
+
+
+                      
+                        <form action="" method="POST">
+                            <div class="row">
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                    <div class="input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                          <i class="material-icons">person</i>
+                                        </span>
+                                      </div>
+                                      <input type="text" name="name" class="form-control" v-bind:value="newvendlist.name" placeholder="Your Name">
+                                    </div>
+                                  </div>
+                
+                                  <div class="form-group">
+                                    <div class="input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                          <i class="material-icons">email</i>
+                                        </span>
+                                      </div>
+                                      <input type="email" name="mailid" class="form-control" v-bind:value="newvendlist.email" placeholder="Your E-Mail">
+                                    </div>
+                                  </div>
+                
+                                  <div class="form-group " >
+                                    <div class="input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                          <i class="material-icons">phone</i>
+                                        </span>
+                                      </div>
+                                      <input type="tel" name="phoneno" pattern="[0-9]{10}" class="form-control" placeholder="Your Phone No" v-bind:value="newvendlist.phoneno">
+                                    </div>
+                                  </div>
+                
+                              </div>
+                              <div class="col-md-6 ">
+                                  <div class="form-group">
+                                    <div class="input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                          <i class="material-icons">group</i>
+                                        </span>
+                                      </div>
+                                      <input type="text" name="date" class="form-control" placeholder="dateofjoin" v-bind:value="newvendlist.dateofjoin">
+                                    </div>
+                                  </div>
+                
+                                  <div class="form-group">
+                                    <div class="input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                          <i class="material-icons">web</i>
+                                        </span>
+                                      </div>
+                                      <input type="text" name="address" class="form-control" placeholder="Address" v-bind:value="newvendlist.address">
+                                    </div>
+                                  </div>
+                
+
+                              </div>
+                            </div>
+                            <div class="row pl-1" id="otp" style="display: none">
+                              <div class="col-sm-12">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                          <i class="fas fa-info-circle"></i>
+                                        </span>
+                                      </div>
+                                      <input type="text" class="form-control" placeholder="Enter the OTP sent to your number"><button class="btn btn-secondary btn-sm">resend OTP</button><button class="btn btn-success btn-sm">Verify OTP</button>
+                                    </div>
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="row ml-2 mt-2 d-flex justify-content-center">
+                              <div class="modal-footer ">
+                                <button type="Submit" class="btn btn-link btn-success">submit</button>
+                                <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 1)">Close</button>
+                              </div>
+                
+                            </div>
+                          </form>
+
+
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              
+            </div>
+
+
+                                                    </td>
+                                                  </tr>
+                                                 
+                                                  
+                                                </tbody>
+                                              </table>
                                             
-                                            
 
-                                                <div class="twentypxdown justify-content-center row"  v-for="(newvendlist,index) in newvendlists">
-                                                    <div class="title my-0 col-md-2 d-flex justify-content-center" ><p>{{newvendlist.name}}</p></div>
-                                                    <div class="title my-0 col-md-2 d-flex justify-content-center" ><p>{{newvendlist.phoneno}}</p> </div>
-                                                    <div class="title my-0 col-md-2 d-flex justify-content-center" ><p>{{newvendlist.email}}</p> </div>
-                                                    <div class="title my-0 col-md-2 d-flex justify-content-center" ><p>{{newvendlist.dateofjoin}}</p> </div>
-                                                    <div class="title my-0 col-md-2 d-flex justify-content-center" ><p>{{newvendlist.address}}</p> </div>
-
-                                                    <div class="col-md-2">
-                                                        <button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md">
-                                                             Edit
-                                                        </button>
-                                                        
-                                                    </div>
-
-                                                    <div>
-                                                        <div id="modelview"  v-if="id === index + 1" >
-
-                                                          <div class="modal-dialog modal-lg modelform1 cardanimation" role="document">
-                                                            <div class="modal-content">
-                                                            <div class="modal-body" v-bind:id="index + 1">
-
-
-                                                              
-                                                                <form action="" method="POST">
-                                                                    <div class="row">
-                                                                      <div class="col-md-6">
-                                                                          <div class="form-group">
-                                                                            <div class="input-group">
-                                                                              <div class="input-group-prepend">
-                                                                                <span class="input-group-text">
-                                                                                  <i class="material-icons">person</i>
-                                                                                </span>
-                                                                              </div>
-                                                                              <input type="text" name="name" class="form-control" v-bind:value="newvendlist.name" placeholder="Your Name">
-                                                                            </div>
-                                                                          </div>
-                                                        
-                                                                          <div class="form-group">
-                                                                            <div class="input-group">
-                                                                              <div class="input-group-prepend">
-                                                                                <span class="input-group-text">
-                                                                                  <i class="material-icons">email</i>
-                                                                                </span>
-                                                                              </div>
-                                                                              <input type="email" name="mailid" class="form-control" v-bind:value="newvendlist.email" placeholder="Your E-Mail">
-                                                                            </div>
-                                                                          </div>
-                                                        
-                                                                          <div class="form-group " >
-                                                                            <div class="input-group">
-                                                                              <div class="input-group-prepend">
-                                                                                <span class="input-group-text">
-                                                                                  <i class="material-icons">phone</i>
-                                                                                </span>
-                                                                              </div>
-                                                                              <input type="tel" name="phoneno" pattern="[0-9]{10}" class="form-control" placeholder="Your Phone No" v-bind:value="newvendlist.phoneno">
-                                                                            </div>
-                                                                          </div>
-                                                        
-                                                                      </div>
-                                                                      <div class="col-md-6 ">
-                                                                          <div class="form-group">
-                                                                            <div class="input-group">
-                                                                              <div class="input-group-prepend">
-                                                                                <span class="input-group-text">
-                                                                                  <i class="material-icons">group</i>
-                                                                                </span>
-                                                                              </div>
-                                                                              <input type="text" name="date" class="form-control" placeholder="dateofjoin" v-bind:value="newvendlist.dateofjoin">
-                                                                            </div>
-                                                                          </div>
-                                                        
-                                                                          <div class="form-group">
-                                                                            <div class="input-group">
-                                                                              <div class="input-group-prepend">
-                                                                                <span class="input-group-text">
-                                                                                  <i class="material-icons">web</i>
-                                                                                </span>
-                                                                              </div>
-                                                                              <input type="text" name="address" class="form-control" placeholder="Address" v-bind:value="newvendlist.address">
-                                                                            </div>
-                                                                          </div>
-                                                        
-                    
-                                                                      </div>
-                                                                    </div>
-                                                                    <div class="row pl-1" id="otp" style="display: none">
-                                                                      <div class="col-sm-12">
-                                                                        <div class="form-group">
-                                                                            <div class="input-group">
-                                                                              <div class="input-group-prepend">
-                                                                                <span class="input-group-text">
-                                                                                  <i class="fas fa-info-circle"></i>
-                                                                                </span>
-                                                                              </div>
-                                                                              <input type="text" class="form-control" placeholder="Enter the OTP sent to your number"><button class="btn btn-secondary btn-sm">resend OTP</button><button class="btn btn-success btn-sm">Verify OTP</button>
-                                                                            </div>
-                                                                          </div>
-                                                                      </div>
-                                                                    </div>
-                                                                    <div class="row ml-2 mt-2 d-flex justify-content-center">
-                                                                      <div class="modal-footer ">
-                                                                        <button type="Submit" class="btn btn-link btn-success">submit</button>
-                                                                        <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 1)">Close</button>
-                                                                      </div>
-                                                        
-                                                                    </div>
-                                                                  </form>
-
-
-                                                              </div>
-                                                            </div>
-                                                          </div>
-
-
-                                                        </div>
-                                                      
-                                                    </div>
-
-
-                                                 </div>
+                                         
 
                                             
                                           </div>
@@ -655,7 +696,62 @@
                                                   <div class="card-body ">
                                                       <div class="mdl-grid" > 
                                                           <h4 class="title">REQUEST</h4>  
-                                                        <div  v-for="(list,index) in lists" v-bind:key="list" v-bind:id="list.name"  class="component" >   
+
+
+                                                           <table class="table table-responsive-lg  table-responsive-md tablefont">
+                                     
+                                                <tbody v-for="(list,index) in lists" v-bind:key="list" v-bind:id="list.name"  class="component">
+                                                  <tr v-on:click="drop1(index + 1);">
+                                                    <td>{{list.name}}</td>
+                                                    <td>{{list.name}}</td>
+                                                    <td>{{list.name}}</td>
+                                                    <td>{{list.name}}</td>
+                                                    <td>{{list.name}}</td>
+                                                    <td>{{list.name}}</td>
+                                                    <td><button data-toggle="modal" v-on:click="modelopen(index + 1)" class="btn btn-success btn-raised btn-md">
+                                                        Edit
+                                                   </button>
+                                                  </td>   
+                                                  </tr>
+                                                  <tr>
+                                                     <td>{{list.name}}</td>
+                                                    <td>{{list.name}}</td>
+                                                    <td>{{list.name}}</td>
+                                                    <td>{{list.name}}</td>
+                                                    <td>{{list.name}}</td>
+                                                    <td>{{list.name}}</td>
+                                                    <td>&nbsp;</td>
+                                                  </tr>
+                                                  <tr v-bind:id="index" v-if="cart === index + 1" v-on:click="drop2(index + 1);">
+                                                     <td style="text-align: center;" colspan="7">
+                                                      
+                                                            <div class="card card-body cardanimation">
+                                                                  <div class="row" >
+                                                                      <div class="col-lg-2"  v-for="item in list.items">
+                                                                          <p class="para1">{{item}}</p>
+                                                                      </div>
+                                                                    </div>
+                                                              </div>
+
+                                                     </td>
+                                                  </tr>
+
+                                                  <tr >
+                                                    <td style="text-align: center;" colspan="7">
+                                                        
+                                                      sssss
+
+
+                                                    </td>
+                                                  </tr>
+                                                 
+                                                  
+                                                </tbody>
+                                              </table>
+
+
+
+<!--                                                         <div  v-for="(list,index) in lists" v-bind:key="list" v-bind:id="list.name"  class="component" >   
                                                           <div v-on:click="drop1(index + 1);">              
                                                           <div class="row d-flex justify-content-center"  >
                                                             <div class="col-lg-1  indexnumber">
@@ -723,133 +819,13 @@
                                                           </div>
 
 
-                                                          <div>
-                                                              <div id="modelview"  v-if="id === index + 1" >
-      
-                                                                <div class="modal-dialog modal-lg modelform1 cardanimation" role="document">
-                                                                  <div class="modal-content">
-                                                                  <div class="modal-body" v-bind:id="index + 1">
-                                                                    <form action="" method="POST">
-                                                                      <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <div class="form-group">
-                                                                              <div class="input-group">
-                                                                                <div class="input-group-prepend">
-                                                                                  <span class="input-group-text">
-                                                                                    <i class="material-icons">person</i>
-                                                                                  </span>
-                                                                                </div>
-                                                                                <input type="text" name="name" class="form-control" v-bind:value="list.name" placeholder="Your Name">
-                                                                              </div>
-                                                                            </div>
-                                                          
-                                                                            <div class="form-group">
-                                                                              <div class="input-group">
-                                                                                <div class="input-group-prepend">
-                                                                                  <span class="input-group-text">
-                                                                                    <i class="material-icons">email</i>
-                                                                                  </span>
-                                                                                </div>
-                                                                                <input type="text" class="form-control" name="movingfrom" v-bind:value="list.movingfrom" placeholder="Moving from">
-                                                                              </div>
-                                                                            </div>
-                                                          
-                                                                            <div class="form-group">
-                                                                              <div class="input-group">
-                                                                                <div class="input-group-prepend">
-                                                                                  <span class="input-group-text">
-                                                                                    <i class="material-icons">phone</i>
-                                                                                  </span>
-                                                                                </div>
-                                                                                <input type="text" class="form-control"  name="movingto" v-bind:value="list.movingto" placeholder="Moving to">
-                                                                              </div>
-                                                                            </div>
-
-                                                                            <div class="form-group">
-                                                                                <div class="input-group">
-                                                                                  <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">
-                                                                                      <i class="material-icons">person</i>
-                                                                                    </span>
-                                                                                  </div>
-                                                                                  <input type="text" class="form-control" name="movingdistance" v-bind:value="list.movingdistance" placeholder="movingdistance">
-                                                                                </div>
-                                                                              </div>
-                                                            
-                                                                              <div class="form-group">
-                                                                                <div class="input-group">
-                                                                                  <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">
-                                                                                      <i class="material-icons">email</i>
-                                                                                    </span>
-                                                                                  </div>
-                                                                                  <input type="text" class="form-control" name="dateofshifting" v-bind:value="list.dateofshifting" placeholder="dateofshifting">
-                                                                                </div>
-                                                                              </div>
-                                                            
-                                                                              <div class="form-group">
-                                                                                <div class="input-group">
-                                                                                  <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">
-                                                                                      <i class="material-icons">phone</i>
-                                                                                    </span>
-                                                                                  </div>
-                                                                                  <input type="text" class="form-control" name="movetype" v-bind:value="list.movetype" placeholder="movetype">
-                                                                                </div>
-                                                                              </div>
-
-                                                                              <div class="form-group">
-                                                                                  <div class="input-group">
-                                                                                    <div class="input-group-prepend">
-                                                                                      <span class="input-group-text">
-                                                                                        <i class="material-icons">email</i>
-                                                                                      </span>
-                                                                                    </div>
-                                                                                    <input type="text" class="form-control" name="totalitems" v-bind:value="list.totalitems" placeholder="totalitems">
-                                                                                  </div>
-                                                                                </div>
-                                                              
-                                                                                <div class="form-group">
-                                                                                  <div class="input-group">
-                                                                                    <div class="input-group-prepend">
-                                                                                      <span class="input-group-text">
-                                                                                        <i class="material-icons">phone</i>
-                                                                                      </span>
-                                                                                    </div>
-                                                                                    <input type="text" class="form-control" name="number" v-bind:value="list.number" placeholder="number">
-                                                                                  </div>
-                                                                                </div>
-                                                          
-                                                                        </div>
-
-
-                                                                        <div class="col-md-6">
-                                                                            Cart items Form to be implemented as sson as
-                                                                        </div>
-                                                                      </div>
-        
-                                                                      <div class="row ml-2 mt-2 d-flex justify-content-center">
-                                                                        <div class="modal-footer ">
-                                                                          <button type="Submit" class="btn btn-link btn-success">submit</button>
-                                                                          <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 1)">Close</button>
-                                                                        </div>
-                                                          
-                                                                      </div>
-                                                                    </form>
-                                                                    </div>
-                                                                  </div>
-                                                                </div>
-      
-      
-                                                              </div>
-                                                            
-                                                          </div>
+                                
 
 
 
 
                                                         
-                                                        </div>
+                                                        </div> -->
                                                         </div>
                                                   </div>
                                                 </div>

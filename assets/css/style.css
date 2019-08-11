@@ -396,3 +396,14 @@ element.style {
 	z-index: 20;
   }
 
+ @media only screen and (min-width:300px) and (max-width: 750px) {
+
+.tablefont{
+	font-size: 8px;
+}
+.tablefont1{
+	font-size: 8px;
+	padding: 5px;
+}
+
+}

@@ -272,6 +272,7 @@ var drop=new Vue({
             this.model=true;
 
             this.id=id;
+            console.log(id);
           
         },
         modelclose1(){
