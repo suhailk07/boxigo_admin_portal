@@ -707,9 +707,18 @@
                                                   <div class="card-body ">
                                                       <div class="mdl-grid" > 
                                                           <h4 class="title">REQUEST</h4>  
-
-
-                                                           <table class="table table-responsive-lg  table-responsive-md tablefont ">
+                                                          <table class="table">
+                                                              <thead class=" text-primary">
+                                                                  <tr>
+                                                                      <th scope="col" class="twentypxdown1 ">Name</th>
+                                                                      <th scope="col" class="twentypxdown1 ">From</th>
+                                                                      <th scope="col" class="twentypxdown1 ">To</th>
+                                                                      <th scope="col" class="twentypxdown1 ">Distance</th>
+                                                                      <th scope="col" class="twentypxdown1 ">ShiftingDate</th>
+                                                                      <th scope="col" class="twentypxdown1 ">MoveType</th>
+                                                                      <th scope="col" class="twentypxdown1 ">&nbsp;</th>
+                                                                    </tr>
+                                                                </thead>
                                      
                                                 <tbody v-for="(list,index) in lists" v-bind:key="list" v-bind:id="list.name"  >
                                                   <tr v-on:click="drop1(index + 1);" >
