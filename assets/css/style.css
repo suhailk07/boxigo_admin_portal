@@ -331,7 +331,9 @@ th {
 
 
   
-
+.dropback{
+	background-color: transparent;
+}
 
 
 .list-group-item {
@@ -426,4 +428,16 @@ th {
 	padding: 5px;
 }
 
+}
+
+.nav1{
+	border:none;
+	background-color: transparent;
+	font-size: .8rem;
+	padding: 5px;
+	margin: 0 auto ;
+}
+
+.nav1:hover{
+	color: #4caf50;
 }

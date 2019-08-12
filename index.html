@@ -23,6 +23,8 @@
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 
+
+
 </head>
 <body>
 
@@ -30,47 +32,42 @@
 
         <nav class="navbar   fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
                 <div class="container">
-                  <div class="navbar-translate">
+                    <div class="navbar-translate">
                     <a class="navbar-brand" href="http://boxigo.in/">Boxigo</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="navbar-toggler-icon"></span>
-                      <span class="navbar-toggler-icon"></span>
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
+                  
                   </div>
-                  <div class="collapse navbar-collapse">
+                
+                  <div class="">
+
                     <ul class="navbar-nav ml-auto">
+
                       <li class="nav-item">
-                        <a href="http://boxigo.in/home/aboutus" class="dropdown-toggle nav-link">
-                          <i class="fas fa-users"></i> About Us
-                        </a>
+                            <div class="dropdown d-flex justify-content-center">
+                                   <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"                                  aria-expanded="false">
+                                     User
+                                   </a>
+
+                                   <div class="dropdown-menu "   aria-labelledby="dropdownMenuLink">
+
+                                       <form action="file:///C:/Users/Premium/Desktop/boxigo_admin_portal/login.html">
+                                        <button type="submit" class="nav1">
+                                            <i class="fas fa-unlock-alt"></i> &nbsp;Password Change
+                                        </button>
+                                    </form>
+
+                                   <form action="file:///C:/Users/Premium/Desktop/boxigo_admin_portal/login.html">
+                                        <button type="submit" class="nav1">
+                                            <i class="fas fa-user-check"></i>&nbsp; &nbsp;Logout
+                                        </button>
+                                    </form>
+
+                                    
+                                     
+                                   </div>
+                            </div>
+
+                                   
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="http://boxigo.in/home/how_it_works" rel="tooltip" title="" data-placement="bottom" data-original-title="Know more about move">
-                        <i class="fas fa-info-circle"></i> &nbsp;How it works
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="http://boxigo.in/home/faq" rel="tooltip" title="" data-placement="bottom" data-original-title="Click here for queries">
-                        <i class="fas fa-question-circle"></i> &nbsp;FAQ
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="#" data-original-title="Contact our team">
-                          <i class="fas fa-hands-helping"></i> &nbsp;Customer Support
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="http://boxigo.in/home/forserviceprovider" data-original-title="For the Vendors">
-                          <i class="fab fa-black-tie"></i> &nbsp;For Service Provider
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                                        <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="http://boxigo.in/logout" data-original-title="Click here to logout">
-                              <i class="fas fa-user-check"></i> &nbsp;Logout
-                            </a>
-                                  </li>
                     </ul>
                   </div>
                 </div>
@@ -478,6 +475,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
                                                     </td>
                                                   </tr>
                                                  
@@ -490,7 +496,12 @@
 
                                             
                                           </div>
-               
+               <!--                                            <p>
+                <button @click="prevPage">Previous</button> 
+                page={{currentPage}}
+                <button @click="nextPage">Next</button>
+                </p>
+                <!-- debug: sort={{currentSort}}, dir={{currentSortDir}}, page={{currentPage}} --> -->
                                     </div>
                                 </div> 
                             </div>
