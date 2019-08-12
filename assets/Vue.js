@@ -10,18 +10,55 @@ var drop=new Vue({
     data:{
         custlists:[
             {
-                name:"edwin",
-                phoneno:"9889898799",
-                email:"fhiehfi@gmail.com",
+                name:"zdwin",
+                phoneno:"1889898799",
+                email:"ahiehfi@gmail.com",
                 dateofjoin:"3.4.19",
                 address:"karnataka",
                 type:"Elite ",
             },
             {
                 name:"Sammitha",
+                 phoneno:"7889898799",
+                email:"ohiehfi@gmail.com",
+                dateofjoin:"3.4.19",
+                address:"karnataka",
+                type:"Elite ",
                 type:"Normal ",
             },   {
                 name:"Venkatesh",
+                 phoneno:"5889898799",
+                email:"ihiehfi@gmail.com",
+                dateofjoin:"3.4.19",
+                address:"karnataka",
+                type:"Elite ",
+                type:"Low ",
+            },
+             {
+                name:"pinto",
+                 phoneno:"5889898799",
+                email:"ihiehfi@gmail.com",
+                dateofjoin:"3.4.19",
+                address:"karnataka",
+                type:"Elite ",
+                type:"Low ",
+            },
+             {
+                name:"raghul",
+                 phoneno:"5889898799",
+                email:"ihiehfi@gmail.com",
+                dateofjoin:"3.4.19",
+                address:"karnataka",
+                type:"Elite ",
+                type:"Low ",
+            },
+             {
+                name:"yadhuenkatesh",
+                 phoneno:"5889898799",
+                email:"ihiehfi@gmail.com",
+                dateofjoin:"3.4.19",
+                address:"karnataka",
+                type:"Elite ",
                 type:"Low ",
             }
         ],
@@ -160,8 +197,29 @@ var drop=new Vue({
                 name:"venkatesh2",
                 age:'21',
                 date:'13.08.2018',
-                vendors2:[],
-                quote:''
+                quote:'',
+                vendors2:[
+                    {
+                        name:"venkatesh",
+                        contact:"3456543456",
+                        quote:'20000',
+                    },
+                    {
+                        name:"venkatesh",
+                        contact:"3456543456",
+                        quote:''
+                    },
+                    {
+                        name:"venkatesh",
+                        contact:"3456543456",
+                        quote:''
+                    },
+                    {
+                        name:"venkatesh",
+                        contact:"3456543456",
+                        quote:''
+                    }
+                ]
             },
             {
                 name:"venkat2",
@@ -237,7 +295,18 @@ var drop=new Vue({
      display1:"block",
     colors:[],
     model:false,
-    id:""
+    id:"",
+    // custlists:[],
+    currentSort:'name',
+    currentSortDir:'asc',
+    pageSize:2,
+    currentPage:1,
+
+
+
+ 
+
+
         
     },
     methods:{
@@ -279,10 +348,52 @@ var drop=new Vue({
            
                 this.id="";
             
-        }
+        },
+
+
+            sort:function(s) {
+                console.log(s);
+      //if s == current sort, reverse
+      if(s === this.currentSort) {
+        this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
+      }
+      this.currentSort = s;
+    },
+    nextPage:function() {
+      if((this.currentPage*this.pageSize) < this.custlists.length) this.currentPage++;
+    },
+    prevPage:function() {
+      if(this.currentPage > 1) this.currentPage--;
+    }
+
+
+
+
+  
+
+
         
         
     },
+      computed:{
+        
+    sortedcustlists:function() {
+      return this.custlists.sort((a,b) => {
+        let modifier = 1;
+        if(this.currentSortDir === 'desc') modifier = -1;
+        if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+        if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+        return 0;
+      }).filter((row, index) => {
+        let start = (this.currentPage-1)*this.pageSize;
+        let end = this.currentPage*this.pageSize;
+        if(index >= start && index < end) return true;
+      });
+    }
+
+  }
+
+
 
 });
 

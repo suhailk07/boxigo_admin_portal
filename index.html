@@ -20,10 +20,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 <!-- Material Kit CSS -->
 <link href="assets/css/material-kit.css" rel="stylesheet"/>
-<link href="assets/scss/material-kit.scss" rel="stylesheet"/>
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
 
 
 </head>
@@ -180,31 +177,31 @@
                                       <div class="card-header d-flex justify-content-center">
                                               <p class="card-title my-0 ">Customer details</p>
                                             </div>
-                                        <div class="card-body d-flex justify-content-center">                                       
-                                          <md-card-content>
-                                            <simple-table table-header-color="green"></simple-table>
-                                          </md-card-content>
+                                        <div class="card-body d-flex justify-content-center">
+                                            
+                                            
                                    
                                              <table class="table table-responsive-lg  table-responsive-md tablefont justify-content-center">
                                                 <thead>
                                                   <tr>
-                                                    <th scope="col" class="twentypxdown1 ">Name</th>
-                                                    <th scope="col" class="twentypxdown1 ">phoneno</th>
-                                                    <th scope="col" class="twentypxdown1 ">email</th>
-                                                    <th scope="col" class="twentypxdown1 ">date of join</th>
-                                                    <th scope="col" class="twentypxdown1 ">Adress</th>
+                                                    <th scope="col" class="twentypxdown1 " @click="sort('name')">Name</th>
+                                                    <th scope="col" class="twentypxdown1 " @click="sort('phoneno')">phoneno</th>
+                                                    <th scope="col" class="twentypxdown1 "  @click="sort('email')">email</th>
+                                                    <th scope="col" class="twentypxdown1 "  @click="sort('dateofjoin')">date of join</th>
+                                                    <th scope="col" class="twentypxdown1 "  @click="sort('address')">Adress</th>
                                                     <th scope="col" class="twentypxdown1 ">&nbsp;</th>
                                                   </tr>
                                                 </thead>
-                                                <tbody class="twentypxdown justify-content-between "  v-for="(custlist,index) in custlists">
+                                                <tbody class="twentypxdown justify-content-between "  v-for="(custlist,index) in sortedcustlists">
                                                   <tr>
-                                                    <td>{{custlist.name}}</td>
-                                                    <td>{{custlist.name}}</td>
-                                                    <td>{{custlist.name}}</td>
-                                                    <td>{{custlist.name}}</td>
-                                                    <td>{{custlist.name}}</td>
-                                                    <td><button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md tablefont1">
+                                                    <td class="noborder">{{custlist.name}}</td>
+                                                    <td class="noborder">{{custlist.phoneno}}</td>
+                                                    <td class="noborder">{{custlist.email}}</td>
+                                                    <td class="noborder">{{custlist.dateofjoin}}</td>
+                                                    <td class="noborder">{{custlist.address}}</td>
+                                                    <td class="noborder"><button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md tablefont1">
                                                         Edit
+
                                                    </button>
                                                   </td>   
                                                   </tr>
@@ -316,14 +313,21 @@
                                                   
                                                 </tbody>
                                               </table>
-
-                                            
+                                              <br>
+          
                                             
     
     
 
                                       
                                                  </div>
+
+                <p>
+                <button @click="prevPage">Previous</button> 
+                page={{currentPage}}
+                <button @click="nextPage">Next</button>
+                </p>
+                <!-- debug: sort={{currentSort}}, dir={{currentSortDir}}, page={{currentPage}} -->
 
                                             
                                           </div>
@@ -346,21 +350,21 @@
                                               <table class="table table-responsive-lg  table-responsive-md tablefont">
                                                 <thead>
                                                   <tr>
-                                                    <th scope="col" class="twentypxdown1 ">Name</th>
-                                                    <th scope="col" class="twentypxdown1 ">phoneno</th>
-                                                    <th scope="col" class="twentypxdown1 ">email</th>
-                                                    <th scope="col" class="twentypxdown1 ">date of join</th>
-                                                    <th scope="col" class="twentypxdown1 ">Adress</th>
-                                                    <th scope="col" class="twentypxdown1 ">&nbsp;</th>
+                                                    <th scope="col" class="twentypxdown1 " >Name</th>
+                                                    <th scope="col" class="twentypxdown1 " >phoneno</th>
+                                                    <th scope="col" class="twentypxdown1 " >email</th>
+                                                    <th scope="col" class="twentypxdown1 " >date of join</th>
+                                                    <th scope="col" class="twentypxdown1 " >Adress</th>
+                                                    <th scope="col" class="twentypxdown1 " >&nbsp;</th>
                                                   </tr>
                                                 </thead>
                                                 <tbody class="twentypxdown justify-content-between " v-for="(vendlist,index) in vendlists">
                                                   <tr>
-                                                    <td>{{vendlist.name}}</td>
-                                                    <td>{{vendlist.name}}</td>
-                                                    <td>{{vendlist.name}}</td>
-                                                    <td>{{vendlist.name}}</td>
-                                                    <td>{{vendlist.name}}</td>
+                                                    <td class="noborder">{{vendlist.name}}</td>
+                                                    <td class="noborder">{{vendlist.name}}</td>
+                                                    <td class="noborder">{{vendlist.name}}</td>
+                                                    <td class="noborder">{{vendlist.name}}</td>
+                                                    <td class="noborder">{{vendlist.name}}</td>
                                                     <td><button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md tablefont1">
                                                         Edit
                                                    </button>
@@ -474,15 +478,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
                                                     </td>
                                                   </tr>
                                                  
@@ -495,6 +490,7 @@
 
                                             
                                           </div>
+               
                                     </div>
                                 </div> 
                             </div>
@@ -525,12 +521,12 @@
                                                 </thead>
                                                 <tbody class="twentypxdown justify-content-between " v-for="(newvendlist,index) in newvendlists">
                                                   <tr>
-                                                    <td>{{newvendlist.name}}</td>
-                                                    <td>{{newvendlist.name}}</td>
-                                                    <td>{{newvendlist.name}}</td>
-                                                    <td>{{newvendlist.name}}</td>
-                                                    <td>{{newvendlist.name}}</td>
-                                                    <td><button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md tablefont1">
+                                                    <td class="noborder">{{newvendlist.name}}</td>
+                                                    <td class="noborder">{{newvendlist.name}}</td>
+                                                    <td class="noborder">{{newvendlist.name}}</td>
+                                                    <td class="noborder">{{newvendlist.name}}</td>
+                                                    <td class="noborder">{{newvendlist.name}}</td>
+                                                    <td class="noborder"><button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md tablefont1">
                                                         Edit
                                                    </button>
                                                   </td>   
@@ -713,18 +709,27 @@
                                                                     </tr>
                                                                 </thead>
                                      
-                                                <tbody v-for="(list,index) in lists" v-bind:key="list" v-bind:id="list.name"  class="component">
-                                                  <tr v-on:click="drop1(index + 1);">
-                                                      <td>{{list.name}}</td>
-                                                      <td>{{list.movingfrom}}</td>
-                                                      <td>{{list.movingto}}</td>
-                                                      <td>{{list.movingdistance}}</td>
-                                                      <td>{{list.dateofshifting}}</td>
-                                                      <td>{{list.movetype}}</td>
-                                                    <td><button data-toggle="modal" v-on:click="modelopen(index + 1)" class="btn btn-success btn-raised btn-md">
+                                                <tbody v-for="(list,index) in lists" v-bind:key="list" v-bind:id="list.name"  >
+                                                  <tr v-on:click="drop1(index + 1);" >
+                                                    <td class="noborder">{{list.name}}</td>
+                                                    <td class="noborder">{{list.name}}</td>
+                                                    <td class="noborder">{{list.name}}</td>
+                                                    <td class="noborder">{{list.name}}</td>
+                                                    <td class="noborder">{{list.name}}</td>
+                                                    
+                                                    <td class="noborder"><button data-toggle="modal" v-on:click="modelopen(index + 1)" class="btn btn-success btn-raised btn-md">
                                                         Edit
                                                    </button>
                                                   </td>   
+                                                  </tr>
+                                                  <tr>
+                                                     <td class="noborder">{{list.name}}</td>
+                                                    
+                                                    <td class="noborder">{{list.name}}</td>
+                                                    <td class="noborder">{{list.name}}</td>
+                                                    <td class="noborder">{{list.name}}</td>
+                                                    <td class="noborder">{{list.name}}</td>
+                                                    <td class="noborder">&nbsp;</td>
                                                   </tr>
                                                   <tr v-bind:id="index" v-if="cart === index + 1" v-on:click="drop2(index + 1);">
                                                      <td style="text-align: center;" colspan="7">
@@ -741,9 +746,129 @@
                                                   </tr>
 
                                                   <tr >
-                                                    <td style="text-align: center;" colspan="7">
+                                                    <td style="text-align: center;" colspan="7" class="twentypxdown">
                                                         
-                                                      sssss
+                                                                                <div>
+                                                              <div id="modelview"  v-if="id === index + 1" >
+      
+                                                                <div class="modal-dialog modal-lg modelform1 cardanimation" role="document">
+                                                                  <div class="modal-content">
+                                                                  <div class="modal-body" v-bind:id="index + 1">
+                                                                    <form action="" method="POST">
+                                                                      <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                              <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                  <span class="input-group-text">
+                                                                                    <i class="material-icons">person</i>
+                                                                                  </span>
+                                                                                </div>
+                                                                                <input type="text" name="name" class="form-control" v-bind:value="list.name" placeholder="Your Name">
+                                                                              </div>
+                                                                            </div>
+                                                          
+                                                                            <div class="form-group">
+                                                                              <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                  <span class="input-group-text">
+                                                                                    <i class="material-icons">email</i>
+                                                                                  </span>
+                                                                                </div>
+                                                                                <input type="text" class="form-control" name="movingfrom" v-bind:value="list.movingfrom" placeholder="Moving from">
+                                                                              </div>
+                                                                            </div>
+                                                          
+                                                                            <div class="form-group">
+                                                                              <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                  <span class="input-group-text">
+                                                                                    <i class="material-icons">phone</i>
+                                                                                  </span>
+                                                                                </div>
+                                                                                <input type="text" class="form-control"  name="movingto" v-bind:value="list.movingto" placeholder="Moving to">
+                                                                              </div>
+                                                                            </div>
+
+                                                                            <div class="form-group">
+                                                                                <div class="input-group">
+                                                                                  <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                      <i class="material-icons">person</i>
+                                                                                    </span>
+                                                                                  </div>
+                                                                                  <input type="text" class="form-control" name="movingdistance" v-bind:value="list.movingdistance" placeholder="movingdistance">
+                                                                                </div>
+                                                                              </div>
+                                                            
+                                                                              <div class="form-group">
+                                                                                <div class="input-group">
+                                                                                  <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                      <i class="material-icons">email</i>
+                                                                                    </span>
+                                                                                  </div>
+                                                                                  <input type="text" class="form-control" name="dateofshifting" v-bind:value="list.dateofshifting" placeholder="dateofshifting">
+                                                                                </div>
+                                                                              </div>
+                                                            
+                                                                              <div class="form-group">
+                                                                                <div class="input-group">
+                                                                                  <div class="input-group-prepend">
+                                                                                    <span class="input-group-text">
+                                                                                      <i class="material-icons">phone</i>
+                                                                                    </span>
+                                                                                  </div>
+                                                                                  <input type="text" class="form-control" name="movetype" v-bind:value="list.movetype" placeholder="movetype">
+                                                                                </div>
+                                                                              </div>
+
+                                                                              <div class="form-group">
+                                                                                  <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                      <span class="input-group-text">
+                                                                                        <i class="material-icons">email</i>
+                                                                                      </span>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control" name="totalitems" v-bind:value="list.totalitems" placeholder="totalitems">
+                                                                                  </div>
+                                                                                </div>
+                                                              
+                                                                                <div class="form-group">
+                                                                                  <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                      <span class="input-group-text">
+                                                                                        <i class="material-icons">phone</i>
+                                                                                      </span>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control" name="number" v-bind:value="list.number" placeholder="number">
+                                                                                  </div>
+                                                                                </div>
+                                                          
+                                                                        </div>
+
+
+                                                                        <div class="col-md-6">
+                                                                            Cart items Form to be implemented as sson as
+                                                                        </div>
+                                                                      </div>
+        
+                                                                      <div class="row ml-2 mt-2 d-flex justify-content-center">
+                                                                        <div class="modal-footer ">
+                                                                          <button type="Submit" class="btn btn-link btn-success">submit</button>
+                                                                          <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 1)">Close</button>
+                                                                        </div>
+                                                          
+                                                                      </div>
+                                                                    </form>
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+      
+      
+                                                              </div>
+                                                            
+                                                          </div>
 
 
                                                     </td>
@@ -751,6 +876,7 @@
                                                  
                                                   
                                                 </tbody>
+
                                               </table>
 
 
@@ -842,11 +968,129 @@
                                           <div class="">
                                                   <div class="card-body ">
                                                       <div class="mdl-grid"> 
-                                                          <h4 class="title">SUBMITTED</h4>                   
-                                                           <div  v-for="(list2,index2) in lists2" v-bind:key="list2" v-bind:id="list2.name"  class="component" >                 
+                                                          <h4 class="title">SUBMITTED</h4>  
+
+                                            <table class="table table-responsive-lg  table-responsive-md tablefont ">
+                                     
+                                                <tbody  v-for="(list2,index) in lists2" v-bind:key="list2" v-bind:id="list2.name"  >
+                                                  <tr v-on:click="drop1(index + 1);" >
+                                                    <td class="noborder">{{list2.name}}</td>
+                                                    <td class="noborder">{{list2.name}}</td>
+                                                    <td class="noborder">{{list2.name}}</td>
+                                                    <td class="noborder">{{list2.name}}</td>
+                                                    <td class="noborder">{{list2.name}}</td>
+                                                    
+                                                    <td class="noborder">
+                                                        <div class=" text-center indexnumber">
+                                                                      <p class="para">Requested time </p>
+                                                                      
+                                                                      <p class="para">{{list2.requestedtime2}}</p>
+                                                                      
+                                                                  </div>
+                                                  </td>   
+                                                  </tr>
+                                                  <tr v-on:click="drop1(index + 1);" class="twentypxdown">
+                                                     <td class="noborder">{{list2.name}}</td>
+                                                    <td class="noborder">{{list2.name}}</td>
+                                                    <td class="noborder">{{list2.name}}</td>
+                                                    <td class="noborder">{{list2.name}}</td>
+                                                    <td class="noborder">{{list2.name}}</td>
+                                                    
+                                                    <td class="noborder">&nbsp;</td>
+                                                  </tr>
+                                                  <tr v-bind:id="index" v-if="cart === index + 1" v-on:click="drop2(index + 1);" >
+                                                     <td style="text-align: center;" colspan="7" >
+                                                      
+                                                            <div class="card card-body cardanimation " >
+                                                                  
+                                                                      
+                                                                          <div class="row d-flex justify-content-center bordercall">
+                                                                                <div class="col-lg-2">
+                                                                                  <p class="para1 tablehead">Vendor</p>
+                                                                                </div>
+                                                                                <div class="col-lg-2 tablehead">
+                                                                                  <p class="para1">Contatc</p>
+                                                                                </div>
+                                                                                <div class="col-lg-2 tablehead">
+                                                                                  <p class="para1">Quote</p>
+                                                                                </div>
+                                                                                <div class="col-lg-2 tablehead">
+                                                                                  <p class="para1">Send a remainder</p>
+                                                                                </div>
+                                                                                <div class="col-lg-3 tablehead">
+                                                                                  <p class="para1">Call</p>
+                                                                                </div>
+                                                                              
+                                                                              </div>
+
+
+                                                                                <div class="row d-flex justify-content-center bordercall" v-for="vendors in list2.vendors2" >
+                                                                                  
+                                                                                  <div class="col-lg-2" v-if="vendors!=''">
+                                                                                    <p class="para1">{{vendors.name}}</p>
+                                                                                  </div>
+                                                                                  <div class="col-lg-2" v-if="vendors!=''">
+                                                                                    <p class="para1">{{vendors.contact}}</p>
+                                                                                  </div>
+                                                                                  <div class="col-lg-2" v-if="vendors!=''">
+                                                                                    <p class="para1" v-bind:style="[ vendors.quote !=='' ?  {border:'2px solid #4caf50'} : {border:'2px solid #f56058'}]">
+                                                                                      {{ vendors.quote !=='' ?  vendors.quote : "pending"}}
+                                                                                    </p>
+                                                                                  </div>
+                                                                                  <div class="col-lg-2" v-if="vendors!=''">
+                                                                                    <p class="para1" >{{ vendors.quote !=='' ? "Done" : "Remainder"}}</p>
+                                                                                  </div>
+                                                                                  <div class="col-lg-3" v-if="vendors!=''">
+                                                                                    <p class=""><button class="buttonpara"><i class="fas fa-phone-volume"></i> &nbsp; Click to Call</button></p>
+                                                                                  </div>
+                                                                                
+                                                                              </div>
+
+
+                                                        <!--                      <div class="col-lg-1" style="margin-left: 50px; ">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-12 text-center indexnumber tablehead">
+                                                                                    <p class="para1">Submitted </p>
+                                                                                    <p class="para1"> Time:</p>
+                                                                                    <p class="para1">4pm</p>
+                                                                                    
+                                                                                </div>
+                                                                            </div>
+              
+                                                                            <br>
+              
+                                                                            <div class="row">
+                                                                                <div class="col-lg-12 text-center indexnumber tablehead">
+                                                                                    <p class="para1">Closed By:</p>
+                                                                                    
+                                                                                    <p class="para1">4pm</p>
+                                                                                    
+                                                                                </div>
+                                                                            </div> -->
+
+                                                                    
+                                                              </div>
+
+                                                     </td>
+                                                  </tr>
+
+                                             
+                                                 
+                                                  
+                                                </tbody>
+
+                                              </table>
+
+
+
+
+
+
+
+  <!--                                                          <div  v-for="(list2,index2) in lists2" v-bind:key="list2" v-bind:id="list2.name"  class="component" >                 
                                                               <div class="row d-flex justify-content-center" v-on:click="drop12(index2 + 1);" >
                                                                   <div class="col-lg-10 ">
-                                                                      <!-- <p class="para">{{index2 + 1}}</p> -->
+                                                                     
                                                                       <div class="row">
                                                                           <div class="col-lg-1 indexnumber">
                                                                               <p class="para">{{list2.name}}</p>
@@ -987,7 +1231,7 @@
                                                                     </div>
                                                                   
                                                                 </div>
-                                                        </div>
+                                                        </div> -->
                                                       </div>
                                                   </div>
                                                 </div>      
@@ -1001,7 +1245,37 @@
                                                   <div class="card-body ">
                                                       <div class="mdl-grid"> 
                                                           <h4 class="title">APPROVED</h4>  
-                                                          <div  v-for="(list3,index3) in lists3" v-bind:key="list3" v-bind:id="list3.name"  class="component" >                 
+
+                                                           <table class="table table-responsive-lg  table-responsive-md tablefont ">
+                                     
+                                                <tbody  v-for="(list3,index) in lists3" v-bind:key="list3" v-bind:id="list3.name"  >
+                                                  <tr >
+                                                    <td class="noborder">{{list3.totalitems3}}</td>
+                                                    <td class="noborder">{{list3.dateofshifting3}}</td>
+                                                    <td class="noborder">{{list3.totalitems3}}</td>
+                                                    <td class="noborder">{{list3.totalitems3}}</td>
+                                                    <td class="noborder">{{list3.totalitems3}}</td>
+                                                    <td class="noborder">{{list3.totalitems3}}</td>
+                                                    <td class="noborder">
+                                                      ss
+                                                  </td>   
+                                                  </tr>
+                                                  <tr>
+                                                     <td class="twentypxdown">{{list3.name}}</td>
+                                                    <td class="twentypxdown">{{list3.totalitems3}}</td>
+                                                    <td class="twentypxdown">{{list3.totalitems3}}</td>
+                                                    <td class="twentypxdown">{{list3.totalitems3}}</td>
+                                                    <td class="twentypxdown">{{list3.totalitems3}}</td>
+                                                    <td class="twentypxdown">{{list3.totalitems3}}</td>
+                                                    <td class="twentypxdown">&nbsp;</td>
+                                                  </tr>
+                                            </tbody>
+
+                                          </table>
+
+
+
+                          <!--                                 <div  v-for="(list3,index3) in lists3" v-bind:key="list3" v-bind:id="list3.name"  class="component" >                 
                                                               <div class="row">
                                                                   <div class="col-lg-8">
               
@@ -1065,7 +1339,7 @@
                                                                       </div>
                                                                   </div>
                                                               </div>
-                                                          </div>
+                                                          </div> -->
                                                     </div>    
                                                   </div>
                                                   </div>
@@ -1076,11 +1350,42 @@
                                           <div class="">
                                                   <div class="card-body ">
                                                       <div class="mdl-grid"> 
-                                                          <h4 class="title">CANCELLED</h4>      
-                                                          <div  v-for="(list4,index4) in lists4" v-bind:key="list4" v-bind:id="list4.name"  class="component" >                 
+                                                          <h4 class="title">CANCELLED</h4>  
+
+                                                           <table class="table table-responsive-lg  table-responsive-md tablefont ">
+                                     
+                                                <tbody v-for="(list4,index) in lists4" v-bind:key="list4" v-bind:id="list4.name"  >
+                                                  <tr  >
+                                                    <td class="noborder">{{list4.totalitems4}}</td>
+                                                    <td class="noborder">{{list4.dateofshifting4}}</td>
+                                                    <td class="noborder">{{list4.totalitems4}}</td>
+                                                    <td class="noborder">{{list4.totalitems4}}</td>
+                                                    <td class="noborder">{{list4.totalitems4}}</td>
+                                                    <td class="noborder">{{list4.totalitems4}}</td>
+                                                    <td class="noborder">
+                                                      ss
+                                                  </td>   
+                                                  </tr>
+                                                  <tr>
+                                                     <td class="twentypxdown">{{list4.name}}</td>
+                                                    <td class="twentypxdown">{{list4.totalitems4}}</td>
+                                                    <td class="twentypxdown">{{list4.totalitems4}}</td>
+                                                    <td class="twentypxdown">{{list4.totalitems4}}</td>
+                                                    <td class="twentypxdown">{{list4.totalitems4}}</td>
+                                                    <td class="twentypxdown">{{list4.totalitems4}}</td>
+                                                    <td class="twentypxdown">&nbsp;</td>
+                                                  </tr>
+                                            </tbody>
+
+                                          </table>
+
+
+
+
+                                <!--                           <div  v-for="(list4,index4) in lists4" v-bind:key="list4" v-bind:id="list4.name"  class="component" >                 
                                                               <div class="row d-flex justify-content-center"  >
                                                                   <div class="col-lg-10 ">
-                                                                      <!-- <p class="para">{{index2 + 1}}</p> -->
+                                                                      <p class="para">{{index2 + 1}}</p>
                                                                       <div class="row">
                                                                           <div class="col-lg-1 indexnumber">
                                                                               <p class="para">{{index4 + 1}}</p>
@@ -1139,7 +1444,7 @@
                                                                 <br>
                                                    
                                        
-                                                            </div>
+                                                            </div> -->
                                                 </div>
                                      </div>
                                   </div>
@@ -1181,16 +1486,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
   <script src="assets/js/material-kit.js?v=2.0.5" type="text/javascript"></script>
-  <script>
-    import { SimpleTable, OrderedTable } from "@/components";
-    
-    export default {
-      components: {
-        OrderedTable,
-        SimpleTable
-      }
-    };
-    </script>
 
 </body>
 </html>

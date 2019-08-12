@@ -293,9 +293,14 @@ element.style {
   .twentypxdown{
 	margin-top: 20px;
 	margin-bottom: 10px;
-	border-bottom: 2px solid #4caf50;
+	border-bottom: 3px solid #4caf50;
 	padding: 5px;
-	
+	text-align: center;
+}
+
+.noborder{
+		border: 2px solid transparent;
+		text-align: center;
 }
 
 .twentypxdown1{
@@ -305,12 +310,23 @@ element.style {
 	padding: 5px;
 	background-color: #4caf50;
 	box-shadow: .5px 3px 5px grey;
+	text-align: center;
+	color: white;
+	font-weight: 400;
 	
 }
 
 .twentypxdown1 > p{
 	color: white;
 	font-weight: 400;
+}
+
+td, th {
+  padding: 5px;
+}
+
+th {
+  cursor:pointer;
 }
 
 
@@ -394,6 +410,10 @@ element.style {
   .formedit{
 	display: none;
 	z-index: 20;
+  }
+
+  td,tr,th{
+  	border: none;
   }
 
  @media only screen and (min-width:300px) and (max-width: 750px) {
