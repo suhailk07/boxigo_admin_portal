@@ -100,6 +100,7 @@ var drop=new Vue({
                 name:"Jeevan"
             }
         ],
+        servicelists:[],
         lists:[
 
             {
@@ -342,7 +343,7 @@ var drop=new Vue({
 
             this.id=id;
             console.log(id);
-          
+            
         },
         modelclose1(){
            
@@ -384,12 +385,26 @@ var drop=new Vue({
         if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
         if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
         return 0;
+        
       }).filter((row, index) => {
         let start = (this.currentPage-1)*this.pageSize;
         let end = this.currentPage*this.pageSize;
         if(index >= start && index < end) return true;
+        
       });
     }
+
+  },
+
+  created(){
+      fetch("https://boxigo.in/api/product/get-services-type.php").then(res=>res.json()).then((data)=>{
+           var datadummy=Object.assign(data,{});
+           var datafinal=[...datadummy.serviceType];
+
+          this.servicelists.push(datafinal);
+          console.log(datafinal);
+          
+      })
 
   }
 

@@ -99,7 +99,7 @@
                                           <i class="material-icons">person</i>
                                         </span>
                                       </div>
-                                      <input type="text" name="name" class="form-control"  placeholder="User Name">
+                                      <input type="text" name="name" class="form-control" id="emailid" value="" placeholder="Email Id">
                                     </div>
                                   </div>
                 
@@ -110,7 +110,7 @@
                                           <i class="fas fa-unlock-alt"></i>
                                         </span>
                                       </div>
-                                      <input type="password" name="password" class="form-control" v placeholder="Password">
+                                      <input type="password" name="password" class="form-control" id="password" value="" placeholder="Password">
                                     </div>
                                   </div>
                 
@@ -121,10 +121,18 @@
         
                             <div class="row ml-2 mt-2 d-flex justify-content-center">
                               <div class="">
-                                <a href="file:///C:/Users/Premium/Desktop/boxigo_admin_portal/index.html" class="btn btn-link btn-success">Login</a>
+                               
+                                <input type="button" value="Login" class="btn btn-link btn-success" onclick="redirect();">
+                                  
                                 
                               </div>
                 
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-12 d-flex justify-content-center">
+                                <p id="fail" style="display: none" class="btn btn-link btn-danger"> Incorrect Email id and Password </p>
+                              </div>
+
                             </div>
                             <br>
                           </form>
@@ -178,6 +186,44 @@
       </div>
     </div>
   </footer>
+
+
+
+  <script>
+
+    logindata=[
+      {
+      email:"edwin@gmail.com",
+      password:"1234"
+      },
+    ]
+
+    
+  
+  const redirect=()=>{
+
+    let useremail=document.getElementById("emailid").value; 
+    let userpassword=document.getElementById("password").value; 
+    let incorrectmsg=document.getElementById("fail"); 
+    
+    
+    if(useremail===logindata[0].email && userpassword===logindata[0].password ){
+      
+      window.location.href='file:///C:/Users/Premium/Desktop/boxigo_admin_portal/index.html';
+
+    }
+    else{
+      incorrectmsg.style.display="block";
+    
+    }
+
+    
+    
+    
+    
+  }
+  
+  </script>
 
 
 

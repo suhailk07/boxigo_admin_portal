@@ -78,25 +78,29 @@
                     <div class="col-lg-12">
                             <div class="card px-0">
                                 <div class="card-body px-0 sidebarboundary" >
-                                    <ul class="list-group" >
+                                    <ul class="list-group" id="myDIV" >
                                       <br>
                                         <li class="list-group-item  align-items-center buttonmain1" >
                                           
-                                            <button class="buttonmain"  onclick="but1();"><i class="fa fa-home estinfo"></i>Administration info</button>
+                                            <button class="buttonmain btn active"  onclick="but1();"><i class="fa fa-home estinfo"></i>Administration info</button>
+                                            <!-- <span class="badge badge-primary badge-pill">14</span> -->
+                                        </li>
+                                        <li class="list-group-item  align-items-center buttonmain1 ">
+                                            <button class="buttonmain btn" onclick="but2();"><i class="fa fa-user custinfo"></i>customer info</button>
                                             <!-- <span class="badge badge-primary badge-pill">14</span> -->
                                         </li>
                                         <li class="list-group-item  align-items-center buttonmain1">
-                                            <button class="buttonmain" onclick="but2();"><i class="fa fa-user custinfo"></i>customer info</button>
-                                            <!-- <span class="badge badge-primary badge-pill">14</span> -->
+                                            <button class="buttonmain btn" onclick="but3();"><i class="fa fa-ban vendinfo"></i> Existing Vendor info</button>
                                         </li>
                                         <li class="list-group-item  align-items-center buttonmain1">
-                                            <button class="buttonmain" onclick="but3();"><i class="fa fa-ban vendinfo"></i> Existing Vendor info</button>
+                                            <button class="buttonmain btn" onclick="but4();"><i class="fa fa-bell newinfo"></i> new vendors info</button>
                                         </li>
                                         <li class="list-group-item  align-items-center buttonmain1">
-                                            <button class="buttonmain" onclick="but4();"><i class="fa fa-bell newinfo"></i> new vendors info</button>
+                                            <button class="buttonmain btn" onclick="but5();"><i class="fa fa-bell newinfo"></i> Service type</button>
                                         </li>
+                                        
                                         <li class="list-group-item estibutton  justify-content-center align-items-center">
-                                            <button onclick="but5()" class="btn btn-info btn-block btn-raised" href="estimate">Estimate quotes</button>
+                                            <button onclick="but6()" class="btn btn-info btn-block btn-raised" href="estimate">Estimate quotes</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -105,6 +109,171 @@
             </div>
 
             <div class="col-lg-8"  id="drop">
+
+                <div id="servicetype">
+
+                    <div class="row">
+                        <div class="col-lg-12" >
+                            <div class="card">
+                               <div class="card-header d-flex justify-content-center">
+                                      <p class="card-title my-0 ">New Vendor details</p>
+                                    </div>
+                                <div class="card-body d-flex justify-content-center">
+                                   
+                                    
+                               
+                                     
+                                     <table class="table table-responsive-lg  tablefont">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col" class="twentypxdown1 ">Name</th>
+                                            <th scope="col" class="twentypxdown1 ">Type</th>
+                                            <th scope="col" class="twentypxdown1 ">Service Info</th>
+                                            <th scope="col" class="twentypxdown1 ">Created date</th>
+                                            <th scope="col" class="twentypxdown1 ">Last Updated</th>
+                                            <th scope="col" class="twentypxdown1 ">&nbsp;</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody class="twentypxdown justify-content-between " v-for="(servicelist,index) in servicelists[0]">
+                                          
+                                          <tr >
+                                            <td class="noborder">{{servicelist.name}}</td>
+                                            <td class="noborder"> {{servicelist.display_name}}</td>
+                                            <td class="noborder">
+                                              <div v-for="service in servicelist.service_info" >
+                                                  {{service}}
+                                              </div>
+                                            </td>
+                                            <td class="noborder">{{servicelist.created_date}}</td>
+                                            <td class="noborder">{{servicelist.last_update_date}}</td>
+                                            <td class="noborder"><button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md tablefont1">
+                                                Edit
+                                           </button>
+                                          </td>   
+                                          </tr>
+                                          <tr >
+                                            <td style="text-align: center;" colspan="6">
+                                                
+                                                <div id="modelview"  v-if="id === index + 1" >
+
+                                                    <div class="modal-dialog modal-lg modelform1 cardanimation" role="document">
+                                                      <div class="modal-content">
+                                                      <div class="modal-body" v-bind:id="index + 1">
+                                  
+                                  
+                                                        
+                                                          <form action="" method="POST">
+                                                              <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                      <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                          <span class="input-group-text">
+                                                                            <i class="material-icons">person</i>
+                                                                          </span>
+                                                                        </div>
+                                                                        <input type="text" name="name" class="form-control" v-bind:value="servicelist.name" placeholder="Service name">
+                                                                      </div>
+                                                                    </div>
+                                                  
+                                                                    <div class="form-group">
+                                                                      <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                          <span class="input-group-text">
+                                                                            <i class="material-icons">email</i>
+                                                                          </span>
+                                                                        </div>
+                                                                        <input type="email" name="mailid" class="form-control" v-bind:value="servicelist.display_name" placeholder="Displayname">
+                                                                      </div>
+                                                                    </div>
+                                                  
+                                                                    <div class="form-group " >
+                                                                      <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                          <span class="input-group-text">
+                                                                            <i class="material-icons">phone</i>
+                                                                          </span>
+                                                                        </div>
+                                                                        <input type="tel" name="service info"  class="form-control" placeholder="service info" v-bind:value="servicelist.service_info" >
+                                                                      </div>
+                                                                    </div>
+                                                  
+                                                                </div>
+                                                                <div class="col-md-6 ">
+                                                                    <div class="form-group">
+                                                                      <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                          <span class="input-group-text">
+                                                                            <i class="material-icons">group</i>
+                                                                          </span>
+                                                                        </div>
+                                                                        <input type="text" name="date" class="form-control" placeholder="Created date" v-bind:value="servicelist.created_date">
+                                                                      </div>
+                                                                    </div>
+                                                  
+                                                                    <div class="form-group">
+                                                                      <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                          <span class="input-group-text">
+                                                                            <i class="material-icons">web</i>
+                                                                          </span>
+                                                                        </div>
+                                                                        <input type="text" name="address" class="form-control" placeholder="last update date" v-bind:value="servicelist.last_update_date">
+                                                                      </div>
+                                                                    </div>
+                                                  
+                                  
+                                                                </div>
+                                                              </div>
+                                                              <div class="row pl-1" id="otp" style="display: none">
+                                                                <div class="col-sm-12">
+                                                                  <div class="form-group">
+                                                                      <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                          <span class="input-group-text">
+                                                                            <i class="fas fa-info-circle"></i>
+                                                                          </span>
+                                                                        </div>
+                                                                        <input type="text" class="form-control" placeholder="Enter the OTP sent to your number"><button class="btn btn-secondary btn-sm">resend OTP</button><button class="btn btn-success btn-sm">Verify OTP</button>
+                                                                      </div>
+                                                                    </div>
+                                                                </div>
+                                                              </div>
+                                                              <div class="row ml-2 mt-2 d-flex justify-content-center">
+                                                                <div class="modal-footer ">
+                                                                  <button type="Submit" class="btn btn-link btn-success">submit</button>
+                                                                  <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 1)">Close</button>
+                                                                </div>
+                                                  
+                                                              </div>
+                                                            </form>
+                                  
+                                  
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                  
+                                  
+                                                  </div>
+
+
+                                            </td>
+                                          </tr>
+                                         
+                                        
+                                        </tbody>
+                                      </table>
+                                    
+
+                                 
+
+                                    
+                                  </div>
+                            </div>
+                        </div> 
+                    </div>
+
+                </div>
    
                 <div id="estimateinfo">
                       <div class="row">
@@ -198,7 +367,6 @@
                                                     <td class="noborder">{{custlist.address}}</td>
                                                     <td class="noborder"><button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md tablefont1">
                                                         Edit
-
                                                    </button>
                                                   </td>   
                                                   </tr>
@@ -501,7 +669,7 @@
                 page={{currentPage}}
                 <button @click="nextPage">Next</button>
                 </p>
-                <!-- debug: sort={{currentSort}}, dir={{currentSortDir}}, page={{currentPage}} --> -->
+                 debug: sort={{currentSort}}, dir={{currentSortDir}}, page={{currentPage}} --> 
                                     </div>
                                 </div> 
                             </div>
