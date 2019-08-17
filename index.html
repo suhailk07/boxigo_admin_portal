@@ -8,6 +8,8 @@
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   
 
+<!-- <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">    -->
+
 
   
 <!-- Required meta tags -->
@@ -21,6 +23,7 @@
 <!-- Material Kit CSS -->
 <link href="assets/css/material-kit.css" rel="stylesheet"/>
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
 
 
 
@@ -108,7 +111,8 @@
                         </div>
             </div>
 
-            <div class="col-lg-8"  id="drop">
+
+            <div class="col-lg-8"  id="drop" >
 
                 <div id="servicetype">
 
@@ -123,144 +127,122 @@
                                     
                                
                                      
-                                     <table class="table table-responsive-lg  tablefont">
+                                     <table class="table table-responsive-md  tablefont" id="myTable3">
                                         <thead>
                                           <tr>
-                                            <th scope="col" class="twentypxdown1 ">Name</th>
-                                            <th scope="col" class="twentypxdown1 ">Type</th>
-                                            <th scope="col" class="twentypxdown1 ">Service Info</th>
-                                            <th scope="col" class="twentypxdown1 ">Created date</th>
-                                            <th scope="col" class="twentypxdown1 ">Last Updated</th>
-                                            <th scope="col" class="twentypxdown1 ">&nbsp;</th>
+                                            <th  class="twentypxdown1 ">Service Name</th>
+                                            <th  class="twentypxdown1 ">Service Type</th>
+                                            <th  class="twentypxdown1 ">Service Info</th>
+                                            <th  class="twentypxdown1 ">Created date</th>
+                                            <th  class="twentypxdown1 ">Last Updated</th>
+                                            <th  class="twentypxdown1 ">&nbsp;</th>
                                           </tr>
                                         </thead>
-                                        <tbody class="twentypxdown justify-content-between " v-for="(servicelist,index) in servicelists[0]">
+                                        <tbody class="twentypxdown justify-content-between " >
                                           
-                                          <tr >
-                                            <td class="noborder">{{servicelist.name}}</td>
-                                            <td class="noborder"> {{servicelist.display_name}}</td>
-                                            <td class="noborder">
-                                              <div v-for="service in servicelist.service_info" >
-                                                  {{service}}
-                                              </div>
-                                            </td>
-                                            <td class="noborder">{{servicelist.created_date}}</td>
-                                            <td class="noborder">{{servicelist.last_update_date}}</td>
-                                            <td class="noborder"><button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md tablefont1">
-                                                Edit
-                                           </button>
-                                          </td>   
-                                          </tr>
-                                          <tr >
-                                            <td style="text-align: center;" colspan="6">
-                                                
-                                                <div id="modelview"  v-if="id === index + 1" >
+                                          <tr v-for="(servicelist,index) in servicelists[0]">
+                                              <td v-if="id===index + 'service'" class="noborder"  colspan="6">
+                                                                      
 
-                                                    <div class="modal-dialog modal-lg modelform1 cardanimation" role="document">
-                                                      <div class="modal-content">
-                                                      <div class="modal-body" v-bind:id="index + 1">
-                                  
-                                  
-                                                        
-                                                          <form action="" method="POST">
-                                                              <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                      <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                          <span class="input-group-text">
-                                                                            <i class="material-icons">person</i>
-                                                                          </span>
-                                                                        </div>
-                                                                        <input type="text" name="name" class="form-control" v-bind:value="servicelist.name" placeholder="Service name">
-                                                                      </div>
-                                                                    </div>
-                                                  
-                                                                    <div class="form-group">
-                                                                      <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                          <span class="input-group-text">
-                                                                            <i class="material-icons">email</i>
-                                                                          </span>
-                                                                        </div>
-                                                                        <input type="email" name="mailid" class="form-control" v-bind:value="servicelist.display_name" placeholder="Displayname">
-                                                                      </div>
-                                                                    </div>
-                                                  
-                                                                    <div class="form-group " >
-                                                                      <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                          <span class="input-group-text">
-                                                                            <i class="material-icons">phone</i>
-                                                                          </span>
-                                                                        </div>
-                                                                        <input type="tel" name="service info"  class="form-control" placeholder="service info" v-bind:value="servicelist.service_info" >
-                                                                      </div>
-                                                                    </div>
-                                                  
+                                                  <form action="" method="POST" class="cardanimation">
+                                                      <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="material-icons">person</i>
+                                                                  </span>
                                                                 </div>
-                                                                <div class="col-md-6 ">
-                                                                    <div class="form-group">
-                                                                      <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                          <span class="input-group-text">
-                                                                            <i class="material-icons">group</i>
-                                                                          </span>
-                                                                        </div>
-                                                                        <input type="text" name="date" class="form-control" placeholder="Created date" v-bind:value="servicelist.created_date">
-                                                                      </div>
-                                                                    </div>
-                                                  
-                                                                    <div class="form-group">
-                                                                      <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                          <span class="input-group-text">
-                                                                            <i class="material-icons">web</i>
-                                                                          </span>
-                                                                        </div>
-                                                                        <input type="text" name="address" class="form-control" placeholder="last update date" v-bind:value="servicelist.last_update_date">
-                                                                      </div>
-                                                                    </div>
-                                                  
-                                  
-                                                                </div>
+                                                                <input type="text" name="name" class="form-control" v-model="servicelist.name" placeholder="name">
                                                               </div>
-                                                              <div class="row pl-1" id="otp" style="display: none">
-                                                                <div class="col-sm-12">
-                                                                  <div class="form-group">
-                                                                      <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                          <span class="input-group-text">
-                                                                            <i class="fas fa-info-circle"></i>
-                                                                          </span>
-                                                                        </div>
-                                                                        <input type="text" class="form-control" placeholder="Enter the OTP sent to your number"><button class="btn btn-secondary btn-sm">resend OTP</button><button class="btn btn-success btn-sm">Verify OTP</button>
-                                                                      </div>
-                                                                    </div>
+                                                            </div>
+                                          
+                                                            <div class="form-group">
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="material-icons">email</i>
+                                                                  </span>
                                                                 </div>
+                                                                <input type="text" name="display_name" class="form-control" v-model="servicelist.display_name" placeholder="display_name">
                                                               </div>
-                                                              <div class="row ml-2 mt-2 d-flex justify-content-center">
-                                                                <div class="modal-footer ">
-                                                                  <button type="Submit" class="btn btn-link btn-success">submit</button>
-                                                                  <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 1)">Close</button>
+                                                            </div>
+                                          
+                                                            <div class="form-group " >
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="material-icons">phone</i>
+                                                                  </span>
                                                                 </div>
-                                                  
+                                                                <input type="text" name="service_info" class="form-control" placeholder="service_info" v-model="servicelist.service_info">
                                                               </div>
-                                                            </form>
-                                  
-                                  
+                                                            </div>
+                                          
+                                                        </div>
+                                                        <div class="col-md-6 ">
+                                                            <div class="form-group">
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="material-icons">group</i>
+                                                                  </span>
+                                                                </div>
+                                                                <input type="text" name="created_date" class="form-control" placeholder="created_date" v-model="servicelist.created_date">
+                                                              </div>
+                                                            </div>
+                                          
+                                                            <div class="form-group">
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="material-icons">web</i>
+                                                                  </span>
+                                                                </div>
+                                                                <input type="text" name="last_update_date" class="form-control" placeholder="last_update_date" v-model="servicelist.last_update_date">
+                                                              </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                              <div class="input-group">
+                                                              
+                                                                <input type="hidden" name="id" class="form-control" v-model="servicelist.id" placeholder="name">
+                                                              </div>
+                                                            </div>
+                                          
+                              
                                                         </div>
                                                       </div>
-                                                    </div>
-                                  
-                                  
-                                                  </div>
+                                                 
+                                                      <div class="row ml-2 mt-2 d-flex justify-content-center">
+                                                        <div class="modal-footer ">
+                                                          <button type="button" class="btn btn-link btn-success" v-on:click="servicesubmit(servicelist.name,servicelist.display_name,servicelist.service_info,servicelist.created_date,servicelist.last_update_date,servicelist.id)">submit</button>
+                                                          <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 'service')">Close</button>
+                                                        </div>
+                                          
+                                                      </div>
+                                                    </form>
 
 
+                                                 </td>
+                                            <td class="noborder" v-if="!(id===index + 'service')">&nbsp;&nbsp;{{servicelist.name}}&nbsp;&nbsp;</td>
+                                            <td class="noborder" v-if="!(id===index + 'service')"> &nbsp;&nbsp;{{servicelist.display_name}}&nbsp;&nbsp;</td>
+                                            <td class="noborder" v-if="!(id===index + 'service')">
+                                             
+                                                  {{...servicelist.service_info}}
+                                              
                                             </td>
+                                            <td class="noborder" v-if="!(id===index + 'service')">{{servicelist.created_date}}</td>
+                                            <td class="noborder" v-if="!(id===index + 'service')">{{servicelist.last_update_date}}</td>
+                                            <td class="noborder" v-if="!(id===index + 'service')"><button data-toggle="modal"  v-on:click="modelopen(index + 'service')"  class="btn btn-success btn-raised btn-md tablefont1">
+                                                Edit
+                                           </button>
+                                           <button data-toggle="modal"  v-on:click="servicedelete(servicelist.name,servicelist.display_name,servicelist.service_info,servicelist.created_date,servicelist.last_update_date,servicelist.id)"  class="btn btn-success btn-raised btn-md tablefont1">
+                                            Delete
+                                         </button>
+                                          </td>   
                                           </tr>
-                                         
-                                        
+
                                         </tbody>
                                       </table>
                                     
@@ -347,138 +329,118 @@
                                             
                                             
                                    
-                                             <table class="table table-responsive-lg  table-responsive-md tablefont justify-content-center">
+                                             <table class="table table-responsive-lg  table-responsive-md tablefont justify-content-center" id="myTable2">
                                                 <thead>
                                                   <tr>
-                                                    <th scope="col" class="twentypxdown1 " @click="sort('name')">Name</th>
-                                                    <th scope="col" class="twentypxdown1 " @click="sort('phoneno')">phoneno</th>
+                                                    <th scope="col" class="twentypxdown1 " @click="sort('name')">Fisrt Name</th>
+                                                    <th scope="col" class="twentypxdown1 " @click="sort('phoneno')">Last Name</th>
                                                     <th scope="col" class="twentypxdown1 "  @click="sort('email')">email</th>
-                                                    <th scope="col" class="twentypxdown1 "  @click="sort('dateofjoin')">date of join</th>
-                                                    <th scope="col" class="twentypxdown1 "  @click="sort('address')">Adress</th>
+                                                    <th scope="col" class="twentypxdown1 "  @click="sort('dateofjoin')">Phone Number</th>
+                                                    <th scope="col" class="twentypxdown1 "  @click="sort('address')">Date Of Join</th>
                                                     <th scope="col" class="twentypxdown1 ">&nbsp;</th>
                                                   </tr>
                                                 </thead>
-                                                <tbody class="twentypxdown justify-content-between "  v-for="(custlist,index) in sortedcustlists">
-                                                  <tr>
-                                                    <td class="noborder">{{custlist.name}}</td>
-                                                    <td class="noborder">{{custlist.phoneno}}</td>
-                                                    <td class="noborder">{{custlist.email}}</td>
-                                                    <td class="noborder">{{custlist.dateofjoin}}</td>
-                                                    <td class="noborder">{{custlist.address}}</td>
-                                                    <td class="noborder"><button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md tablefont1">
+                                                <tbody class="twentypxdown justify-content-between "  >
+                                                  <tr v-for="(custlist,index) in custlists[0]">
+                                                      <td v-if="id===index + 'customer'" class="noborder"  colspan="6">
+                                                                      
+
+                                                        <form action="" method="POST" class="cardanimation">
+                                                          <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                  <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                      <span class="input-group-text">
+                                                                        <i class="material-icons">person</i>
+                                                                      </span>
+                                                                    </div>
+                                                                    <input type="text" name="name" class="form-control" v-model="custlist.first_name" placeholder="name">
+                                                                  </div>
+                                                                </div>
+                                              
+                                                            
+                                              
+                                                                <div class="form-group " >
+                                                                  <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                      <span class="input-group-text">
+                                                                        <i class="material-icons">phone</i>
+                                                                      </span>
+                                                                    </div>
+                                                                    <input type="text" name="phoneno" class="form-control" placeholder="service_info" v-model="custlist.last_name">
+                                                                  </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                  <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                      <span class="input-group-text">
+                                                                        <i class="material-icons">web</i>
+                                                                      </span>
+                                                                    </div>
+                                                                    <input type="text" name="type" class="form-control" placeholder="last_update_date" v-model="custlist.email">
+                                                                  </div>
+                                                                </div>
+                                              
+                                                            </div>
+                                                            <div class="col-md-6 ">
+                                                                <div class="form-group">
+                                                                  <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                      <span class="input-group-text">
+                                                                        <i class="material-icons">group</i>
+                                                                      </span>
+                                                                    </div>
+                                                                    <input type="text" name="email" class="form-control" placeholder="created_date" v-model="custlist.phone">
+                                                                  </div>
+                                                                </div>
+                                              
+                                                                <div class="form-group">
+                                                                  <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                      <span class="input-group-text">
+                                                                        <i class="material-icons">web</i>
+                                                                      </span>
+                                                                    </div>
+                                                                    <input type="text" name="dateofjoin" class="form-control" placeholder="last_update_date" v-model="custlist.date_created">
+                                                                  </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                  <div class="input-group">
+                                                                 
+                                                                    <input type="hidden" name="id" class="form-control" placeholder="last_update_date" v-model="custlist.user_id">
+                                                                  </div>
+                                                                </div>
+                                              
+                                  
+                                                            </div>
+                                                          </div>
+                                                     
+                                                          <div class="row ml-2 mt-2 d-flex justify-content-center">
+                                                            <div class="modal-footer ">
+                                                              <button type="button" class="btn btn-link btn-success" v-on:click="customersubmit(custlist.user_id,custlist.first_name,custlist.last_name,custlist.email,custlist.phone,custlist.verification_key,custlist.is_email_verified,custlist.is_phone_verified,custlist.date_created)">submit</button>
+                                                              <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 'customer')">Close</button>
+                                                            </div>
+                                              
+                                                          </div>
+                                                        </form>
+
+
+                                                         </td>
+                                                    <td class="noborder" v-if="!(id===index + 'customer')">{{custlist.first_name}}</td>
+                                                    <td class="noborder" v-if="!(id===index + 'customer')">{{custlist.last_name}}</td>
+                                                    <td class="noborder" v-if="!(id===index + 'customer')">{{custlist.email}}</td>
+                                                    <td class="noborder" v-if="!(id===index + 'customer')">{{custlist.phone}}</td>
+                                                    <td class="noborder" v-if="!(id===index + 'customer')">{{custlist.date_created}}</td>
+                                                    <td class="noborder" v-if="!(id===index + 'customer')"><button data-toggle="modal"  v-on:click="modelopen(index + 'customer')"  class="btn btn-success btn-raised btn-md tablefont1">
                                                         Edit
                                                    </button>
                                                   </td>   
                                                   </tr>
-                                                  <tr >
-                                                    <td style="text-align: center;" colspan="6">
-                                                                  <div>
-        <div id="modelview"  v-if="id === index + 1" >
-
-          <div class="modal-dialog modal-lg modelform1 cardanimation" role="document">
-            <div class="modal-content">
-            <div class="modal-body" v-bind:id="index + 1">
-              <form action="" method="P">
-                <div class="row">
-                  <div class="col-md-6">
-                      <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="material-icons">person</i>
-                            </span>
-                          </div>
-                          <input type="text" name="name" class="form-control" v-bind:value="custlist.name" placeholder="Your Name">
-                        </div>
-                      </div>
-    
-                      <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="material-icons">email</i>
-                            </span>
-                          </div>
-                          <input type="email" name="mailid" class="form-control" v-bind:value="custlist.email" placeholder="Your E-Mail">
-                        </div>
-                      </div>
-    
-                      <div class="form-group " >
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="material-icons">phone</i>
-                            </span>
-                          </div>
-                          <input type="tel" name="phoneno" pattern="[0-9]{10}" class="form-control" placeholder="Your Phone No" v-bind:value="custlist.phoneno">
-                        </div>
-                      </div>
-    
-                  </div>
-                  <div class="col-md-6 ">
-                      <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="material-icons">group</i>
-                            </span>
-                          </div>
-                          <input type="text" name="date" class="form-control" placeholder="dateofjoin" v-bind:value="custlist.dateofjoin">
-                        </div>
-                      </div>
-    
-                      <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="material-icons">web</i>
-                            </span>
-                          </div>
-                          <input type="text" name="address" class="form-control" placeholder="Address" v-bind:value="custlist.address">
-                        </div>
-                      </div>
-    
-
-                  </div>
-                </div>
-                <div class="row pl-1" id="otp" style="display: none">
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="fas fa-info-circle"></i>
-                            </span>
-                          </div>
-                          <input type="text" class="form-control" placeholder="Enter the OTP sent to your number"><button class="btn btn-secondary btn-sm">resend OTP</button><button class="btn btn-success btn-sm">Verify OTP</button>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-                <div class="row ml-2 mt-2 d-flex justify-content-center">
-                  <div class="modal-footer ">
-                    <button type="Submit" class="btn btn-link btn-success">submit</button>
-                    <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 1)">Close</button>
-                  </div>
-    
-                </div>
-              </form>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-      
-    </div>
-
-                                                    </td>
-                                                  </tr>
-                                                 
                                                   
                                                 </tbody>
                                               </table>
-                                              <br>
+                                              
           
                                             
     
@@ -486,15 +448,7 @@
 
                                       
                                                  </div>
-
-                <p>
-                <button @click="prevPage">Previous</button> 
-                page={{currentPage}}
-                <button @click="nextPage">Next</button>
-                </p>
-                <!-- debug: sort={{currentSort}}, dir={{currentSortDir}}, page={{currentPage}} -->
-
-                                            
+                                        
                                           </div>
                                       </div>
                              </div> 
@@ -512,150 +466,111 @@
                                            
                                             
                                          
-                                              <table class="table table-responsive-lg  table-responsive-md tablefont">
+                                              <table class="table table-responsive-lg  table-responsive-md tablefont" id="myTable1">
                                                 <thead>
                                                   <tr>
                                                     <th scope="col" class="twentypxdown1 " >Name</th>
-                                                    <th scope="col" class="twentypxdown1 " >phoneno</th>
-                                                    <th scope="col" class="twentypxdown1 " >email</th>
-                                                    <th scope="col" class="twentypxdown1 " >date of join</th>
-                                                    <th scope="col" class="twentypxdown1 " >Adress</th>
+                                                    <th scope="col" class="twentypxdown1 " >Email</th>
+                                                    <th scope="col" class="twentypxdown1 " >Phone Number</th>
+                                                    <th scope="col" class="twentypxdown1 " >Date Of Join</th>
+                                                    <th scope="col" class="twentypxdown1 " >Last Update</th>
                                                     <th scope="col" class="twentypxdown1 " >&nbsp;</th>
                                                   </tr>
                                                 </thead>
-                                                <tbody class="twentypxdown justify-content-between " v-for="(vendlist,index) in vendlists">
-                                                  <tr>
-                                                    <td class="noborder">{{vendlist.name}}</td>
-                                                    <td class="noborder">{{vendlist.name}}</td>
-                                                    <td class="noborder">{{vendlist.name}}</td>
-                                                    <td class="noborder">{{vendlist.name}}</td>
-                                                    <td class="noborder">{{vendlist.name}}</td>
-                                                    <td><button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md tablefont1">
+                                                <tbody class="twentypxdown justify-content-between " >
+                                                  <tr v-for="(vendlist,index) in vendlists[0]">
+                                                      <td v-if="id===index + 'existingvendor'" class="noborder"  colspan="6">
+                                                                      
+
+                                                          <form action="" method="POST" class="cardanimation">
+                                                          <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                  <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                      <span class="input-group-text">
+                                                                        <i class="material-icons">person</i>
+                                                                      </span>
+                                                                    </div>
+                                                                    <input type="text" name="name" class="form-control" v-model="vendlist.owner_name" placeholder="name">
+                                                                  </div>
+                                                                </div>
+                                              
+                                                            
+                                              
+                                                                <div class="form-group " >
+                                                                  <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                      <span class="input-group-text">
+                                                                        <i class="material-icons">phone</i>
+                                                                      </span>
+                                                                    </div>
+                                                                    <input type="text" name="email" class="form-control" placeholder="service_info" v-model="vendlist.owner_email">
+                                                                  </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                  <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                      <span class="input-group-text">
+                                                                        <i class="material-icons">web</i>
+                                                                      </span>
+                                                                    </div>
+                                                                    <input type="text" name="phone" class="form-control" placeholder="last_update_date" v-model="vendlist.owner_phone">
+                                                                  </div>
+                                                                </div>
+                                              
+                                                            </div>
+                                                            <div class="col-md-6 ">
+                                                                <div class="form-group">
+                                                                  <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                      <span class="input-group-text">
+                                                                        <i class="material-icons">group</i>
+                                                                      </span>
+                                                                    </div>
+                                                                    <input type="text" name="created_date" class="form-control" placeholder="created_date" v-model="vendlist.created_date">
+                                                                  </div>
+                                                                </div>
+                                              
+                                                             
+                                                                <div class="form-group">
+                                                                  <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                      <span class="input-group-text">
+                                                                        <i class="material-icons">web</i>
+                                                                      </span>
+                                                                    </div>
+                                                                    <input type="text" name="last_update_date" class="form-control" placeholder="last_update_date" v-model="vendlist.last_update_date">
+                                                                  </div>
+                                                                </div>
+                                              
+                                  
+                                                            </div>
+                                                          </div>
+                                                     
+                                                          <div class="row ml-2 mt-2 d-flex justify-content-center">
+                                                            <div class="modal-footer ">
+                                                              <button type="button" class="btn btn-link btn-success" v-on:click="existingvendorsubmit(vendlist.id,vendlist.business_name,vendlist.activation_date,vendlist.contact_address,vendlist.business_contact_no,vendlist.category,vendlist.merchant_status,vendlist.contract_status,vendlist.name_as_per_gst,vendlist.GSTIN_number,vendlist.registered_address,vendlist.owner_name,vendlist.owner_email,vendlist.owner_phone,vendlist.created_date,vendlist.last_update_date,vendlist.rate_card_detail)">submit</button>
+                                                              <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 'existingvendor')">Close</button>
+                                                            </div>
+                                              
+                                                          </div>
+                                                        </form>
+
+
+                                                         </td>
+                                                    <td class="noborder" v-if="!(id===index + 'existingvendor')">{{vendlist.owner_name}}</td>
+                                                    <td class="noborder" v-if="!(id===index + 'existingvendor')">{{vendlist.owner_email}}</td>
+                                                    <td class="noborder" v-if="!(id===index + 'existingvendor')">{{vendlist.owner_phone}}</td>
+                                                    <td class="noborder" v-if="!(id===index + 'existingvendor')">{{vendlist.created_date}}</td>
+                                                    <td class="noborder" v-if="!(id===index + 'existingvendor')">{{vendlist.last_update_date}}</td>
+                                                    <td class="noborder" class="noborder" v-if="!(id===index + 'existingvendor')"><button  data-toggle="modal"  v-on:click="modelopen(index + 'existingvendor')"  class="btn btn-success btn-raised btn-md tablefont1">
                                                         Edit
                                                    </button>
+                                                   <button v-on:click="existingvendordelete(vendlist.id)">Delete</button>
                                                   </td>   
                                                   </tr>
-                                                  <tr >
-                                                    <td style="text-align: center;" colspan="6">
-                                                        
-                                                         <div>
-            <div id="modelview"  v-if="id === index + 1" >
 
-              <div class="modal-dialog modal-lg modelform1 cardanimation" role="document">
-                <div class="modal-content">
-                <div class="modal-body" v-bind:id="index + 1">
-
-                    <form action="" method="POST">
-                        <div class="row">
-                          <div class="col-md-6">
-                              <div class="form-group">
-                                <div class="input-group">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                      <i class="material-icons">person</i>
-                                    </span>
-                                  </div>
-                                  <input type="text" name="name" class="form-control" v-bind:value="vendlist.name" placeholder="Your Name">
-                                </div>
-                              </div>
-            
-                              <div class="form-group">
-                                <div class="input-group">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                      <i class="material-icons">email</i>
-                                    </span>
-                                  </div>
-                                  <input type="email" name="mailid" class="form-control" v-bind:value="vendlist.email" placeholder="Your E-Mail">
-                                </div>
-                              </div>
-            
-                              <div class="form-group " >
-                                <div class="input-group">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                      <i class="material-icons">phone</i>
-                                    </span>
-                                  </div>
-                                  <input type="tel" name="phoneno" pattern="[0-9]{10}" class="form-control" placeholder="Your Phone No" v-bind:value="vendlist.phoneno">
-                                </div>
-                              </div>
-            
-                          </div>
-                          <div class="col-md-6 ">
-                              <div class="form-group">
-                                <div class="input-group">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                      <i class="material-icons">group</i>
-                                    </span>
-                                  </div>
-                                  <input type="text" name="date" class="form-control" placeholder="dateofjoin" v-bind:value="vendlist.dateofjoin">
-                                </div>
-                              </div>
-            
-                              <div class="form-group">
-                                <div class="input-group">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                      <i class="material-icons">web</i>
-                                    </span>
-                                  </div>
-                                  <input type="text" name="address" class="form-control" placeholder="Address" v-bind:value="vendlist.address">
-                                </div>
-                              </div>
-            
-
-                          </div>
-                        </div>
-                        <div class="row pl-1" id="otp" style="display: none">
-                          <div class="col-sm-12">
-                            <div class="form-group">
-                                <div class="input-group">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                      <i class="fas fa-info-circle"></i>
-                                    </span>
-                                  </div>
-                                  <input type="text" class="form-control" placeholder="Enter the OTP sent to your number"><button class="btn btn-secondary btn-sm">resend OTP</button><button class="btn btn-success btn-sm">Verify OTP</button>
-                                </div>
-                              </div>
-                          </div>
-                        </div>
-                        <div class="row ml-2 mt-2 d-flex justify-content-center">
-                          <div class="modal-footer ">
-                            <button type="Submit" class="btn btn-link btn-success">submit</button>
-                            <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 1)">Close</button>
-                          </div>
-            
-                        </div>
-                      </form>
-
-
-                  </div>
-                </div>
-              </div>
-
-
-            </div>
-          
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-                                                    </td>
-                                                  </tr>
-                                                 
-                                                  
                                                 </tbody>
                                               </table>
                                             
@@ -664,176 +579,141 @@
 
                                             
                                           </div>
-               <!--                                            <p>
-                <button @click="prevPage">Previous</button> 
-                page={{currentPage}}
-                <button @click="nextPage">Next</button>
-                </p>
-                 debug: sort={{currentSort}}, dir={{currentSortDir}}, page={{currentPage}} --> 
+        
                                     </div>
                                 </div> 
                             </div>
                 </div>
-                <div id="newvendorinfo">
+                <div id="newvendorinfo" >
                        
-                             <div class="row">
-                                <div class="col-lg-12" >
-                                    <div class="card">
-                                       <div class="card-header d-flex justify-content-center">
-                                              <p class="card-title my-0 ">New Vendor details</p>
-                                            </div>
-                                        <div class="card-body d-flex justify-content-center">
-                                           
-                                            
-                                       
+                    <div class="row">
+                        <div class="col-lg-12" >
+                            <div class="card">
+                               <div class="card-header d-flex justify-content-center">
+                                      <p class="card-title my-0 ">Vendor details</p>
+                                    </div>
+                                <div class="card-body d-flex justify-content-center">
+                                   
+                                    
+                                 
+                                      <table class="table table-responsive-lg  table-responsive-md tablefont" id="myTable">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col" class="twentypxdown1 " >Name</th>
+                                            <th scope="col" class="twentypxdown1 " >phoneno</th>
+                                            <th scope="col" class="twentypxdown1 " >email</th>
+                                            <th scope="col" class="twentypxdown1 " >date of join</th>
+                                            <th scope="col" class="twentypxdown1 " >Adress</th>
+                                            <th scope="col" class="twentypxdown1 " >&nbsp;</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody class="twentypxdown justify-content-between " >
+                                          <tr v-for="(newvendlist,index) in newvendlists">
+                                              <td v-if="id===index + 'newvendor'" class="noborder"  colspan="6">
+                                                              
+
+                                                  <form action="" method="POST" class="cardanimation">
+                                                  <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                          <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                              <span class="input-group-text">
+                                                                <i class="material-icons">person</i>
+                                                              </span>
+                                                            </div>
+                                                            <input type="text" name="name" class="form-control" v-bind:value="newvendlist.name" placeholder="name">
+                                                          </div>
+                                                        </div>
+                                      
+                                                    
+                                      
+                                                        <div class="form-group " >
+                                                          <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                              <span class="input-group-text">
+                                                                <i class="material-icons">phone</i>
+                                                              </span>
+                                                            </div>
+                                                            <input type="text" name="phoneno" class="form-control" placeholder="service_info" v-bind:value="newvendlist.phoneno">
+                                                          </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                          <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                              <span class="input-group-text">
+                                                                <i class="material-icons">web</i>
+                                                              </span>
+                                                            </div>
+                                                            <input type="text" name="dateofjoin" class="form-control" placeholder="last_update_date" v-bind:value="newvendlist.dateofjoin">
+                                                          </div>
+                                                        </div>
+                                      
+                                                    </div>
+                                                    <div class="col-md-6 ">
+                                                        <div class="form-group">
+                                                          <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                              <span class="input-group-text">
+                                                                <i class="material-icons">group</i>
+                                                              </span>
+                                                            </div>
+                                                            <input type="text" name="email" class="form-control" placeholder="created_date" v-bind:value="newvendlist.email">
+                                                          </div>
+                                                        </div>
+                                      
+                                                     
+                                                        <div class="form-group">
+                                                          <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                              <span class="input-group-text">
+                                                                <i class="material-icons">web</i>
+                                                              </span>
+                                                            </div>
+                                                            <input type="text" name="address" class="form-control" placeholder="last_update_date" v-bind:value="newvendlist.address">
+                                                          </div>
+                                                        </div>
+                                      
+                          
+                                                    </div>
+                                                  </div>
                                              
-                                             <table class="table table-responsive-lg  tablefont">
-                                                <thead>
-                                                  <tr>
-                                                    <th scope="col" class="twentypxdown1 ">Name</th>
-                                                    <th scope="col" class="twentypxdown1 ">phoneno</th>
-                                                    <th scope="col" class="twentypxdown1 ">email</th>
-                                                    <th scope="col" class="twentypxdown1 ">date of join</th>
-                                                    <th scope="col" class="twentypxdown1 ">Adress</th>
-                                                    <th scope="col" class="twentypxdown1 ">&nbsp;</th>
-                                                  </tr>
-                                                </thead>
-                                                <tbody class="twentypxdown justify-content-between " v-for="(newvendlist,index) in newvendlists">
-                                                  <tr>
-                                                    <td class="noborder">{{newvendlist.name}}</td>
-                                                    <td class="noborder">{{newvendlist.name}}</td>
-                                                    <td class="noborder">{{newvendlist.name}}</td>
-                                                    <td class="noborder">{{newvendlist.name}}</td>
-                                                    <td class="noborder">{{newvendlist.name}}</td>
-                                                    <td class="noborder"><button data-toggle="modal"  v-on:click="modelopen(index + 1)"  class="btn btn-success btn-raised btn-md tablefont1">
-                                                        Edit
-                                                   </button>
-                                                  </td>   
-                                                  </tr>
-                                                  <tr >
-                                                    <td style="text-align: center;" colspan="6">
-                                                        
-                                                       <div>
-                <div id="modelview"  v-if="id === index + 1" >
-
-                  <div class="modal-dialog modal-lg modelform1 cardanimation" role="document">
-                    <div class="modal-content">
-                    <div class="modal-body" v-bind:id="index + 1">
+                                                  <div class="row ml-2 mt-2 d-flex justify-content-center">
+                                                    <div class="modal-footer ">
+                                                      <button type="Submit" class="btn btn-link btn-success">submit</button>
+                                                      <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 'newvendor')">Close</button>
+                                                    </div>
+                                      
+                                                  </div>
+                                                </form>
 
 
-                      
-                        <form action="" method="POST">
-                            <div class="row">
-                              <div class="col-md-6">
-                                  <div class="form-group">
-                                    <div class="input-group">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                          <i class="material-icons">person</i>
-                                        </span>
-                                      </div>
-                                      <input type="text" name="name" class="form-control" v-bind:value="newvendlist.name" placeholder="Your Name">
-                                    </div>
-                                  </div>
-                
-                                  <div class="form-group">
-                                    <div class="input-group">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                          <i class="material-icons">email</i>
-                                        </span>
-                                      </div>
-                                      <input type="email" name="mailid" class="form-control" v-bind:value="newvendlist.email" placeholder="Your E-Mail">
-                                    </div>
-                                  </div>
-                
-                                  <div class="form-group " >
-                                    <div class="input-group">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                          <i class="material-icons">phone</i>
-                                        </span>
-                                      </div>
-                                      <input type="tel" name="phoneno" pattern="[0-9]{10}" class="form-control" placeholder="Your Phone No" v-bind:value="newvendlist.phoneno">
-                                    </div>
-                                  </div>
-                
-                              </div>
-                              <div class="col-md-6 ">
-                                  <div class="form-group">
-                                    <div class="input-group">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                          <i class="material-icons">group</i>
-                                        </span>
-                                      </div>
-                                      <input type="text" name="date" class="form-control" placeholder="dateofjoin" v-bind:value="newvendlist.dateofjoin">
-                                    </div>
-                                  </div>
-                
-                                  <div class="form-group">
-                                    <div class="input-group">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                          <i class="material-icons">web</i>
-                                        </span>
-                                      </div>
-                                      <input type="text" name="address" class="form-control" placeholder="Address" v-bind:value="newvendlist.address">
-                                    </div>
-                                  </div>
-                
+                                                 </td>
+                                            <td class="noborder" v-if="!(id===index + 'newvendor')">{{newvendlist.name}}</td>
+                                            <td class="noborder" v-if="!(id===index + 'newvendor')">{{newvendlist.name}}</td>
+                                            <td class="noborder" v-if="!(id===index + 'newvendor')">{{newvendlist.name}}</td>
+                                            <td class="noborder" v-if="!(id===index + 'newvendor')">{{newvendlist.name}}</td>
+                                            <td class="noborder" v-if="!(id===index + 'newvendor')">{{newvendlist.name}}</td>
+                                            <td class="noborder" class="noborder" v-if="!(id===index + 'newvendor')"><button  data-toggle="modal"  v-on:click="modelopen(index + 'newvendor')"  class="btn btn-success btn-raised btn-md tablefont1">
+                                                Edit
+                                           </button>
+                                           
+                                          </td>   
+                                          </tr>
 
-                              </div>
+                                        </tbody>
+                                      </table>
+                                    
+                                    
+
+
+                                    
+                                  </div>
+
                             </div>
-                            <div class="row pl-1" id="otp" style="display: none">
-                              <div class="col-sm-12">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                          <i class="fas fa-info-circle"></i>
-                                        </span>
-                                      </div>
-                                      <input type="text" class="form-control" placeholder="Enter the OTP sent to your number"><button class="btn btn-secondary btn-sm">resend OTP</button><button class="btn btn-success btn-sm">Verify OTP</button>
-                                    </div>
-                                  </div>
-                              </div>
-                            </div>
-                            <div class="row ml-2 mt-2 d-flex justify-content-center">
-                              <div class="modal-footer ">
-                                <button type="Submit" class="btn btn-link btn-success">submit</button>
-                                <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 1)">Close</button>
-                              </div>
-                
-                            </div>
-                          </form>
-
-
-                      </div>
+                        </div> 
                     </div>
-                  </div>
-
-
-                </div>
-              
-            </div>
-
-
-                                                    </td>
-                                                  </tr>
-                                                 
-                                                  
-                                                </tbody>
-                                              </table>
-                                            
-
-                                         
-
-                                            
-                                          </div>
-                                    </div>
-                                </div> 
-                            </div>
+             
                 </div>
 
                 <div id="transactiondetails" >
@@ -871,25 +751,66 @@
                                 <div >
                                   <div class="tab-content text-center">
                                     <div class="tab-pane active" id="Requests">
-                                          <div class="">
+                                          <div >
                                                   <div class="card-body ">
-                                                      <div class="mdl-grid" > 
-                                                          <h4 class="title">REQUEST</h4>  
-                                                          <table class="table">
-                                                              <thead class=" text-primary">
-                                                                  <tr>
-                                                                      <th scope="col" class="twentypxdown1 ">Name</th>
-                                                                      <th scope="col" class="twentypxdown1 ">From</th>
-                                                                      <th scope="col" class="twentypxdown1 ">To</th>
-                                                                      <th scope="col" class="twentypxdown1 ">Distance</th>
-                                                                      <th scope="col" class="twentypxdown1 ">ShiftingDate</th>
-                                                                      <th scope="col" class="twentypxdown1 ">MoveType</th>
-                                                                      <th scope="col" class="twentypxdown1 ">&nbsp;</th>
+                                                      <div class="mdl-grid cardanimation" > 
+                                                          
+                                                          <h4 class="title">REQUESTED</h4> 
+
+                                                          <table class="table table-responsive-lg  tablefont" id="myTable4" >
+                                                              <thead>
+                                                                <tr>
+                                                                  <th scope="col" class="twentypxdown1 " >name</th>
+                                                                  <th scope="col" class="twentypxdown1 " >movingfrom</th>
+                                                                  <th scope="col" class="twentypxdown1 " >movingto</th>
+                                                                  <th scope="col" class="twentypxdown1 " >movingdistance</th>
+                                                                  <th scope="col" class="twentypxdown1 " >dateofshifting</th>
+                                                                  <th scope="col" class="twentypxdown1 " >movetype</th>
+                                                                  <th scope="col" class="twentypxdown1 " >totalitems</th>
+                                                                  <th scope="col" class="twentypxdown1 " >number</th>
+                                                                 
+                                                                 
+                                                                  <th scope="col" class="twentypxdown1 " ></th>
+                                                                  
+                                                                </tr>
+                                                              </thead>
+                                                              <tbody class="twentypxdown justify-content-between " >
+                                                                  <tr v-for="(list,index) in lists"  >
+                                                                    <td v-if="id===index + 'request'" class="noborder" v-on:click="modelclose(index + 'request')" colspan="9">
+                                                                      
+
+                                                                     ss
+
+
+                                                                    </td>
+                                                                      <td class="noborder" v-if="!(id===index + 'request')">{{list.name}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'request')">{{list.movingfrom}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'request')">{{list.movingto}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'request')">{{list.movingdistance}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'request')">{{list.dateofshifting}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'request')">{{list.movetype}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'request')">{{list.totalitems}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'request')">{{list.number}}</td>
+
+                                                                      <td class="noborder" v-if="!(id===index + 'request')"><button data-toggle="modal"  v-on:click="modelopen(index + 'request')"  class="btn btn-success btn-raised btn-md tablefont1">
+                                                                          Edit
+                                                                     </button></td>
+
+                                                                     
+                                                                      
                                                                     </tr>
-                                                                </thead>
+                                                                   
+                                
+                                                               
+                                                                
+                                                              </tbody>
+                                                            </table>
+
+                                                <table class="table table-responsive-lg  table-responsive-md tablefont " id="myTabl">
                                      
-                                                <tbody v-for="(list,index) in lists" v-bind:key="list" v-bind:id="list.name"  >
-                                                  <tr v-on:click="drop1(index + 1);" >
+                                                <tbody  >
+                                              
+                                                  <!-- <tr v-on:click="drop1(index + 1);" >
                                                     <td class="noborder">{{list.name}}</td>
                                                     <td class="noborder">{{list.name}}</td>
                                                     <td class="noborder">{{list.name}}</td>
@@ -922,136 +843,9 @@
                                                               </div>
 
                                                      </td>
-                                                  </tr>
+                                                  </tr> -->
 
-                                                  <tr >
-                                                    <td style="text-align: center;" colspan="7" class="twentypxdown">
-                                                        
-                                                                                <div>
-                                                              <div id="modelview"  v-if="id === index + 1" >
-      
-                                                                <div class="modal-dialog modal-lg modelform1 cardanimation" role="document">
-                                                                  <div class="modal-content">
-                                                                  <div class="modal-body" v-bind:id="index + 1">
-                                                                    <form action="" method="POST">
-                                                                      <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <div class="form-group">
-                                                                              <div class="input-group">
-                                                                                <div class="input-group-prepend">
-                                                                                  <span class="input-group-text">
-                                                                                    <i class="material-icons">person</i>
-                                                                                  </span>
-                                                                                </div>
-                                                                                <input type="text" name="name" class="form-control" v-bind:value="list.name" placeholder="Your Name">
-                                                                              </div>
-                                                                            </div>
-                                                          
-                                                                            <div class="form-group">
-                                                                              <div class="input-group">
-                                                                                <div class="input-group-prepend">
-                                                                                  <span class="input-group-text">
-                                                                                    <i class="material-icons">email</i>
-                                                                                  </span>
-                                                                                </div>
-                                                                                <input type="text" class="form-control" name="movingfrom" v-bind:value="list.movingfrom" placeholder="Moving from">
-                                                                              </div>
-                                                                            </div>
-                                                          
-                                                                            <div class="form-group">
-                                                                              <div class="input-group">
-                                                                                <div class="input-group-prepend">
-                                                                                  <span class="input-group-text">
-                                                                                    <i class="material-icons">phone</i>
-                                                                                  </span>
-                                                                                </div>
-                                                                                <input type="text" class="form-control"  name="movingto" v-bind:value="list.movingto" placeholder="Moving to">
-                                                                              </div>
-                                                                            </div>
-
-                                                                            <div class="form-group">
-                                                                                <div class="input-group">
-                                                                                  <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">
-                                                                                      <i class="material-icons">person</i>
-                                                                                    </span>
-                                                                                  </div>
-                                                                                  <input type="text" class="form-control" name="movingdistance" v-bind:value="list.movingdistance" placeholder="movingdistance">
-                                                                                </div>
-                                                                              </div>
-                                                            
-                                                                              <div class="form-group">
-                                                                                <div class="input-group">
-                                                                                  <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">
-                                                                                      <i class="material-icons">email</i>
-                                                                                    </span>
-                                                                                  </div>
-                                                                                  <input type="text" class="form-control" name="dateofshifting" v-bind:value="list.dateofshifting" placeholder="dateofshifting">
-                                                                                </div>
-                                                                              </div>
-                                                            
-                                                                              <div class="form-group">
-                                                                                <div class="input-group">
-                                                                                  <div class="input-group-prepend">
-                                                                                    <span class="input-group-text">
-                                                                                      <i class="material-icons">phone</i>
-                                                                                    </span>
-                                                                                  </div>
-                                                                                  <input type="text" class="form-control" name="movetype" v-bind:value="list.movetype" placeholder="movetype">
-                                                                                </div>
-                                                                              </div>
-
-                                                                              <div class="form-group">
-                                                                                  <div class="input-group">
-                                                                                    <div class="input-group-prepend">
-                                                                                      <span class="input-group-text">
-                                                                                        <i class="material-icons">email</i>
-                                                                                      </span>
-                                                                                    </div>
-                                                                                    <input type="text" class="form-control" name="totalitems" v-bind:value="list.totalitems" placeholder="totalitems">
-                                                                                  </div>
-                                                                                </div>
-                                                              
-                                                                                <div class="form-group">
-                                                                                  <div class="input-group">
-                                                                                    <div class="input-group-prepend">
-                                                                                      <span class="input-group-text">
-                                                                                        <i class="material-icons">phone</i>
-                                                                                      </span>
-                                                                                    </div>
-                                                                                    <input type="text" class="form-control" name="number" v-bind:value="list.number" placeholder="number">
-                                                                                  </div>
-                                                                                </div>
-                                                          
-                                                                        </div>
-
-
-                                                                        <div class="col-md-6">
-                                                                            Cart items Form to be implemented as sson as
-                                                                        </div>
-                                                                      </div>
-        
-                                                                      <div class="row ml-2 mt-2 d-flex justify-content-center">
-                                                                        <div class="modal-footer ">
-                                                                          <button type="Submit" class="btn btn-link btn-success">submit</button>
-                                                                          <button type="button" class="btn btn-danger btn-link" data-dismiss="modal" v-on:click="modelclose(index + 1)">Close</button>
-                                                                        </div>
-                                                          
-                                                                      </div>
-                                                                    </form>
-                                                                    </div>
-                                                                  </div>
-                                                                </div>
-      
-      
-                                                              </div>
-                                                            
-                                                          </div>
-
-
-                                                    </td>
-                                                  </tr>
+                                                 
                                                  
                                                   
                                                 </tbody>
@@ -1146,9 +940,111 @@
                                     <div class="tab-pane" id="Submitted">
                                           <div class="">
                                                   <div class="card-body ">
-                                                      <div class="mdl-grid"> 
+                                                      <div class="mdl-grid cardanimation"> 
                                                           <h4 class="title">SUBMITTED</h4>  
 
+                                                          <table class="table table-responsive-lg  tablefont" id="myTable5" >
+                                                            <thead>
+                                                              <tr>
+                                                                <th scope="col" class="twentypxdown1 " >name</th>
+                                                                <th scope="col" class="twentypxdown1 " >movingfrom</th>
+                                                                <th scope="col" class="twentypxdown1 " >movingto</th>
+                                                                <th scope="col" class="twentypxdown1 " >movingdistance</th>
+                                                                <th scope="col" class="twentypxdown1 " >dateofshifting</th>
+                                                                <th scope="col" class="twentypxdown1 " >movetype</th>
+                                                                <th scope="col" class="twentypxdown1 " >totalitems</th>
+                                                                <th scope="col" class="twentypxdown1 " >number</th>
+                                                               
+                                                               
+                                                                <th scope="col" class="twentypxdown1 " ></th>
+                                                                
+                                                              </tr>
+                                                            </thead>
+                                                            <tbody class="twentypxdown justify-content-between " >
+                                                                <tr v-for="(list2,index) in lists2" v-bind:key="list2" v-bind:id="list2.name"   >
+                                                                  <td v-if="id===index + 'submitted'" class="noborder"  colspan="8">
+
+                                                                      <div class="card card-body cardanimation " >
+                                                                            
+                                                                                
+                                                                                    <div class="row d-flex justify-content-center bordercall">
+                                                                                          <div class="col-lg-2">
+                                                                                            <p class="para1 tablehead">Vendor</p>
+                                                                                          </div>
+                                                                                          <div class="col-lg-2 tablehead">
+                                                                                            <p class="para1">Contatc</p>
+                                                                                          </div>
+                                                                                          <div class="col-lg-2 tablehead">
+                                                                                            <p class="para1">Quote</p>
+                                                                                          </div>
+                                                                                          <div class="col-lg-2 tablehead">
+                                                                                            <p class="para1">Send a remainder</p>
+                                                                                          </div>
+                                                                                          <div class="col-lg-3 tablehead">
+                                                                                            <p class="para1">Call</p>
+                                                                                          </div>
+                                                                                        
+                                                                                        </div>
+          
+          
+                                                                                          <div class="row d-flex justify-content-center bordercall" v-for="vendors in list2.vendors2" >
+                                                                                            
+                                                                                            <div class="col-lg-2" v-if="vendors!=''">
+                                                                                              <p class="para1">{{vendors.name}}</p>
+                                                                                            </div>
+                                                                                            <div class="col-lg-2" v-if="vendors!=''">
+                                                                                              <p class="para1">{{vendors.contact}}</p>
+                                                                                            </div>
+                                                                                            <div class="col-lg-2" v-if="vendors!=''">
+                                                                                              <p class="para1" v-bind:style="[ vendors.quote !=='' ?  {border:'2px solid #4caf50'} : {border:'2px solid #f56058'}]">
+                                                                                                {{ vendors.quote !=='' ?  vendors.quote : "pending"}}
+                                                                                              </p>
+                                                                                            </div>
+                                                                                            <div class="col-lg-2" v-if="vendors!=''">
+                                                                                              <p class="para1" >{{ vendors.quote !=='' ? "Done" : "Remainder"}}</p>
+                                                                                            </div>
+                                                                                            <div class="col-lg-3" v-if="vendors!=''">
+                                                                                              <p class=""><button class="buttonpara"><i class="fas fa-phone-volume"></i> &nbsp; Click to Call</button></p>
+                                                                                            </div>
+                                                                                          
+                                                                                        </div>
+          
+          
+                                                                                       <div class="col-lg-1" style="margin-left: 50px; ">
+
+                                                                              
+                                                                        </div>
+          
+                                                               </td>
+
+
+                                                                  </td>
+                                                                    <td class="noborder" v-if="!(id===index + 'submitted')">{{list2.name}}</td>
+                                                                    <td class="noborder" v-if="!(id===index + 'submitted')">{{list2.movingfrom}}</td>
+                                                                    <td class="noborder" v-if="!(id===index + 'submitted')">{{list2.movingto}}</td>
+                                                                    <td class="noborder" v-if="!(id===index + 'submitted')">{{list2.movingdistance}}</td>
+                                                                    <td class="noborder" v-if="!(id===index + 'submitted')">{{list2.dateofshifting}}</td>
+                                                                    <td class="noborder" v-if="!(id===index + 'submitted')">{{list2.movetype}}</td>
+                                                                    <td class="noborder" v-if="!(id===index + 'submitted')">{{list2.totalitems}}</td>
+                                                                    <td class="noborder" v-if="!(id===index + 'submitted')">{{list2.number}}</td>
+
+                                                                    <td class="noborder" >
+                                                                      <button data-toggle="modal" v-if="!(id===index + 'submitted')"  v-on:click="modelopen(index + 'submitted')"  class="btn btn-success btn-raised btn-md tablefont1">
+                                                                       Quotes
+                                                                   </button>
+                                                                   <button data-toggle="modal" v-if="(id===index + 'submitted')"  v-on:click="modelclose(index + 'submitted')"  class="btn  btn-raised btn-md tablefont1" style="background-color: rgb(243, 96, 96)">
+                                                                      close
+                                                                 </button>
+                                                                  </td>
+   
+                                                                  </tr>
+                                                                 
+                              
+                                                             
+                                                              
+                                                            </tbody>
+                                                          </table>
+<!-- 
                                             <table class="table table-responsive-lg  table-responsive-md tablefont ">
                                      
                                                 <tbody  v-for="(list2,index) in lists2" v-bind:key="list2" v-bind:id="list2.name"  >
@@ -1178,79 +1074,7 @@
                                                     <td class="noborder">&nbsp;</td>
                                                   </tr>
                                                   <tr v-bind:id="index" v-if="cart === index + 1" v-on:click="drop2(index + 1);" >
-                                                     <td style="text-align: center;" colspan="7" >
-                                                      
-                                                            <div class="card card-body cardanimation " >
-                                                                  
-                                                                      
-                                                                          <div class="row d-flex justify-content-center bordercall">
-                                                                                <div class="col-lg-2">
-                                                                                  <p class="para1 tablehead">Vendor</p>
-                                                                                </div>
-                                                                                <div class="col-lg-2 tablehead">
-                                                                                  <p class="para1">Contatc</p>
-                                                                                </div>
-                                                                                <div class="col-lg-2 tablehead">
-                                                                                  <p class="para1">Quote</p>
-                                                                                </div>
-                                                                                <div class="col-lg-2 tablehead">
-                                                                                  <p class="para1">Send a remainder</p>
-                                                                                </div>
-                                                                                <div class="col-lg-3 tablehead">
-                                                                                  <p class="para1">Call</p>
-                                                                                </div>
-                                                                              
-                                                                              </div>
-
-
-                                                                                <div class="row d-flex justify-content-center bordercall" v-for="vendors in list2.vendors2" >
-                                                                                  
-                                                                                  <div class="col-lg-2" v-if="vendors!=''">
-                                                                                    <p class="para1">{{vendors.name}}</p>
-                                                                                  </div>
-                                                                                  <div class="col-lg-2" v-if="vendors!=''">
-                                                                                    <p class="para1">{{vendors.contact}}</p>
-                                                                                  </div>
-                                                                                  <div class="col-lg-2" v-if="vendors!=''">
-                                                                                    <p class="para1" v-bind:style="[ vendors.quote !=='' ?  {border:'2px solid #4caf50'} : {border:'2px solid #f56058'}]">
-                                                                                      {{ vendors.quote !=='' ?  vendors.quote : "pending"}}
-                                                                                    </p>
-                                                                                  </div>
-                                                                                  <div class="col-lg-2" v-if="vendors!=''">
-                                                                                    <p class="para1" >{{ vendors.quote !=='' ? "Done" : "Remainder"}}</p>
-                                                                                  </div>
-                                                                                  <div class="col-lg-3" v-if="vendors!=''">
-                                                                                    <p class=""><button class="buttonpara"><i class="fas fa-phone-volume"></i> &nbsp; Click to Call</button></p>
-                                                                                  </div>
-                                                                                
-                                                                              </div>
-
-
-                                                        <!--                      <div class="col-lg-1" style="margin-left: 50px; ">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-12 text-center indexnumber tablehead">
-                                                                                    <p class="para1">Submitted </p>
-                                                                                    <p class="para1"> Time:</p>
-                                                                                    <p class="para1">4pm</p>
-                                                                                    
-                                                                                </div>
-                                                                            </div>
-              
-                                                                            <br>
-              
-                                                                            <div class="row">
-                                                                                <div class="col-lg-12 text-center indexnumber tablehead">
-                                                                                    <p class="para1">Closed By:</p>
-                                                                                    
-                                                                                    <p class="para1">4pm</p>
-                                                                                    
-                                                                                </div>
-                                                                            </div> -->
-
-                                                                    
-                                                              </div>
-
-                                                     </td>
+                                   
                                                   </tr>
 
                                              
@@ -1258,7 +1082,7 @@
                                                   
                                                 </tbody>
 
-                                              </table>
+                                              </table> -->
 
 
 
@@ -1422,10 +1246,50 @@
                                     <div class="tab-pane" id="Approved">
                                           <div class="">
                                                   <div class="card-body ">
-                                                      <div class="mdl-grid"> 
+                                                      <div class="mdl-grid cardanimation"> 
                                                           <h4 class="title">APPROVED</h4>  
 
-                                                           <table class="table table-responsive-lg  table-responsive-md tablefont ">
+
+
+                                                          <table class="table table-responsive-lg  tablefont" id="myTable6" >
+                                                              <thead>
+                                                                <tr>
+                                                                  <th scope="col" class="twentypxdown1 " >name</th>
+                                                                  <th scope="col" class="twentypxdown1 " >movingfrom</th>
+                                                                  <th scope="col" class="twentypxdown1 " >movingto</th>
+                                                                  <th scope="col" class="twentypxdown1 " >movingdistance</th>
+                                                                  <th scope="col" class="twentypxdown1 " >dateofshifting</th>
+                                                                  <th scope="col" class="twentypxdown1 " >movetype</th>
+                                                                  <th scope="col" class="twentypxdown1 " >totalitems</th>
+                                                                  <th scope="col" class="twentypxdown1 " >number</th>
+                                                                 
+                                                                 
+                                                                 
+                                                                  
+                                                                </tr>
+                                                              </thead>
+                                                              <tbody class="twentypxdown justify-content-between " >
+                                                                  <tr v-for="(list3,index) in lists3" v-bind:key="list3" v-bind:id="list3.name"  >
+
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list3.name}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list3.movingfrom}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list3.movingto}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list3.movingdistance}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list3.dateofshifting}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list3.movetype}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list3.totalitems}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list3.number}}</td>
+
+                                                                  
+
+                                                                     
+                                                                      
+                                                                    </tr>
+
+                                                              </tbody>
+                                                            </table>
+
+                                                           <!-- <table class="table table-responsive-lg  table-responsive-md tablefont ">
                                      
                                                 <tbody  v-for="(list3,index) in lists3" v-bind:key="list3" v-bind:id="list3.name"  >
                                                   <tr >
@@ -1450,7 +1314,7 @@
                                                   </tr>
                                             </tbody>
 
-                                          </table>
+                                          </table> -->
 
 
 
@@ -1528,10 +1392,50 @@
                                     <div class="tab-pane" id="Cancelled">
                                           <div class="">
                                                   <div class="card-body ">
-                                                      <div class="mdl-grid"> 
+                                                      <div class="mdl-grid cardanimation"> 
                                                           <h4 class="title">CANCELLED</h4>  
 
-                                                           <table class="table table-responsive-lg  table-responsive-md tablefont ">
+
+                                                          <table class="table table-responsive-lg  tablefont" id="myTable7" >
+                                                              <thead>
+                                                                <tr>
+                                                                  <th scope="col" class="twentypxdown1 " >name</th>
+                                                                  <th scope="col" class="twentypxdown1 " >movingfrom</th>
+                                                                  <th scope="col" class="twentypxdown1 " >movingto</th>
+                                                                  <th scope="col" class="twentypxdown1 " >movingdistance</th>
+                                                                  <th scope="col" class="twentypxdown1 " >dateofshifting</th>
+                                                                  <th scope="col" class="twentypxdown1 " >movetype</th>
+                                                                  <th scope="col" class="twentypxdown1 " >totalitems</th>
+                                                                  <th scope="col" class="twentypxdown1 " >number</th>
+                                                                 
+                                                                 
+                                                                 
+                                                                  
+                                                                </tr>
+                                                              </thead>
+                                                              <tbody class="twentypxdown justify-content-between " >
+                                                                  <tr v-for="(list4,index) in lists4" v-bind:key="list4" v-bind:id="list4.name"  >
+
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list4.name}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list4.movingfrom}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list4.movingto}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list4.movingdistance}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list4.dateofshifting}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list4.movetype}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list4.totalitems}}</td>
+                                                                      <td class="noborder" v-if="!(id===index + 'approved')">{{list4.number}}</td>
+
+                                                                  
+
+                                                                     
+                                                                      
+                                                                    </tr>
+
+                                                              </tbody>
+                                                            </table>
+
+
+                                                           <!-- <table class="table table-responsive-lg  table-responsive-md tablefont ">
                                      
                                                 <tbody v-for="(list4,index) in lists4" v-bind:key="list4" v-bind:id="list4.name"  >
                                                   <tr  >
@@ -1556,7 +1460,7 @@
                                                   </tr>
                                             </tbody>
 
-                                          </table>
+                                          </table> -->
 
 
 
@@ -1652,7 +1556,7 @@
   <!--   Core JS Files   -->
   <script src="./assets/Vue.js"></script>
   <script src="./assets/vue2.js"></script>
-  <script src="./assets/Vue3.js"></script>
+
   <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
   <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
   <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
@@ -1666,5 +1570,72 @@
   <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
   <script src="assets/js/material-kit.js?v=2.0.5" type="text/javascript"></script>
 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+<script>
+
+  setTimeout(()=>{
+    $(document).ready(function(){
+        $('#myTable').dataTable();
+    });
+
+  },2000);
+
+  setTimeout(()=>{
+    $(document).ready(function(){
+        $('#myTable1').dataTable();
+    });
+
+  },2000);
+
+  setTimeout(()=>{
+    $(document).ready(function(){
+        $('#myTable2').dataTable();
+    });
+
+  },2000);
+
+  setTimeout(()=>{
+    $(document).ready(function(){
+        $('#myTable3').dataTable();
+    });
+
+  },2000);
+
+  setTimeout(()=>{
+    $(document).ready(function(){
+        $('#myTable4').dataTable();
+    });
+
+  },2000);
+
+  setTimeout(()=>{
+    $(document).ready(function(){
+        $('#myTable5').dataTable();
+    });
+
+  },2000);
+
+  setTimeout(()=>{
+    $(document).ready(function(){
+        $('#myTable6').dataTable();
+    });
+
+  },2000);
+
+  setTimeout(()=>{
+    $(document).ready(function(){
+        $('#myTable7').dataTable();
+    });
+
+  },2000);
+   
+    </script>
+
+
+  
 </body>
 </html>

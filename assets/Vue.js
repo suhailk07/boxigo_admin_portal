@@ -8,78 +8,8 @@
 var drop=new Vue({
     el:'#drop',
     data:{
-        custlists:[
-            {
-                name:"zdwin",
-                phoneno:"1889898799",
-                email:"ahiehfi@gmail.com",
-                dateofjoin:"3.4.19",
-                address:"karnataka",
-                type:"Elite ",
-            },
-            {
-                name:"Sammitha",
-                 phoneno:"7889898799",
-                email:"ohiehfi@gmail.com",
-                dateofjoin:"3.4.19",
-                address:"karnataka",
-                type:"Elite ",
-                type:"Normal ",
-            },   {
-                name:"Venkatesh",
-                 phoneno:"5889898799",
-                email:"ihiehfi@gmail.com",
-                dateofjoin:"3.4.19",
-                address:"karnataka",
-                type:"Elite ",
-                type:"Low ",
-            },
-             {
-                name:"pinto",
-                 phoneno:"5889898799",
-                email:"ihiehfi@gmail.com",
-                dateofjoin:"3.4.19",
-                address:"karnataka",
-                type:"Elite ",
-                type:"Low ",
-            },
-             {
-                name:"raghul",
-                 phoneno:"5889898799",
-                email:"ihiehfi@gmail.com",
-                dateofjoin:"3.4.19",
-                address:"karnataka",
-                type:"Elite ",
-                type:"Low ",
-            },
-             {
-                name:"yadhuenkatesh",
-                 phoneno:"5889898799",
-                email:"ihiehfi@gmail.com",
-                dateofjoin:"3.4.19",
-                address:"karnataka",
-                type:"Elite ",
-                type:"Low ",
-            }
-        ],
-        vendlists:[
-            {
-                name:"edwin",
-                phoneno:"9889898799",
-                email:"fhiehfi@gmail.com",
-                dateofjoin:"3.4.19",
-                address:"karnataka",
-            },
-            {
-                name:"Sammitha"
-            },  
-            {
-                name:"Venkatesh"
-            },
-            {
-                name:"Pinto"
-            }
-        ],
+        custlists:[],
+        vendlists:[],
         newvendlists:[
             {
                 name:"edwin",
@@ -126,7 +56,13 @@ var drop=new Vue({
             },
             {
                 name:"venkatesh",
-                age:'21',
+                movingfrom:"19th, A Ejipura, BangaloreCross",
+                movingto:"19th, A Ejipura, BangaloreCross",
+                movingdistance:"Moving Distance 50 KM",
+                dateofshifting:"23/06/2019",
+                movetype:"2 BHK",
+                totalitems:"25",
+                number:"978987654",
                 items:[
                     'cot 1',
                     'table 2',
@@ -137,7 +73,13 @@ var drop=new Vue({
             },
             {
                 name:"venkat",
-                age:'21',
+                movingfrom:"19th, A Ejipura, BangaloreCross",
+                movingto:"19th, A Ejipura, BangaloreCross",
+                movingdistance:"Moving Distance 50 KM",
+                dateofshifting:"23/06/2019",
+                movetype:"2 BHK",
+                totalitems:"25",
+                number:"778987654",
                 items:[
                     'cot 1',
                     'table 2',
@@ -148,7 +90,13 @@ var drop=new Vue({
             },
             {
                 name:"ve",
-                age:'21',
+                movingfrom:"19th, A Ejipura, BangaloreCross",
+                movingto:"19th, A Ejipura, BangaloreCross",
+                movingdistance:"Moving Distance 50 KM",
+                dateofshifting:"23/06/2019",
+                movetype:"2 BHK",
+                totalitems:"25",
+                number:"078987654",
                 items:[
                     'cot 1',
                     'table 2',
@@ -158,6 +106,28 @@ var drop=new Vue({
                     'washing machine 1'
                 ]
             }
+            ,
+            {
+                name:"yadhu",
+            }, {
+                name:"raj",
+            }, {
+                name:"mom",
+            }, {
+                name:"dad",
+            }, {
+                name:"boy",
+            }, {
+                name:"girl",
+            }, {
+                name:"you",
+            }, {
+                name:"we",
+            }, {
+                name:"them",
+            }, {
+                name:"hello",
+            },
         ],
         lists2:[
             {
@@ -298,10 +268,12 @@ var drop=new Vue({
     model:false,
     id:"",
     // custlists:[],
-    currentSort:'name',
-    currentSortDir:'asc',
-    pageSize:2,
-    currentPage:1,
+    // currentSort:'name',
+    // currentSortDir:'asc',
+    // pageSize:2,
+    // currentPage:1,
+    submitted:false,
+    preload:"ss",
 
 
 
@@ -311,6 +283,123 @@ var drop=new Vue({
         
     },
     methods:{
+
+        redirectonsubmit(){
+            setTimeout(()=>{
+                window.location.href="file:///C:/Users/Premium/Desktop/boxigo_admin_portal/index.html";
+            },2000);
+        },
+
+        existingvendorsubmit(id,businessname,actdate,contactaddr,businesscontact,category,merchantstatus,contractstatus,namegst,gstinnumber,regaddr,name,email,phone,createddate,lastupdate,ratecard){
+            
+            fetch('http://boxigo.in/boxigo-backend-api/product/vendor_update_service.php', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    
+                    {
+                        id: id,
+                        business_name: businessname,
+                        activation_date: actdate,
+                        contact_address: contactaddr,
+                        business_contact_no: businesscontact,
+                        category: category,
+                        merchant_status: merchantstatus,
+                        contract_status: contractstatus,
+                        name_as_per_gst:namegst,
+                        GSTIN_number: gstinnumber,
+                        registered_address: regaddr,
+                        owner_name: name,
+                        owner_email: email,
+                        owner_phone:phone,
+                        created_date: createddate,
+                        last_update_date: lastupdate,
+                        rate_card_detail: ratecard
+                        }
+
+                )
+              })
+              this.redirectonsubmit();
+
+        },
+
+        customersubmit(id,firstname,lastname,email,phone,key,emailverify,phoneverify,date){
+            
+            fetch('http://boxigo.in/boxigo-backend-api/product/customer_update_service.php', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    {
+                        user_id: id,
+                        first_name: firstname,
+                        last_name: lastname,
+                        email: email,
+                        phone: phone,
+                        verification_key:key ,
+                        is_email_verified:emailverify ,
+                        is_phone_verified: phoneverify,
+                        date_created: date
+                    }
+                )
+              })
+              this.redirectonsubmit();
+             
+        },
+
+        servicesubmit(name,display,info,created,lastupdate,id){
+            
+            
+            fetch('http://boxigo.in/boxigo-backend-api/product/servicesType_update_service.php', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    {
+                        id: id,
+                        name: name,
+                        display_name:display,
+                        service_info:[info],
+                        created_date: created,
+                        last_update_date: lastupdate
+                    }
+                )
+              })
+              this.redirectonsubmit()
+                
+        },
+        servicedelete(name,display,info,created,lastupdate,id){
+            console.log(name,display,info,created,lastupdate,id);
+            fetch('http://boxigo.in/boxigo-backend-api/product/servicesType_delete_service.php', {
+                method: 'delete',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    {
+                        id: id,
+                        name: name,
+                        display_name:display,
+                        service_info:[info],
+                        created_date: created,
+                        last_update_date: lastupdate
+                    }
+                )
+              })
+
+
+        },
+
+        existingvendordelete(id){
+
+            fetch('http://boxigo.in/boxigo-backend-api/product/vendor_delete_service.php', {
+                method: 'delete',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    {
+                        id: id,
+                        
+                    }
+                )
+              })
+
+        },
         
         drop1(id){
         this.cart=id;
@@ -351,60 +440,36 @@ var drop=new Vue({
             
         },
 
-
-            sort:function(s) {
-                console.log(s);
-      //if s == current sort, reverse
-      if(s === this.currentSort) {
-        this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
-      }
-      this.currentSort = s;
-    },
-    nextPage:function() {
-      if((this.currentPage*this.pageSize) < this.custlists.length) this.currentPage++;
-    },
-    prevPage:function() {
-      if(this.currentPage > 1) this.currentPage--;
-    }
-
-
-
-
-  
-
-
-        
         
     },
-      computed:{
-        
-    sortedcustlists:function() {
-      return this.custlists.sort((a,b) => {
-        let modifier = 1;
-        if(this.currentSortDir === 'desc') modifier = -1;
-        if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
-        if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
-        return 0;
-        
-      }).filter((row, index) => {
-        let start = (this.currentPage-1)*this.pageSize;
-        let end = this.currentPage*this.pageSize;
-        if(index >= start && index < end) return true;
-        
-      });
-    }
-
-  },
+// 
 
   created(){
-      fetch("https://boxigo.in/api/product/get-services-type.php").then(res=>res.json()).then((data)=>{
-           var datadummy=Object.assign(data,{});
-           var datafinal=[...datadummy.serviceType];
+      fetch("http://boxigo.in/boxigo-backend-api/product/servicesType_get_service.php").then(res=>res.json()).then((data)=>{
+           var dataservice=Object.assign(data,{});
+           var datafinal=[...dataservice.serviceType];
 
           this.servicelists.push(datafinal);
-          console.log(datafinal);
+         
+          
           
       })
+
+      fetch("http://boxigo.in/boxigo-backend-api/product/vendor_get_service.php").then(res=>res.json()).then((data)=>{
+        var datavendor=Object.assign(data,{});
+        var datafinalvendor=[...datavendor.vendor];
+        this.vendlists.push(datafinalvendor);
+       
+       
+   })
+
+   fetch("http://boxigo.in/boxigo-backend-api/product/customer_get_service.php").then(res=>res.json()).then((data)=>{
+    var datacustomer=Object.assign(data,{});
+    var datafinalcustomer=[...datacustomer.customers];
+    this.custlists.push(datafinalcustomer);
+    
+   
+})
 
   }
 
