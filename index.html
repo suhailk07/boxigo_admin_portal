@@ -31,6 +31,15 @@
 </head>
 <body>
 
+ 
+
+  
+    
+   
+    
+    
+
+      
 
 
         <nav class="navbar   fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
@@ -125,6 +134,91 @@
                                 <div class="card-body d-flex justify-content-center">
                                    
                                     
+                                    <div id="myModal" class="modal">
+    
+                                        <!-- Modal content -->
+                                        <div class="modal-content">
+                                          <div class="close">&times;</div>
+                                          <div>
+                                              <form action="" method="POST" class="cardanimation">
+                                                  <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                          <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                              <span class="input-group-text">
+                                                                <i class="material-icons">person</i>
+                                                              </span>
+                                                            </div>
+                                                            <input type="text" name="name" class="form-control" value="" id="name"  placeholder="name">
+                                                          </div>
+                                                        </div>
+                                      
+                                                        <div class="form-group">
+                                                          <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                              <span class="input-group-text">
+                                                                <i class="material-icons">email</i>
+                                                              </span>
+                                                            </div>
+                                                            <input type="text" name="display_name" class="form-control" value="" id="displayname"  placeholder="display_name">
+                                                          </div>
+                                                        </div>
+                                      
+                                                        <div class="form-group " >
+                                                          <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                              <span class="input-group-text">
+                                                                <i class="material-icons">phone</i>
+                                                              </span>
+                                                            </div> 
+                                                            <input type="text" name="service_info" class="form-control" value="" id="serviceinfo" placeholder="service_info" >
+                                                          </div>
+                                                        </div>
+                                      
+                                                    </div>
+                                                    <div class="col-md-6 ">
+                                                        <div class="form-group">
+                                                          <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                              <span class="input-group-text">
+                                                                <i class="material-icons">group</i>
+                                                              </span>
+                                                            </div>
+                                                            <input type="text" name="created_date" class="form-control" value="" id="createddate" placeholder="created_date" >
+                                                          </div>
+                                                        </div>
+                                      
+                                                        <div class="form-group">
+                                                          <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                              <span class="input-group-text">
+                                                                <i class="material-icons">web</i>
+                                                              </span>
+                                                            </div>
+                                                            <input type="text" name="last_update_date" class="form-control" value="" id="lastdate" placeholder="last_update_date" >
+                                                          </div>
+                                                        </div>
+                                                      
+                                      
+                                
+                                                    </div>
+                                                  </div>
+                                             
+                                                  <div class="row ml-2 mt-2 d-flex justify-content-center">
+                                                    <div class="modal-footer ">
+                                                      <button type="button" class="btn btn-link btn-success" v-on:click="servicecreate()" >submit</button>
+                                                    </div>
+                                                  </div>
+                                                </form>
+                                          </div>
+                                          
+                                        </div>
+                                      
+                                      </div>
+                                  
+                                  
+
                                
                                      
                                      <table class="table table-responsive-md  tablefont" id="myTable3">
@@ -135,7 +229,7 @@
                                             <th  class="twentypxdown1 ">Service Info</th>
                                             <th  class="twentypxdown1 ">Created date</th>
                                             <th  class="twentypxdown1 ">Last Updated</th>
-                                            <th  class="twentypxdown1 ">&nbsp;</th>
+                                            <th  class="twentypxdown1 "> <button id="myBtn" >Open Modal</button></th>
                                           </tr>
                                         </thead>
                                         <tbody class="twentypxdown justify-content-between " >
@@ -234,11 +328,11 @@
                                             </td>
                                             <td class="noborder" v-if="!(id===index + 'service')">{{servicelist.created_date}}</td>
                                             <td class="noborder" v-if="!(id===index + 'service')">{{servicelist.last_update_date}}</td>
-                                            <td class="noborder" v-if="!(id===index + 'service')"><button data-toggle="modal"  v-on:click="modelopen(index + 'service')"  class="btn btn-success btn-raised btn-md tablefont1">
-                                                Edit
+                                            <td class="noborder" v-if="!(id===index + 'service')"><button data-toggle="modal"  v-on:click="modelopen(index + 'service')"  class="btn btn-success btn-raised btn-md tablefont1 crud">
+                                              <i class="fas fa-edit"></i>
                                            </button>
-                                           <button data-toggle="modal"  v-on:click="servicedelete(servicelist.name,servicelist.display_name,servicelist.service_info,servicelist.created_date,servicelist.last_update_date,servicelist.id)"  class="btn btn-success btn-raised btn-md tablefont1">
-                                            Delete
+                                           <button data-toggle="modal"  v-on:click="servicedelete(servicelist.id)"  class="btn btn-success btn-raised btn-md tablefont1 crud">
+                                            <i class="far fa-trash-alt"></i>
                                          </button>
                                           </td>   
                                           </tr>
@@ -341,6 +435,10 @@
                                                   </tr>
                                                 </thead>
                                                 <tbody class="twentypxdown justify-content-between "  >
+
+
+                                               
+
                                                   <tr v-for="(custlist,index) in custlists[0]">
                                                       <td v-if="id===index + 'customer'" class="noborder"  colspan="6">
                                                                       
@@ -432,8 +530,11 @@
                                                     <td class="noborder" v-if="!(id===index + 'customer')">{{custlist.email}}</td>
                                                     <td class="noborder" v-if="!(id===index + 'customer')">{{custlist.phone}}</td>
                                                     <td class="noborder" v-if="!(id===index + 'customer')">{{custlist.date_created}}</td>
-                                                    <td class="noborder" v-if="!(id===index + 'customer')"><button data-toggle="modal"  v-on:click="modelopen(index + 'customer')"  class="btn btn-success btn-raised btn-md tablefont1">
-                                                        Edit
+                                                    <td class="noborder" v-if="!(id===index + 'customer')"><button data-toggle="modal"  v-on:click="modelopen(index + 'customer')"  class="btn btn-success btn-raised btn-md tablefont1 crud">
+                                                      <i class="fas fa-edit"></i>
+                                                   </button>
+                                                   <button v-on:click="customerdelete(custlist.user_id)" class="btn btn-success btn-raised btn-md tablefont1 crud">
+                                                    <i class="far fa-trash-alt"></i>
                                                    </button>
                                                   </td>   
                                                   </tr>
@@ -442,7 +543,13 @@
                                               </table>
                                               
           
-                                            
+                                            <div>
+                                                 <div v-if="adduser==='customer'">
+                                                    <div>
+                                                      ss
+                                                    </div>
+                                                  </div>
+                                            </div>
     
     
 
@@ -1582,56 +1689,56 @@
         $('#myTable').dataTable();
     });
 
-  },2000);
+  },3000);
 
   setTimeout(()=>{
     $(document).ready(function(){
         $('#myTable1').dataTable();
     });
 
-  },2000);
+  },3000);
 
   setTimeout(()=>{
     $(document).ready(function(){
         $('#myTable2').dataTable();
     });
 
-  },2000);
+  },3000);
 
   setTimeout(()=>{
     $(document).ready(function(){
         $('#myTable3').dataTable();
     });
 
-  },2000);
+  },3000);
 
   setTimeout(()=>{
     $(document).ready(function(){
         $('#myTable4').dataTable();
     });
 
-  },2000);
+  },3000);
 
   setTimeout(()=>{
     $(document).ready(function(){
         $('#myTable5').dataTable();
     });
 
-  },2000);
+  },3000);
 
   setTimeout(()=>{
     $(document).ready(function(){
         $('#myTable6').dataTable();
     });
 
-  },2000);
+  },3000);
 
   setTimeout(()=>{
     $(document).ready(function(){
         $('#myTable7').dataTable();
     });
 
-  },2000);
+  },3000);
    
     </script>
 

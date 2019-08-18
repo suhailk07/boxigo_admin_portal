@@ -274,6 +274,8 @@ var drop=new Vue({
     // currentPage:1,
     submitted:false,
     preload:"ss",
+    adduser:""
+    
 
 
 
@@ -290,6 +292,36 @@ var drop=new Vue({
             },2000);
         },
 
+        servicecreate(){
+            var name=document.getElementById("name").value;
+            var displayname=document.getElementById("displayname").value;
+            var serviceinfo=document.getElementById("serviceinfo").value;
+            var createddate=document.getElementById("createddate").value;
+            var lastdate=document.getElementById("lastdate").value;
+
+            var id=Math.random();
+           
+
+            fetch('http://boxigo.in/boxigo-backend-api/product/vendor_update_service.php', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    
+                    {
+                        id: id,
+                        name: name,
+                        display_name:displayname,
+                        service_info:[serviceinfo],
+                        created_date: createddate,
+                        last_update_date: lastdate
+                    }
+
+                )
+              })
+           
+        },
+
+     
         existingvendorsubmit(id,businessname,actdate,contactaddr,businesscontact,category,merchantstatus,contractstatus,namegst,gstinnumber,regaddr,name,email,phone,createddate,lastupdate,ratecard){
             
             fetch('http://boxigo.in/boxigo-backend-api/product/vendor_update_service.php', {
@@ -366,23 +398,19 @@ var drop=new Vue({
               this.redirectonsubmit()
                 
         },
-        servicedelete(name,display,info,created,lastupdate,id){
-            console.log(name,display,info,created,lastupdate,id);
+        servicedelete(id){
+            console.log(id);
             fetch('http://boxigo.in/boxigo-backend-api/product/servicesType_delete_service.php', {
-                method: 'delete',
+                method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(
                     {
                         id: id,
-                        name: name,
-                        display_name:display,
-                        service_info:[info],
-                        created_date: created,
-                        last_update_date: lastupdate
+                       
                     }
                 )
               })
-
+              this.redirectonsubmit();
 
         },
 
@@ -399,6 +427,22 @@ var drop=new Vue({
                 )
               })
 
+        },
+
+        customerdelete(id){
+            console.log(id);
+            fetch('http://boxigo.in/boxigo-backend-api/product/customer_delete_service.php', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    {
+                        user_id: id,
+                        
+                    }
+                )
+              })
+
+              this.redirectonsubmit()
         },
         
         drop1(id){
