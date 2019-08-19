@@ -301,23 +301,54 @@ var drop=new Vue({
 
             var id=Math.random();
            
+            console.log(name,displayname,serviceinfo,createddate,lastdate);
 
-            fetch('http://boxigo.in/boxigo-backend-api/product/vendor_update_service.php', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(
+            // fetch('http://boxigo.in/boxigo-backend-api/product/vendor_update_service.php', {
+            //     method: 'post',
+            //     headers: {'Content-Type': 'application/json'},
+            //     body: JSON.stringify(
                     
-                    {
-                        id: id,
-                        name: name,
-                        display_name:displayname,
-                        service_info:[serviceinfo],
-                        created_date: createddate,
-                        last_update_date: lastdate
-                    }
+            //         {
+            //             id: id,
+            //             name: name,
+            //             display_name:displayname,
+            //             service_info:[serviceinfo],
+            //             created_date: createddate,
+            //             last_update_date: lastdate
+            //         }
 
-                )
-              })
+            //     )
+            //   })
+           
+        },
+
+        existingvendorcreate(){
+            var name=document.getElementById("name").value;
+            var displayname=document.getElementById("displayname").value;
+            var serviceinfo=document.getElementById("serviceinfo").value;
+            var createddate=document.getElementById("createddate").value;
+            var lastdate=document.getElementById("lastdate").value;
+
+            var id=Math.random();
+           
+            console.log(name,displayname,serviceinfo,createddate,lastdate);
+
+            // fetch('http://boxigo.in/boxigo-backend-api/product/vendor_update_service.php', {
+            //     method: 'post',
+            //     headers: {'Content-Type': 'application/json'},
+            //     body: JSON.stringify(
+                    
+            //         {
+            //             id: id,
+            //             name: name,
+            //             display_name:displayname,
+            //             service_info:[serviceinfo],
+            //             created_date: createddate,
+            //             last_update_date: lastdate
+            //         }
+
+            //     )
+            //   })
            
         },
 

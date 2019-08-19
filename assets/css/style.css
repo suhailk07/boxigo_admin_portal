@@ -35,8 +35,7 @@ a{
 }
 
 
-element.style {
-}
+
 .card [class*="header-"], .card[class*="bg-"] {
     color: #fff;
 }
@@ -92,16 +91,7 @@ element.style {
 	width: 93vw;
 }
 
-@media only screen and (max-width: 900px) {
-	.component {
-	font-size: 1em;
-	margin-top: 40px;
-	max-height: 80px;
-	}
-	.bodycenter{
-		width: 87vw;
-	}
-  }
+
 
 .cardanimation{
 	animation: opacity .3s ease-in-out ;
@@ -188,47 +178,7 @@ element.style {
 }
 
 
-@media only screen and (min-width: 300px) and (max-width: 700px) {
-	.component {
-	font-size: .9em;
-	margin-bottom: 10px;
-	max-height: 450px;
-	line-height: 15px;
-	}
-	.bodycenter{
-		width: 87vw;
-	}
-	.btn.btn-primary{
-		font-size: .8em;
-	}
-	.para1{
-		font-size: .9em;
-		border: none;
-		
-		border-radius: 0px;
-	}
-	.bordercall{
-		border:1.5px solid #4caf50;
-		margin-bottom: 7px;
-		border-radius: 5px;
 
-	}
-	.tablehead{
-		display: none;
-	}
-	.buttonpara{
-		font-size: .9em;
-	}
-	.paracompany{
-		font-size: .9rem;
-		
-	}
-
-	.mainsection{
-		margin-top: 60px;
-	}
-
-  }
 
   .maintabs{
 	  margin-top: 100px;
@@ -315,6 +265,7 @@ element.style {
 	color: white;
 	font-weight: 400;
 	
+	
 }
 
 .twentypxdown1 > p{
@@ -349,52 +300,13 @@ th {
 	border-radius: 50%;
 }
 
+.indexnumber{
+	border-radius: 15%;
+	color: white;
+	background-color: #4caf50;
+	cursor: default;
+}
 
-  @media only screen and (min-width:760px) and (max-width: 1200px) {
-	.component {
-	font-size: 1.7em;
-
-		margin-bottom: 10px;
-	max-height: 630px;
-	line-height: 27px;
-	}
-	.bodycenter{
-		width: 87vw;
-	}
-	.btn.btn-primary{
-		font-size: .8em;
-	}
-	.para1{
-		font-size: 1.7em;
-
-			border: none;
-		
-		border-radius: 0px;
-	}
-	.bordercall{
-		border:1.5px solid #4caf50;
-		margin-bottom: 7px;
-		border-radius: 5px;
-
-	}
-	.tablehead{
-		display: none;
-	}
-	.buttonpara{
-		font-size: 1.7em;
-
-		}
-	.paracompany{
-		font-size: 1.7em;
-			
-		
-	}
-
-	.mainsection{
-		margin-top: 60px;
-	}
-
-  }
 
 
   #modelview{
@@ -423,19 +335,7 @@ th {
   	border: none;
   }
 
- @media only screen and (min-width:300px) and (max-width: 750px) {
 
-.tablefont{
-	font-size: 8px;
-}
-.tablefont1{
-	font-size: 8px;
-	padding: 5px;
-}
-
-
-
-}
 
 .nav1{
 	border:none;
@@ -532,53 +432,11 @@ th {
 	  display: none;
   }
 
-
-
-  @media only screen and (min-width:1300px) and (max-width: 2000px) {
-  #myTable{
-	width: 1100px;
-  }
-
-  #myTable1{
-	width: 1100px;
-  }
-
-  #myTable2{
-	width: 1100px;
-  }
-
-  #myTable3{
-	width: 1100px;
-  }
-
-  #myTable4{
-	width: 1100px;
-  }
-
+.card-title {
+    display: flex;
+    justify-content: center;
 }
 
-@media only screen and (min-width:300px) and (max-width: 900px) {
-	#myTable{
-	  width: 350px;
-	}
-  
-	#myTable1{
-	  width: 350px;
-	}
-  
-	#myTable2{
-	  width: 350px;
-	}
-  
-	#myTable3{
-	  width: 350px;
-	}
-  
-	#myTable4{
-	  width: 350px;
-	}
-  
-  }
 
   .modal {
 	display: none; /* Hidden by default */
@@ -598,9 +456,10 @@ th {
   .modal-content {
 	background-color: #fefefe;
 	margin: auto;
+	margin-top: 10%;
 	padding: 20px;
 	border: 1px solid #888;
-	width: 80%;
+	width: 70%;
   }
   
   /* The Close Button */
@@ -618,3 +477,79 @@ th {
 	cursor: pointer;
   }
 
+  @media only screen and (min-width:300px) and (max-width: 750px) {
+
+	.tablefont{
+		font-size: .9em;
+	}
+	.tablefont1{
+		font-size: .9em;
+		padding: 5px;
+	}
+
+	.dataTables_paginate > *{
+		font-size: .9em;
+		padding: 2px;
+	}
+
+	.dataTables_filter > label{
+		font-size: .9em;
+	}
+
+	.dataTables_length > label{
+		font-size: .9em;
+	}
+
+	.buttonmain{
+		font-size: .9em
+	}
+
+	.buttonmain1{
+		padding: 5px;
+	}
+
+	.nav-tabs > a{
+		font-size: .9em
+	}
+	.noborder{
+		border-bottom-width: 2px;
+	}
+
+	.sidebarboundary{
+		border-width: 2px;
+	}
+	
+	
+	}
+
+
+	@media only screen and (min-width:760px) and (max-width: 1200px) {
+	
+
+		.tablehead{
+			display: none;
+		}
+	
+	
+	  }
+
+	  @media only screen and (min-width: 300px) and (max-width: 700px) {
+		
+	
+		.tablehead{
+			display: none;
+		}
+	
+	
+	  }
+
+	  /* @media only screen and (max-width: 900px) {
+		.component {
+		font-size: 1.em;
+		margin-top: 40px;
+		max-height: 80px;
+		}
+		.bodycenter{
+			width: 87vw;
+		}
+	  } */

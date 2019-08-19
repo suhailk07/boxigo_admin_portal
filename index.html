@@ -111,8 +111,9 @@
                                             <button class="buttonmain btn" onclick="but5();"><i class="fa fa-bell newinfo"></i> Service type</button>
                                         </li>
                                         
-                                        <li class="list-group-item estibutton  justify-content-center align-items-center">
-                                            <button onclick="but6()" class="btn btn-info btn-block btn-raised" href="estimate">Estimate quotes</button>
+                                        <li class="list-group-item  align-items-center buttonmain1">
+                                            <button onclick="but6()" class="buttonmain btn" ><i class="fa fa-bell newinfo"></i> Estimate quotes</button>
+                                           
                                         </li>
                                     </ul>
                                 </div>
@@ -138,7 +139,7 @@
     
                                         <!-- Modal content -->
                                         <div class="modal-content">
-                                          <div class="close">&times;</div>
+                                          <div id="close" class="close">&times;</div>
                                           <div>
                                               <form action="" method="POST" class="cardanimation">
                                                   <div class="row">
@@ -219,22 +220,24 @@
                                   
                                   
 
-                               
+                                      <div class="table-responsive">
                                      
                                      <table class="table table-responsive-md  tablefont" id="myTable3">
                                         <thead>
                                           <tr>
+                                            <th  class="twentypxdown1 ">S.no</th>
                                             <th  class="twentypxdown1 ">Service Name</th>
                                             <th  class="twentypxdown1 ">Service Type</th>
                                             <th  class="twentypxdown1 ">Service Info</th>
                                             <th  class="twentypxdown1 ">Created date</th>
                                             <th  class="twentypxdown1 ">Last Updated</th>
-                                            <th  class="twentypxdown1 "> <button id="myBtn" >Open Modal</button></th>
+                                            <th scope="col" class="twentypxdown1 " id="myBtn"><i class="fas fa-user-plus"></i>Add</th>
                                           </tr>
                                         </thead>
                                         <tbody class="twentypxdown justify-content-between " >
                                           
                                           <tr v-for="(servicelist,index) in servicelists[0]">
+                                            
                                               <td v-if="id===index + 'service'" class="noborder"  colspan="6">
                                                                       
 
@@ -319,6 +322,7 @@
 
 
                                                  </td>
+                                            <td class="noborder " v-if="!(id===index + 'service')"> <p class="btn btn-success btn-raised btn-md tablefont1 indexnumber">{{index+1}}</p> </td>
                                             <td class="noborder" v-if="!(id===index + 'service')">&nbsp;&nbsp;{{servicelist.name}}&nbsp;&nbsp;</td>
                                             <td class="noborder" v-if="!(id===index + 'service')"> &nbsp;&nbsp;{{servicelist.display_name}}&nbsp;&nbsp;</td>
                                             <td class="noborder" v-if="!(id===index + 'service')">
@@ -340,7 +344,7 @@
                                         </tbody>
                                       </table>
                                     
-
+                                      </div>
                                  
 
                                     
@@ -353,8 +357,8 @@
    
                 <div id="estimateinfo">
                       <div class="row">
-                        <div class="col-lg-12 tc">
-                            <h2>Administration details</h2>
+                        <div class="col-lg-12 d-flex justify-content-center">
+                            <h3>Administration details</h3>
                         </div>
                     </div>
                     <div class="card-deck mb-5">
@@ -421,17 +425,101 @@
                                             </div>
                                         <div class="card-body d-flex justify-content-center">
                                             
-                                            
+                                          <div id="myModal2" class="modal">
+
+                                            <!-- Modal content -->
+                                            <div class="modal-content">
+                                              <div id="close2" class="close">&times;</div>
+                                              <div>
+                                                  <form action="" method="POST" class="cardanimation">
+                                                      <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="material-icons">person</i>
+                                                                  </span>
+                                                                </div>
+                                                                <input type="text" name="name" class="form-control" value="" id="name"  placeholder="name">
+                                                              </div>
+                                                            </div>
+                                          
+                                                            <div class="form-group">
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="material-icons">email</i>
+                                                                  </span>
+                                                                </div>
+                                                                <input type="text" name="display_name" class="form-control" value="" id="displayname"  placeholder="display_name">
+                                                              </div>
+                                                            </div>
+                                          
+                                                            <div class="form-group " >
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="material-icons">phone</i>
+                                                                  </span>
+                                                                </div> 
+                                                                <input type="text" name="service_info" class="form-control" value="" id="serviceinfo" placeholder="service_info" >
+                                                              </div>
+                                                            </div>
+                                          
+                                                        </div>
+                                                        <div class="col-md-6 ">
+                                                            <div class="form-group">
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="material-icons">group</i>
+                                                                  </span>
+                                                                </div>
+                                                                <input type="text" name="created_date" class="form-control" value="" id="createddate" placeholder="created_date" >
+                                                              </div>
+                                                            </div>
+                                          
+                                                            <div class="form-group">
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="material-icons">web</i>
+                                                                  </span>
+                                                                </div>
+                                                                <input type="text" name="last_update_date" class="form-control" value="" id="lastdate" placeholder="last_update_date" >
+                                                              </div>
+                                                            </div>
+                                                          
+                                          
+                                    
+                                                        </div>
+                                                      </div>
+                                                 
+                                                      <div class="row ml-2 mt-2 d-flex justify-content-center">
+                                                        <div class="modal-footer ">
+                                                          <button type="button" class="btn btn-link btn-success" v-on:click="servicecreate()" >submit</button>
+                                                        </div>
+                                                      </div>
+                                                    </form>
+                                              </div>
+                                              
+                                            </div>
+                                          
+                                          </div>
                                    
+
+                                          <div class="table-responsive">
                                              <table class="table table-responsive-lg  table-responsive-md tablefont justify-content-center" id="myTable2">
                                                 <thead>
                                                   <tr>
+                                                      <th scope="col" class="twentypxdown1 " @click="sort('name')">S.no</th>
                                                     <th scope="col" class="twentypxdown1 " @click="sort('name')">Fisrt Name</th>
                                                     <th scope="col" class="twentypxdown1 " @click="sort('phoneno')">Last Name</th>
                                                     <th scope="col" class="twentypxdown1 "  @click="sort('email')">email</th>
                                                     <th scope="col" class="twentypxdown1 "  @click="sort('dateofjoin')">Phone Number</th>
                                                     <th scope="col" class="twentypxdown1 "  @click="sort('address')">Date Of Join</th>
-                                                    <th scope="col" class="twentypxdown1 ">&nbsp;</th>
+                                                    <th scope="col" class="twentypxdown1 " id="myBtn2"><i class="fas fa-user-plus"></i>Add</th>
                                                   </tr>
                                                 </thead>
                                                 <tbody class="twentypxdown justify-content-between "  >
@@ -525,6 +613,7 @@
 
 
                                                          </td>
+                                                         <td class="noborder " v-if="!(id===index + 'customer')"> <p class="btn btn-success btn-raised btn-md tablefont1 indexnumber">{{index+1}}</p> </td>
                                                     <td class="noborder" v-if="!(id===index + 'customer')">{{custlist.first_name}}</td>
                                                     <td class="noborder" v-if="!(id===index + 'customer')">{{custlist.last_name}}</td>
                                                     <td class="noborder" v-if="!(id===index + 'customer')">{{custlist.email}}</td>
@@ -541,17 +630,7 @@
                                                   
                                                 </tbody>
                                               </table>
-                                              
-          
-                                            <div>
-                                                 <div v-if="adduser==='customer'">
-                                                    <div>
-                                                      ss
-                                                    </div>
-                                                  </div>
-                                            </div>
-    
-    
+                                          </div>    
 
                                       
                                                  </div>
@@ -571,17 +650,101 @@
                                             </div>
                                         <div class="card-body d-flex justify-content-center">
                                            
-                                            
+                                          <div id="myModal1" class="modal">
+
+                                            <!-- Modal content -->
+                                            <div class="modal-content">
+                                              <div id="close1" class="close">&times;</div>
+                                              <div>
+                                                  <form action="" method="POST" class="cardanimation">
+                                                      <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="material-icons">person</i>
+                                                                  </span>
+                                                                </div>
+                                                                <input type="text" name="name" class="form-control" value="" id="owner_name"  placeholder="name">
+                                                              </div>
+                                                            </div>
+                                          
+                                                            <div class="form-group">
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="material-icons">email</i>
+                                                                  </span>
+                                                                </div>
+                                                                <input type="text" name="display_name" class="form-control" value="" id="displayname"  placeholder="display_name">
+                                                              </div>
+                                                            </div>
+                                          
+                                                            <div class="form-group " >
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="material-icons">phone</i>
+                                                                  </span>
+                                                                </div> 
+                                                                <input type="text" name="service_info" class="form-control" value="" id="serviceinfo" placeholder="service_info" >
+                                                              </div>
+                                                            </div>
+                                          
+                                                        </div>
+                                                        <div class="col-md-6 ">
+                                                            <div class="form-group">
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="material-icons">group</i>
+                                                                  </span>
+                                                                </div>
+                                                                <input type="text" name="created_date" class="form-control" value="" id="createddate" placeholder="created_date" >
+                                                              </div>
+                                                            </div>
+                                          
+                                                            <div class="form-group">
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="material-icons">web</i>
+                                                                  </span>
+                                                                </div>
+                                                                <input type="text" name="last_update_date" class="form-control" value="" id="lastdate" placeholder="last_update_date" >
+                                                              </div>
+                                                            </div>
+                                                          
+                                          
+                                    
+                                                        </div>
+                                                      </div>
+                                                 
+                                                      <div class="row ml-2 mt-2 d-flex justify-content-center">
+                                                        <div class="modal-footer ">
+                                                          <button type="button" class="btn btn-link btn-success" v-on:click=" existingvendorcreate()" >submit</button>
+                                                        </div>
+                                                      </div>
+                                                    </form>
+                                              </div>
+                                              
+                                            </div>
+                                          
+                                          </div>
                                          
+
+                                          <div class="table-responsive">
                                               <table class="table table-responsive-lg  table-responsive-md tablefont" id="myTable1">
                                                 <thead>
                                                   <tr>
+                                                      <th scope="col" class="twentypxdown1 " >S.no</th>
                                                     <th scope="col" class="twentypxdown1 " >Name</th>
                                                     <th scope="col" class="twentypxdown1 " >Email</th>
                                                     <th scope="col" class="twentypxdown1 " >Phone Number</th>
                                                     <th scope="col" class="twentypxdown1 " >Date Of Join</th>
                                                     <th scope="col" class="twentypxdown1 " >Last Update</th>
-                                                    <th scope="col" class="twentypxdown1 " >&nbsp;</th>
+                                                    <th scope="col" class="twentypxdown1 " id="myBtn1"><i class="fas fa-user-plus"></i>Add</th>
                                                   </tr>
                                                 </thead>
                                                 <tbody class="twentypxdown justify-content-between " >
@@ -666,6 +829,7 @@
 
 
                                                          </td>
+                                                         <td class="noborder " v-if="!(id===index + 'existingvendor')"> <p class="btn btn-success btn-raised btn-md tablefont1 indexnumber">{{index+1}}</p> </td>
                                                     <td class="noborder" v-if="!(id===index + 'existingvendor')">{{vendlist.owner_name}}</td>
                                                     <td class="noborder" v-if="!(id===index + 'existingvendor')">{{vendlist.owner_email}}</td>
                                                     <td class="noborder" v-if="!(id===index + 'existingvendor')">{{vendlist.owner_phone}}</td>
@@ -680,7 +844,7 @@
 
                                                 </tbody>
                                               </table>
-                                            
+                                          </div>  
                                             
 
 
@@ -701,17 +865,102 @@
                                     </div>
                                 <div class="card-body d-flex justify-content-center">
                                    
-                                    
-                                 
+                                  <div id="myModal3" class="modal">
+
+                                    <!-- Modal content -->
+                                    <div class="modal-content">
+                                      <div id="close3" class="close">&times;</div>
+                                      <div>
+                                          <form action="" method="POST" class="cardanimation">
+                                              <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                      <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                          <span class="input-group-text">
+                                                            <i class="material-icons">person</i>
+                                                          </span>
+                                                        </div>
+                                                        <input type="text" name="name" class="form-control" value="" id="owner_name"  placeholder="name">
+                                                      </div>
+                                                    </div>
+                                  
+                                                    <div class="form-group">
+                                                      <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                          <span class="input-group-text">
+                                                            <i class="material-icons">email</i>
+                                                          </span>
+                                                        </div>
+                                                        <input type="text" name="display_name" class="form-control" value="" id="displayname"  placeholder="display_name">
+                                                      </div>
+                                                    </div>
+                                  
+                                                    <div class="form-group " >
+                                                      <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                          <span class="input-group-text">
+                                                            <i class="material-icons">phone</i>
+                                                          </span>
+                                                        </div> 
+                                                        <input type="text" name="service_info" class="form-control" value="" id="serviceinfo" placeholder="service_info" >
+                                                      </div>
+                                                    </div>
+                                  
+                                                </div>
+                                                <div class="col-md-6 ">
+                                                    <div class="form-group">
+                                                      <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                          <span class="input-group-text">
+                                                            <i class="material-icons">group</i>
+                                                          </span>
+                                                        </div>
+                                                        <input type="text" name="created_date" class="form-control" value="" id="createddate" placeholder="created_date" >
+                                                      </div>
+                                                    </div>
+                                  
+                                                    <div class="form-group">
+                                                      <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                          <span class="input-group-text">
+                                                            <i class="material-icons">web</i>
+                                                          </span>
+                                                        </div>
+                                                        <input type="text" name="last_update_date" class="form-control" value="" id="lastdate" placeholder="last_update_date" >
+                                                      </div>
+                                                    </div>
+                                                  
+                                  
+                            
+                                                </div>
+                                              </div>
+                                         
+                                              <div class="row ml-2 mt-2 d-flex justify-content-center">
+                                                <div class="modal-footer ">
+                                                  <button type="button" class="btn btn-link btn-success" v-on:click=" existingvendorcreate()" >submit</button>
+                                                </div>
+                                              </div>
+                                            </form>
+                                      </div>
+                                      
+                                    </div>
+                               
+                                  
+                                  </div>
+
+
+                                   <div class="table-responsive">
                                       <table class="table table-responsive-lg  table-responsive-md tablefont" id="myTable">
                                         <thead>
                                           <tr>
+                                              <th scope="col" class="twentypxdown1 " >S.no</th>
                                             <th scope="col" class="twentypxdown1 " >Name</th>
                                             <th scope="col" class="twentypxdown1 " >phoneno</th>
                                             <th scope="col" class="twentypxdown1 " >email</th>
                                             <th scope="col" class="twentypxdown1 " >date of join</th>
                                             <th scope="col" class="twentypxdown1 " >Adress</th>
-                                            <th scope="col" class="twentypxdown1 " >&nbsp;</th>
+                                            <th scope="col" class="twentypxdown1 " id="myBtn3"><i class="fas fa-user-plus"></i>Add</th>
                                           </tr>
                                         </thead>
                                         <tbody class="twentypxdown justify-content-between " >
@@ -796,6 +1045,7 @@
 
 
                                                  </td>
+                                                 <td class="noborder " v-if="!(id===index + 'newvendor')"> <p class="btn btn-success btn-raised btn-md tablefont1 indexnumber">{{index+1}}</p> </td>
                                             <td class="noborder" v-if="!(id===index + 'newvendor')">{{newvendlist.name}}</td>
                                             <td class="noborder" v-if="!(id===index + 'newvendor')">{{newvendlist.name}}</td>
                                             <td class="noborder" v-if="!(id===index + 'newvendor')">{{newvendlist.name}}</td>
@@ -810,7 +1060,7 @@
 
                                         </tbody>
                                       </table>
-                                    
+                                    </div>
                                     
 
 
@@ -864,9 +1114,12 @@
                                                           
                                                           <h4 class="title">REQUESTED</h4> 
 
-                                                          <table class="table table-responsive-lg  tablefont" id="myTable4" >
+                                                          <div class="table-responsive">
+
+                                                          <table class="table table-responsive-lg  table-responsive-md tablefont" id="myTable4" >
                                                               <thead>
                                                                 <tr>
+                                                                    <th scope="col" class="twentypxdown1 " >S.no</th>
                                                                   <th scope="col" class="twentypxdown1 " >name</th>
                                                                   <th scope="col" class="twentypxdown1 " >movingfrom</th>
                                                                   <th scope="col" class="twentypxdown1 " >movingto</th>
@@ -890,6 +1143,7 @@
 
 
                                                                     </td>
+                                                                    <td class="noborder " v-if="!(id===index + 'request')"> <p class="btn btn-success btn-raised btn-md tablefont1 indexnumber">{{index+1}}</p> </td>
                                                                       <td class="noborder" v-if="!(id===index + 'request')">{{list.name}}</td>
                                                                       <td class="noborder" v-if="!(id===index + 'request')">{{list.movingfrom}}</td>
                                                                       <td class="noborder" v-if="!(id===index + 'request')">{{list.movingto}}</td>
@@ -913,51 +1167,9 @@
                                                               </tbody>
                                                             </table>
 
-                                                <table class="table table-responsive-lg  table-responsive-md tablefont " id="myTabl">
-                                     
-                                                <tbody  >
-                                              
-                                                  <!-- <tr v-on:click="drop1(index + 1);" >
-                                                    <td class="noborder">{{list.name}}</td>
-                                                    <td class="noborder">{{list.name}}</td>
-                                                    <td class="noborder">{{list.name}}</td>
-                                                    <td class="noborder">{{list.name}}</td>
-                                                    <td class="noborder">{{list.name}}</td>
-                                                    
-                                                    <td class="noborder"><button data-toggle="modal" v-on:click="modelopen(index + 1)" class="btn btn-success btn-raised btn-md">
-                                                        Edit
-                                                   </button>
-                                                  </td>   
-                                                  </tr>
-                                                  <tr>
-                                                     <td class="noborder">{{list.name}}</td>
-                                                    
-                                                    <td class="noborder">{{list.name}}</td>
-                                                    <td class="noborder">{{list.name}}</td>
-                                                    <td class="noborder">{{list.name}}</td>
-                                                    <td class="noborder">{{list.name}}</td>
-                                                    <td class="noborder">&nbsp;</td>
-                                                  </tr>
-                                                  <tr v-bind:id="index" v-if="cart === index + 1" v-on:click="drop2(index + 1);">
-                                                     <td style="text-align: center;" colspan="7">
-                                                      
-                                                            <div class="card card-body cardanimation">
-                                                                  <div class="row" >
-                                                                      <div class="col-lg-2"  v-for="item in list.items">
-                                                                          <p class="para1">{{item}}</p>
-                                                                      </div>
-                                                                    </div>
-                                                              </div>
+                                                           </div> 
 
-                                                     </td>
-                                                  </tr> -->
-
-                                                 
-                                                 
-                                                  
-                                                </tbody>
-
-                                              </table>
+                                               
 
 
 
@@ -1050,9 +1262,12 @@
                                                       <div class="mdl-grid cardanimation"> 
                                                           <h4 class="title">SUBMITTED</h4>  
 
+                                                          <div class="table-responsive">
+
                                                           <table class="table table-responsive-lg  tablefont" id="myTable5" >
                                                             <thead>
                                                               <tr>
+                                                                  <th scope="col" class="twentypxdown1 " >S.no</th>
                                                                 <th scope="col" class="twentypxdown1 " >name</th>
                                                                 <th scope="col" class="twentypxdown1 " >movingfrom</th>
                                                                 <th scope="col" class="twentypxdown1 " >movingto</th>
@@ -1126,6 +1341,7 @@
 
 
                                                                   </td>
+                                                                  <td class="noborder " v-if="!(id===index + 'submitted')"> <p class="btn btn-success btn-raised btn-md tablefont1 indexnumber">{{index+1}}</p> </td>
                                                                     <td class="noborder" v-if="!(id===index + 'submitted')">{{list2.name}}</td>
                                                                     <td class="noborder" v-if="!(id===index + 'submitted')">{{list2.movingfrom}}</td>
                                                                     <td class="noborder" v-if="!(id===index + 'submitted')">{{list2.movingto}}</td>
@@ -1151,6 +1367,8 @@
                                                               
                                                             </tbody>
                                                           </table>
+                                                          </div>
+
 <!-- 
                                             <table class="table table-responsive-lg  table-responsive-md tablefont ">
                                      
@@ -1357,10 +1575,11 @@
                                                           <h4 class="title">APPROVED</h4>  
 
 
-
+                                                          <div class="table-responsive">
                                                           <table class="table table-responsive-lg  tablefont" id="myTable6" >
                                                               <thead>
                                                                 <tr>
+                                                                    <th scope="col" class="twentypxdown1 " >S.no</th>
                                                                   <th scope="col" class="twentypxdown1 " >name</th>
                                                                   <th scope="col" class="twentypxdown1 " >movingfrom</th>
                                                                   <th scope="col" class="twentypxdown1 " >movingto</th>
@@ -1377,7 +1596,7 @@
                                                               </thead>
                                                               <tbody class="twentypxdown justify-content-between " >
                                                                   <tr v-for="(list3,index) in lists3" v-bind:key="list3" v-bind:id="list3.name"  >
-
+                                                                      <td class="noborder " v-if="!(id===index + 'approved')"> <p class="btn btn-success btn-raised btn-md tablefont1 indexnumber">{{index+1}}</p> </td>
                                                                       <td class="noborder" v-if="!(id===index + 'approved')">{{list3.name}}</td>
                                                                       <td class="noborder" v-if="!(id===index + 'approved')">{{list3.movingfrom}}</td>
                                                                       <td class="noborder" v-if="!(id===index + 'approved')">{{list3.movingto}}</td>
@@ -1395,6 +1614,7 @@
 
                                                               </tbody>
                                                             </table>
+                                                          </div>
 
                                                            <!-- <table class="table table-responsive-lg  table-responsive-md tablefont ">
                                      
@@ -1502,10 +1722,11 @@
                                                       <div class="mdl-grid cardanimation"> 
                                                           <h4 class="title">CANCELLED</h4>  
 
-
+                                                          <div class="table-responsive">
                                                           <table class="table table-responsive-lg  tablefont" id="myTable7" >
                                                               <thead>
                                                                 <tr>
+                                                                    <th scope="col" class="twentypxdown1 " >S.no</th>
                                                                   <th scope="col" class="twentypxdown1 " >name</th>
                                                                   <th scope="col" class="twentypxdown1 " >movingfrom</th>
                                                                   <th scope="col" class="twentypxdown1 " >movingto</th>
@@ -1522,7 +1743,7 @@
                                                               </thead>
                                                               <tbody class="twentypxdown justify-content-between " >
                                                                   <tr v-for="(list4,index) in lists4" v-bind:key="list4" v-bind:id="list4.name"  >
-
+                                                                      <td class="noborder " v-if="!(id===index + 'approved')"> <p class="btn btn-success btn-raised btn-md tablefont1 indexnumber">{{index+1}}</p> </td>
                                                                       <td class="noborder" v-if="!(id===index + 'approved')">{{list4.name}}</td>
                                                                       <td class="noborder" v-if="!(id===index + 'approved')">{{list4.movingfrom}}</td>
                                                                       <td class="noborder" v-if="!(id===index + 'approved')">{{list4.movingto}}</td>
@@ -1540,6 +1761,7 @@
 
                                                               </tbody>
                                                             </table>
+                                                          </div>
 
 
                                                            <!-- <table class="table table-responsive-lg  table-responsive-md tablefont ">
