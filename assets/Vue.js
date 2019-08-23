@@ -10,26 +10,8 @@ var drop=new Vue({
     data:{
         custlists:[],
         vendlists:[],
-        newvendlists:[
-            {
-                name:"edwin",
-                phoneno:"9889898799",
-                email:"fhiehfi@gmail.com",
-                dateofjoin:"3.4.19",
-                address:"19th, A Ejipura, BangaloreCross",
-            },
-            {
-                name:"Sammitha"
-            },   {
-                name:"Venkatesh"
-            },
-            {
-                name:"Sam"
-            },
-            {
-                name:"Jeevan"
-            }
-        ],
+        items:[],
+        newvendlists:[],
         servicelists:[],
         lists:[
 
@@ -274,7 +256,8 @@ var drop=new Vue({
     // currentPage:1,
     submitted:false,
     preload:"ss",
-    adduser:""
+    adduser:"",
+    onsubmit:""
     
 
 
@@ -292,16 +275,41 @@ var drop=new Vue({
             },2000);
         },
 
+        itemcreate(){
+            var itemcategory=document.getElementById("itemcategory").value;
+            var itemitems=document.getElementById("itemitems").value;
+            var itemtype=document.getElementById("itemtype").value;
+
+            console.log(itemcategory,itemitems,itemtype);
+            fetch('http://boxigo.in/boxigo-backend-api/product/items_create_service.php', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    
+                    {
+            
+                        type: itemtype,
+                        category: itemcategory,
+                        
+                        items: itemitems,
+                       
+                    }
+
+                )
+              })
+            
+        },
+
         servicecreate(){
             var name=document.getElementById("name").value;
             var displayname=document.getElementById("displayname").value;
             var serviceinfo=document.getElementById("serviceinfo").value;
-            var createddate=document.getElementById("createddate").value;
-            var lastdate=document.getElementById("lastdate").value;
+            // var createddate=document.getElementById("createddate").value;
+            // var lastdate=document.getElementById("lastdate").value;
 
-            var id=Math.random();
+            // var id=Math.random();
            
-            console.log(name,displayname,serviceinfo,createddate,lastdate);
+            console.log(name,displayname,serviceinfo);
 
             // fetch('http://boxigo.in/boxigo-backend-api/product/vendor_update_service.php', {
             //     method: 'post',
@@ -383,7 +391,27 @@ var drop=new Vue({
                 )
               })
               this.redirectonsubmit();
+              this.onsubmit="submitted";
+              
 
+        },
+
+        itemsubmit(id,type,category,item){
+            fetch('http://boxigo.in/boxigo-backend-api/product/items_update_service.php', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    {
+                        id: id,
+                        type:type,
+                        category:category,
+                        items: item,
+                        
+                        }
+                )
+              })
+              this.redirectonsubmit();
+              this.onsubmit="submitted";
         },
 
         customersubmit(id,firstname,lastname,email,phone,key,emailverify,phoneverify,date){
@@ -406,7 +434,40 @@ var drop=new Vue({
                 )
               })
               this.redirectonsubmit();
+              this.onsubmit="submitted";
              
+        },
+        newvendorsubmit(id,name,email,phone,businessname,businessnumber,website,verify,phnverify,legalauth,terms,created,lastupdate){
+            var currentdate = new Date();
+            var datetime =  currentdate.getDay() + "/" + currentdate.getMonth() 
+            + "/" + currentdate.getFullYear() + " " 
+            + currentdate.getHours() + ":" 
+            + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+            console.log(datetime);
+            fetch('http://boxigo.in/boxigo-backend-api/product/vendor_request_update_service.php', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    {
+                        id: id,
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        business_name: businessname,
+                        business_contact_no: businessnumber,
+                        business_website_url: website,
+                        verification_key: verify,
+                        is_phone_verified: phnverify,
+                        legally_authorised: legalauth,
+                        accept_terms_conditions: terms,
+                        created_date: created,
+                        last_update_date: datetime
+                        }
+                )
+              })
+              this.redirectonsubmit();
+              this.onsubmit="submitted";
+
         },
 
         servicesubmit(name,display,info,created,lastupdate,id){
@@ -426,7 +487,8 @@ var drop=new Vue({
                     }
                 )
               })
-              this.redirectonsubmit()
+              this.redirectonsubmit();
+              this.onsubmit="submitted";
                 
         },
         servicedelete(id){
@@ -446,9 +508,9 @@ var drop=new Vue({
         },
 
         existingvendordelete(id){
-
+            console.log(id);
             fetch('http://boxigo.in/boxigo-backend-api/product/vendor_delete_service.php', {
-                method: 'delete',
+                method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(
                     {
@@ -457,11 +519,28 @@ var drop=new Vue({
                     }
                 )
               })
+              this.redirectonsubmit();
+
+        },
+
+        newvendordelete(id){
+            console.log("done");
+            fetch('http://boxigo.in/boxigo-backend-api/product/vendor_request_delete_service.php', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    {
+                        id: id,
+                        
+                    }
+                )
+              })
+              this.redirectonsubmit();
 
         },
 
         customerdelete(id){
-            console.log(id);
+           
             fetch('http://boxigo.in/boxigo-backend-api/product/customer_delete_service.php', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
@@ -473,7 +552,21 @@ var drop=new Vue({
                 )
               })
 
-              this.redirectonsubmit()
+              this.redirectonsubmit();
+        },
+        itemdelete(id){
+            
+            fetch('http://boxigo.in/boxigo-backend-api/product/items_delete_service.php', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    {
+                        id: id,
+                        
+                    }
+                )
+              })
+
         },
         
         drop1(id){
@@ -542,6 +635,22 @@ var drop=new Vue({
     var datacustomer=Object.assign(data,{});
     var datafinalcustomer=[...datacustomer.customers];
     this.custlists.push(datafinalcustomer);
+    
+   
+})
+
+fetch("http://boxigo.in/boxigo-backend-api/product/items_get_service.php").then(res=>res.json()).then((data)=>{
+    var dataitems=Object.assign(data,{});
+    var datafinalitems=[...dataitems.items];
+    this.items.push(datafinalitems);
+    
+   
+})
+
+fetch("http://boxigo.in/boxigo-backend-api/product/vendor_request_get_service.php").then(res=>res.json()).then((data)=>{
+    var datanewvendor=Object.assign(data,{});
+    var datafinalnewvendor=[...datanewvendor.vendor_request];
+    this.newvendlists.push(datafinalnewvendor);
     
    
 })

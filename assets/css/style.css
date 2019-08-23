@@ -195,6 +195,10 @@ a{
   #vendorinfo{
 	display:none;
   }
+  
+  #itemsinfo{
+	  display: none;
+  }
 
   #newvendorinfo{
 	display:none;
@@ -459,7 +463,7 @@ th {
 	margin-top: 10%;
 	padding: 20px;
 	border: 1px solid #888;
-	width: 70%;
+	width: 50%;
   }
   
   /* The Close Button */
@@ -476,6 +480,26 @@ th {
 	text-decoration: none;
 	cursor: pointer;
   }
+
+  /* .dataTable{
+	height: 70vh;
+    overflow-y: auto;
+  } */
+
+  ::-webkit-scrollbar {
+	width: 0px;
+  }
+  
+  .formfont{
+	  font-size: 1.3rem;
+  }
+  
+  
+   
+ 
+  
+  
+
 
   @media only screen and (min-width:300px) and (max-width: 750px) {
 

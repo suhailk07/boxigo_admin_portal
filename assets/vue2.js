@@ -3,7 +3,7 @@ const Customerinfo=document.getElementById("Customerinfo");
 const vendorinfo=document.getElementById("vendorinfo");
 const newvendorinfo=document.getElementById("newvendorinfo");
 const servicetype=document.getElementById("servicetype");
-
+const itemsinfo=document.getElementById("itemsinfo");
 const transactiondetails=document.getElementById("transactiondetails");
 
 
@@ -15,6 +15,7 @@ const but1=()=>{
     newvendorinfo.style.display="none"
     transactiondetails.style.display="none"
     servicetype.style.display="none"
+    itemsinfo.style.display="none"
 }
 
 const but2=()=>{
@@ -24,6 +25,7 @@ const but2=()=>{
     newvendorinfo.style.display="none"
     transactiondetails.style.display="none"
     servicetype.style.display="none"
+    itemsinfo.style.display="none"
 }
 
 const but3=()=>{
@@ -33,6 +35,7 @@ const but3=()=>{
     newvendorinfo.style.display="none"
     transactiondetails.style.display="none"
     servicetype.style.display="none"
+    itemsinfo.style.display="none"
 }
 
 const but4=()=>{
@@ -42,6 +45,7 @@ const but4=()=>{
     newvendorinfo.style.display="block"
     transactiondetails.style.display="none"
     servicetype.style.display="none"
+    itemsinfo.style.display="none"
 }
 
 const but5=()=>{
@@ -51,16 +55,28 @@ const but5=()=>{
     newvendorinfo.style.display="none"
     transactiondetails.style.display="none"
     servicetype.style.display="block"
+    itemsinfo.style.display="none"
 
 }
 
 const but6=()=>{
+  estimateinfo.style.display="none";
+  Customerinfo.style.display="none"
+  vendorinfo.style.display="none"
+  newvendorinfo.style.display="none"
+  transactiondetails.style.display="none"
+  servicetype.style.display="none"
+  itemsinfo.style.display="block"
+}
+
+const but7=()=>{
     estimateinfo.style.display="none";
     Customerinfo.style.display="none"
     vendorinfo.style.display="none"
     newvendorinfo.style.display="none"
     transactiondetails.style.display="block"
     servicetype.style.display="none"
+    itemsinfo.style.display="none"
 }
 
 
@@ -140,5 +156,20 @@ for (var i = 0; i < btns.length; i++) {
     window.onclick = function(event) {
       if (event.target == modal3) {
         modal3.style.display = "none";
+      }
+    }
+
+    var modal4 = document.getElementById("myModal4");
+    var btn4 = document.getElementById("myBtn4");
+    var span4 = document.getElementById("close4");
+    btn4.onclick = function() {
+      modal4.style.display = "block";
+    }
+    span4.onclick = function() {
+      modal4.style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == modal4) {
+        modal4.style.display = "none";
       }
     }
