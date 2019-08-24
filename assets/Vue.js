@@ -13,104 +13,7 @@ var drop=new Vue({
         items:[],
         newvendlists:[],
         servicelists:[],
-        lists:[
-
-            {
-                name:"yadhu",
-                movingfrom:"19th, A Ejipura, BangaloreCross",
-                movingto:"19th, A Ejipura, BangaloreCross",
-                movingdistance:"Moving Distance 50 KM",
-                dateofshifting:"23/06/2019",
-                movetype:"2 BHK",
-                totalitems:"25",
-                number:"678987654",
-                items:[
-                    'cot 1',
-                    'table 2',
-                    'chair 4',
-                    'sofa',
-                    'TV' ,
-                    'chair 4',
-                    'sofa',
-                    'TV',
-                    'light'
-                ]
-            },
-            {
-                name:"venkatesh",
-                movingfrom:"19th, A Ejipura, BangaloreCross",
-                movingto:"19th, A Ejipura, BangaloreCross",
-                movingdistance:"Moving Distance 50 KM",
-                dateofshifting:"23/06/2019",
-                movetype:"2 BHK",
-                totalitems:"25",
-                number:"978987654",
-                items:[
-                    'cot 1',
-                    'table 2',
-                    'chair 4',
-                    'dresser 1',
-                    'fan 2'
-                ]
-            },
-            {
-                name:"venkat",
-                movingfrom:"19th, A Ejipura, BangaloreCross",
-                movingto:"19th, A Ejipura, BangaloreCross",
-                movingdistance:"Moving Distance 50 KM",
-                dateofshifting:"23/06/2019",
-                movetype:"2 BHK",
-                totalitems:"25",
-                number:"778987654",
-                items:[
-                    'cot 1',
-                    'table 2',
-                    'chair 4',
-                    'tablemate 1',
-                    
-                ]
-            },
-            {
-                name:"ve",
-                movingfrom:"19th, A Ejipura, BangaloreCross",
-                movingto:"19th, A Ejipura, BangaloreCross",
-                movingdistance:"Moving Distance 50 KM",
-                dateofshifting:"23/06/2019",
-                movetype:"2 BHK",
-                totalitems:"25",
-                number:"078987654",
-                items:[
-                    'cot 1',
-                    'table 2',
-                    'chair 4',
-                    'sofa 2',
-                    'cub board 1',
-                    'washing machine 1'
-                ]
-            }
-            ,
-            {
-                name:"yadhu",
-            }, {
-                name:"raj",
-            }, {
-                name:"mom",
-            }, {
-                name:"dad",
-            }, {
-                name:"boy",
-            }, {
-                name:"girl",
-            }, {
-                name:"you",
-            }, {
-                name:"we",
-            }, {
-                name:"them",
-            }, {
-                name:"hello",
-            },
-        ],
+        lists:[],
         lists2:[
             {
                 name:"yadhu2",
@@ -491,6 +394,40 @@ var drop=new Vue({
               this.onsubmit="submitted";
                 
         },
+
+        estimatesubmit(estid,userid,from,to,on,size,oldno,newno,oldelv,newelv,oldpar,newpar,items,totalitems,servicetype,notify,status,created){
+            
+            fetch('http://boxigo.in/boxigo-backend-api/product/estimate_update_service.php', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    {
+                        estimate_id: estid,
+                        user_id: userid,
+                        moving_from: from,
+                        moving_to: to,
+                        moving_on: on,
+                        property_size: size,
+                        old_floor_no: oldno,
+                        new_floor_no: newno,
+                        old_elevator_availability: oldelv,
+                        new_elevator_availability: newelv,
+                        old_parking_distance: oldpar,
+                        new_parking_distance: newpar,
+                        items: items,
+                        total_items: totalitems,
+                        service_type: servicetype,
+                        notification_sent: notify,
+                        status: status,
+                        date_created: created
+                        },
+                )
+              })
+              this.redirectonsubmit();
+              this.onsubmit="submitted";
+        }
+        
+        ,
         servicedelete(id){
             console.log(id);
             fetch('http://boxigo.in/boxigo-backend-api/product/servicesType_delete_service.php', {
@@ -566,7 +503,21 @@ var drop=new Vue({
                     }
                 )
               })
+              this.redirectonsubmit();
 
+        },
+        estimatedelete(id){
+            fetch('http://boxigo.in/boxigo-backend-api/product/estimate_delete_service.php', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    {
+                        estimate_id: id,
+                        
+                    }
+                )
+              })
+              this.redirectonsubmit();
         },
         
         drop1(id){
@@ -652,7 +603,14 @@ fetch("http://boxigo.in/boxigo-backend-api/product/vendor_request_get_service.ph
     var datafinalnewvendor=[...datanewvendor.vendor_request];
     this.newvendlists.push(datafinalnewvendor);
     
-   
+})
+
+
+fetch("http://boxigo.in/boxigo-backend-api/product/estimate_get_service.php").then(res=>res.json()).then((data)=>{
+    var dataestimate=Object.assign(data,{});
+    var datafinalestimate=[...dataestimate.estimate];
+    this.lists.push(datafinalestimate);
+    
 })
 
   }

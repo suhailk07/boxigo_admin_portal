@@ -123,7 +123,7 @@ a{
 }
 
 .para2{
-	font-size: 1em;
+	font-size: .9em;
 	font-weight: 400;
 }
 
@@ -154,7 +154,7 @@ a{
 }
 
 .paracompany{
-	font-size: 1.5rem;
+	font-size: .9rem;
 	font-weight: 400;
 	border: 2px solid #4caf50;
 	padding: 10px;
@@ -229,7 +229,7 @@ a{
   .buttonmain{
 	outline: none;
     background-color: transparent;
-    font-size: 1.3em;
+    font-size: .9em;
    border: none;
     color:#4caf50;
 	width: 100%;
@@ -253,9 +253,9 @@ a{
 }
 
 .noborder{
-		border-bottom: 3px solid #4caf50;
+		border-bottom: 2px solid #4caf50;
 		text-align: center;
-		font-size: 1.2em;
+		font-size: .9em;
 }
 
 .twentypxdown1{
@@ -267,7 +267,8 @@ a{
 	box-shadow: .5px 3px 5px grey;
 	text-align: center;
 	color: white;
-	font-weight: 400;
+	font-weight: 500;
+	font-size: .9em;
 	
 	
 }
@@ -344,7 +345,7 @@ th {
 .nav1{
 	border:none;
 	background-color: transparent;
-	font-size: .8rem;
+	font-size: .9rem;
 	padding: 5px;
 	margin: 0 auto ;
 }
@@ -359,7 +360,7 @@ th {
 	padding: 10px;
 	
 	cursor: pointer;
-	font-size: 18px;
+	font-size: .9em;
 
   }
   
@@ -382,13 +383,13 @@ th {
   }
 
   .dataTables_length > label{
-	  font-size: 1.2em;
+	  font-size: .9em;
 	  display: flex;
     justify-content: flex-start;
   }
 
   .dataTables_filter > label{
-	font-size: 1.2em;
+	font-size: .9em;
 	display: flex;
 	justify-content: flex-end;
 
@@ -406,7 +407,7 @@ th {
   }
 
   .dataTables_paginate{
-	font-size: 1.3em;
+	font-size: 0.9em;
 	display: flex;
 	justify-content: center;
 
@@ -441,6 +442,13 @@ th {
     justify-content: center;
 }
 
+#drop{
+	padding-right: 40px;
+}
+
+#panel{
+	padding-left: 40px;
+}
 
   .modal {
 	display: none; /* Hidden by default */
@@ -491,14 +499,25 @@ th {
   }
   
   .formfont{
-	  font-size: 1.3rem;
+	  font-size: 1rem;
+	  margin-top: 9px;
   }
   
   
-   
+  .buttonmain1 {
+    display: block;
+    padding: 5px;
+    
+}
  
   
-  
+  .tablefont{
+	font-size: 1em;
+}
+.tablefont1{
+	font-size: 1em;
+	padding: 5px;
+}
 
 
   @media only screen and (min-width:300px) and (max-width: 750px) {
@@ -525,7 +544,7 @@ th {
 	}
 
 	.buttonmain{
-		font-size: .9em
+		font-size: .9em;
 	}
 
 	.buttonmain1{
@@ -533,7 +552,7 @@ th {
 	}
 
 	.nav-tabs > a{
-		font-size: .9em
+		font-size: .9em;
 	}
 	.noborder{
 		border-bottom-width: 2px;
@@ -541,6 +560,14 @@ th {
 
 	.sidebarboundary{
 		border-width: 2px;
+	}
+
+	#drop{
+		padding-right: 15px;
+	}
+
+	#panel{
+		padding-left: 15px;
 	}
 	
 	
