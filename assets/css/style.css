@@ -110,12 +110,12 @@ a{
 }
 
 .para{
-	font-size: .8em;
+	font-size: .9em;
 	font-weight: 400;
 }
 
 .para1{
-	font-size: 0.85rem;
+	font-size: 0.9em;
 	font-weight: 400;
 	border: 2px solid  #4caf50;
 	padding: 5px;
@@ -129,7 +129,7 @@ a{
 
 .buttonpara{
 	padding: 5px;
-	font-size: 1.2rem;
+	font-size: .9em;
 	font-weight: 400;
 	background-color: transparent;
 	box-shadow: none;
@@ -154,7 +154,7 @@ a{
 }
 
 .paracompany{
-	font-size: .9rem;
+	font-size: .9em;
 	font-weight: 400;
 	border: 2px solid #4caf50;
 	padding: 10px;
@@ -208,7 +208,7 @@ a{
 	display:none;
   }
 
-  #estimateinfo,#Customerinfo, #vendorinfo,#newvendorinfo,#transactiondetails,#servicetype{
+  #estimateinfo,#Customerinfo, #vendorinfo,#newvendorinfo,#transactiondetails,#servicetype,#itemsinfo{
 	animation: opacity .3s ease-in-out ;
 }
 
@@ -385,14 +385,44 @@ th {
   .dataTables_length > label{
 	  font-size: .9em;
 	  display: flex;
-    justify-content: flex-start;
+	justify-content: flex-start;
+	position: absolute;
+	top: 50px;
+  }
+
+  .dataTables_length > label > select{
+	margin-left: 5px;
+	margin-right: 5px;
+	padding-left: 2px;
+	border-radius: 20%;
+	border: 1.5px solid #4caf50;
+  }
+
+  #myTable4_length,#myTable5_length,#myTable6_length,#myTable7_length{
+	position: absolute;
+	top: 20px;
+  }
+
+  #myTable8_filter{
+	margin-right: 75px;
+  }
+
+  #myBtn4{
+	 position: absolute;
+	 top: 40px;
+	 right: 50px;
+	 color:white;
+	 background-color: #4caf50;
+	 padding: 6px;
+	
+	 
+
   }
 
   .dataTables_filter > label{
 	font-size: .9em;
 	display: flex;
 	justify-content: flex-end;
-
     align-items: center;
   }
   
@@ -499,7 +529,7 @@ th {
   }
   
   .formfont{
-	  font-size: 1rem;
+	  font-size: .9rem;
 	  margin-top: 9px;
   }
   
@@ -569,6 +599,16 @@ th {
 	#panel{
 		padding-left: 15px;
 	}
+
+	#myTable4_length,#myTable5_length,#myTable6_length,#myTable7_length{
+		position: absolute;
+		top: 63px;
+		
+	  }
+
+	  .dataTables_length{
+		  display: none;
+	  }
 	
 	
 	}

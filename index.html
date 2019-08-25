@@ -45,7 +45,7 @@
         <nav class="navbar   fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
                 <div class="container">
                     <div class="navbar-translate">
-                    <a class="navbar-brand" href="http://boxigo.in/">Boxigo</a>
+                      <a href="http://boxigo.in/home"><img class="navbar-brand p-0" src="http://boxigo.in/includes/img/boxigo.png" href="http://boxigo.in/home" style="height:auto;width:100px"></a>
                   
                   </div>
                 
@@ -199,7 +199,12 @@
                                           <th  class="twentypxdown1 ">Items</th>
                                           <th  class="twentypxdown1 ">Created date</th>
                                           <th  class="twentypxdown1 ">Last Updated</th>
-                                          <th scope="col" class="twentypxdown1 " id="myBtn4"><i class="fas fa-user-plus"></i>Add</th>
+                                          <th  class="twentypxdown1 " >
+                                            <div id="myBtn4" class="btn btn-success">
+                                              <i class="fas fa-user-plus"></i>Add
+                                            </div>
+                                          
+                                          </th>
                                         </tr>
                                       </thead>
                                       <tbody class="twentypxdown justify-content-between " >
@@ -1407,7 +1412,7 @@
                                                   <div class="card-body ">
                                                       <div class="mdl-grid cardanimation" > 
                                                           
-                                                          <h4 class="title">REQUESTED</h4> 
+                                                          <!-- <h4 class="title">REQUESTED</h4>  -->
 
                                                           <div class="table-responsive">
 
@@ -1443,7 +1448,7 @@
                                                                                         <div class="input-group">
                                                                                           <div class="input-group-prepend">
                                                                                             <span class="input-group-text">
-                                                                                              <i class="fas fa-user">&nbsp;Servie Type:</i>
+                                                                                              <p class="formfont">Service Type:</p>
                                                                                             </span>
                                                                                           </div>
                                                                                           <input type="text" name="name" class="form-control" v-model="list.service_type" placeholder="service_type">
@@ -1453,7 +1458,7 @@
                                                                                           <div class="input-group">
                                                                                             <div class="input-group-prepend">
                                                                                               <span class="input-group-text">
-                                                                                                <i class="fas fa-user">&nbsp;Moving From:</i>
+                                                                                                <p class="formfont">Moving From:</p>
                                                                                               </span>
                                                                                             </div>
                                                                                             <input type="text" name="name" class="form-control" v-model="list.moving_from" placeholder="moving_from">
@@ -1463,19 +1468,59 @@
                                                                                             <div class="input-group">
                                                                                               <div class="input-group-prepend">
                                                                                                 <span class="input-group-text">
-                                                                                                  <i class="fas fa-user">&nbsp;Moving to:</i>
+                                                                                                  <p class="formfont">Moving To:</p>
                                                                                                 </span>
                                                                                               </div>
                                                                                               <input type="text" name="name" class="form-control" v-model="list.moving_to" placeholder="moving_to">
                                                                                             </div>
                                                                                           </div>
+                                                                                          <div class="form-group">
+                                                                                            <div class="input-group">
+                                                                                              <div class="input-group-prepend">
+                                                                                                <span class="input-group-text">
+                                                                                                  <p class="formfont">Old Floor No:</p>
+                                                                                                </span>
+                                                                                              </div>
+                                                                                              <input type="text" name="name" class="form-control" v-model="list.old_floor_no" placeholder="old_floor_no">
+                                                                                            </div>
+                                                                                          </div>
+                                                                                          <div class="form-group">
+                                                                                              <div class="input-group">
+                                                                                                <div class="input-group-prepend">
+                                                                                                  <span class="input-group-text">
+                                                                                                    <p class="formfont">New Floor No:</p>
+                                                                                                  </span>
+                                                                                                </div>
+                                                                                                <input type="text" name="name" class="form-control" v-model="list.new_floor_no" placeholder="new_floor_no">
+                                                                                              </div>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <div class="input-group">
+                                                                                                  <div class="input-group-prepend">
+                                                                                                    <span class="input-group-text">
+                                                                                                      <p class="formfont">Old Elevator Availability:</p>
+                                                                                                    </span>
+                                                                                                  </div>
+                                                                                                  <input type="text" name="name" class="form-control" v-model="list.old_elevator_availability" placeholder="old_elevator_availability">
+                                                                                                </div>
+                                                                                              </div>
+                                                                                              <div class="form-group">
+                                                                                                <div class="input-group">
+                                                                                                  <div class="input-group-prepend">
+                                                                                                    <span class="input-group-text">
+                                                                                                      <p class="formfont">New Elevator Availability:</p>
+                                                                                                    </span>
+                                                                                                  </div>
+                                                                                                  <input type="text" name="name" class="form-control" v-model="list.new_elevator_availability" placeholder="new_elevator_availability">
+                                                                                                </div>
+                                                                                              </div>
                                                                                 </div>
                                                                                 <div class="col-lg-6">
                                                                                     <div class="form-group">
                                                                                         <div class="input-group">
                                                                                           <div class="input-group-prepend">
                                                                                             <span class="input-group-text">
-                                                                                              <i class="fas fa-user">&nbsp;Date of shifting:</i>
+                                                                                              <p class="formfont">Moving On:</p>
                                                                                             </span>
                                                                                           </div>
                                                                                           <input type="text" name="name" class="form-control" v-model="list.moving_on" placeholder="moving_on">
@@ -1485,7 +1530,7 @@
                                                                                           <div class="input-group">
                                                                                             <div class="input-group-prepend">
                                                                                               <span class="input-group-text">
-                                                                                                <i class="fas fa-user">&nbsp;Moving Type:</i>
+                                                                                                <p class="formfont">Property Size:</p>
                                                                                               </span>
                                                                                             </div>
                                                                                             <input type="text" name="name" class="form-control" v-model="list.property_size" placeholder="property_size">
@@ -1495,12 +1540,52 @@
                                                                                             <div class="input-group">
                                                                                               <div class="input-group-prepend">
                                                                                                 <span class="input-group-text">
-                                                                                                  <i class="fas fa-user">&nbsp;Total Items:</i>
+                                                                                                  <p class="formfont">Total Items:</p>
                                                                                                 </span>
                                                                                               </div>
                                                                                               <input type="text" name="name" class="form-control" v-model="list.total_items" placeholder="total_items">
                                                                                             </div>
                                                                                           </div>
+                                                                                          <div class="form-group">
+                                                                                            <div class="input-group">
+                                                                                              <div class="input-group-prepend">
+                                                                                                <span class="input-group-text">
+                                                                                                  <p class="formfont">Old Parking Distance:</p>
+                                                                                                </span>
+                                                                                              </div>
+                                                                                              <input type="text" name="name" class="form-control" v-model="list.old_parking_distance" placeholder="old_parking_distance">
+                                                                                            </div>
+                                                                                          </div>
+                                                                                          <div class="form-group">
+                                                                                              <div class="input-group">
+                                                                                                <div class="input-group-prepend">
+                                                                                                  <span class="input-group-text">
+                                                                                                    <p class="formfont">New Parking Distance:</p>
+                                                                                                  </span>
+                                                                                                </div>
+                                                                                                <input type="text" name="name" class="form-control" v-model="list.new_parking_distance" placeholder="new_parking_distance">
+                                                                                              </div>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <div class="input-group">
+                                                                                                  <div class="input-group-prepend">
+                                                                                                    <span class="input-group-text">
+                                                                                                      <p class="formfont">Notification Sent:</p>
+                                                                                                    </span>
+                                                                                                  </div>
+                                                                                                  <input type="text" name="name" class="form-control" v-model="list.notification_sent" placeholder="notification_sent">
+                                                                                                </div>
+                                                                                              </div>
+                                                                                              <div class="form-group">
+                                                                                                <div class="input-group">
+                                                                                                  <div class="input-group-prepend">
+                                                                                                    <span class="input-group-text">
+                                                                                                      <p class="formfont">Status:</p>
+                                                                                                    </span>
+                                                                                                  </div>
+                                                                                                  <input type="text" name="name" class="form-control" v-model="list.status" placeholder="status">
+                                                                                                </div>
+                                                                                              </div>
                                                                                 </div>
                                                                             </div>
                                                                          
@@ -1662,7 +1747,7 @@
                                           <div class="">
                                                   <div class="card-body ">
                                                       <div class="mdl-grid cardanimation"> 
-                                                          <h4 class="title">SUBMITTED</h4>  
+                                                          <!-- <h4 class="title">SUBMITTED</h4>   -->
 
                                                           <div class="table-responsive">
 
@@ -1686,25 +1771,25 @@
                                                             </thead>
                                                             <tbody class="twentypxdown justify-content-between " >
                                                                 <tr v-for="(list2,index) in lists2" v-bind:key="list2" v-bind:id="list2.name"   >
-                                                                  <td v-if="id===index + 'submitted'" class="noborder"  colspan="8">
+                                                                  <td v-if="id===index + 'submitted'" class="noborder"  colspan="9">
 
                                                                       <div class="card card-body cardanimation " >
                                                                             
                                                                                 
                                                                                     <div class="row d-flex justify-content-center bordercall">
-                                                                                          <div class="col-lg-2">
-                                                                                            <p class="para1 tablehead">Vendor</p>
+                                                                                          <div class="col justify-content-center tablehead">
+                                                                                            <p class="para1 ">Vendor</p>
                                                                                           </div>
-                                                                                          <div class="col-lg-2 tablehead">
+                                                                                          <div class=" col justify-content-center tablehead">
                                                                                             <p class="para1">Contatc</p>
                                                                                           </div>
-                                                                                          <div class="col-lg-2 tablehead">
+                                                                                          <div class="col justify-content-center tablehead">
                                                                                             <p class="para1">Quote</p>
                                                                                           </div>
-                                                                                          <div class="col-lg-2 tablehead">
+                                                                                          <div class="col justify-content-center tablehead">
                                                                                             <p class="para1">Send a remainder</p>
                                                                                           </div>
-                                                                                          <div class="col-lg-3 tablehead">
+                                                                                          <div class="col justify-content-center tablehead">
                                                                                             <p class="para1">Call</p>
                                                                                           </div>
                                                                                         
@@ -1713,28 +1798,28 @@
           
                                                                                           <div class="row d-flex justify-content-center bordercall" v-for="vendors in list2.vendors2" >
                                                                                             
-                                                                                            <div class="col-lg-2" v-if="vendors!=''">
+                                                                                            <div class="col justify-content-center " v-if="vendors!=''">
                                                                                               <p class="para1">{{vendors.name}}</p>
                                                                                             </div>
-                                                                                            <div class="col-lg-2" v-if="vendors!=''">
+                                                                                            <div class="col justify-content-center " v-if="vendors!=''">
                                                                                               <p class="para1">{{vendors.contact}}</p>
                                                                                             </div>
-                                                                                            <div class="col-lg-2" v-if="vendors!=''">
+                                                                                            <div class="col justify-content-center " v-if="vendors!=''">
                                                                                               <p class="para1" v-bind:style="[ vendors.quote !=='' ?  {border:'2px solid #4caf50'} : {border:'2px solid #f56058'}]">
                                                                                                 {{ vendors.quote !=='' ?  vendors.quote : "pending"}}
                                                                                               </p>
                                                                                             </div>
-                                                                                            <div class="col-lg-2" v-if="vendors!=''">
+                                                                                            <div class="col justify-content-center " v-if="vendors!=''">
                                                                                               <p class="para1" >{{ vendors.quote !=='' ? "Done" : "Remainder"}}</p>
                                                                                             </div>
-                                                                                            <div class="col-lg-3" v-if="vendors!=''">
+                                                                                            <div class="col justify-content-center " v-if="vendors!=''">
                                                                                               <p class=""><button class="buttonpara"><i class="fas fa-phone-volume"></i> &nbsp; Click to Call</button></p>
                                                                                             </div>
                                                                                           
                                                                                         </div>
           
           
-                                                                                       <div class="col-lg-1" style="margin-left: 50px; ">
+                                                                                       <div class="" style="margin-left: 50px; ">
 
                                                                               
                                                                         </div>
@@ -1838,7 +1923,7 @@
                                                                               <p class="para">{{list2.movingdistance2}}</p>
                                                                            
                                                                           </div>
-                                                                          <div class="col-lg-2">
+                                                                          <div class="">
                                                                               <p class="para text-center">{{list2.name}}</p>
                                                                             
                                                                           </div>
@@ -1974,7 +2059,7 @@
                                           <div class="">
                                                   <div class="card-body ">
                                                       <div class="mdl-grid cardanimation"> 
-                                                          <h4 class="title">APPROVED</h4>  
+                                                          <!-- <h4 class="title">APPROVED</h4>   -->
 
 
                                                           <div class="table-responsive">
@@ -2122,7 +2207,7 @@
                                           <div class="">
                                                   <div class="card-body ">
                                                       <div class="mdl-grid cardanimation"> 
-                                                          <h4 class="title">CANCELLED</h4>  
+                                                          <!-- <h4 class="title">CANCELLED</h4>   -->
 
                                                           <div class="table-responsive">
                                                           <table class="table table-responsive-lg  tablefont" id="myTable7" >
@@ -2308,60 +2393,7 @@
 
 <script>
 
-  setTimeout(()=>{
-    $(document).ready(function(){
-        $('#myTable').dataTable(
-          {
-        "lengthMenu": [[6,7,8,9,10,15,25,50,-1], [6,7,8,9,10,15,25,50, "All"]]
-        }
-        );
-    });
 
-  },3000);
-
-  setTimeout(()=>{
-    $(document).ready(function(){
-        $('#myTable1').dataTable(
-          {
-        "lengthMenu": [[6,7,8,9,10,15,25,50,-1], [6,7,8,9,10,15,25,50, "All"]]
-        }
-        );
-    });
-
-  },3000);
-
-  setTimeout(()=>{
-    $(document).ready(function(){
-        $('#myTable2').dataTable(
-          {
-        "lengthMenu": [[6,7,8,9,10,15,25,50,-1], [6,7,8,9,10,15,25,50, "All"]]
-        }
-        );
-    });
-
-  },3000);
-
-  setTimeout(()=>{
-    $(document).ready(function(){
-        $('#myTable3').dataTable(
-          {
-        "lengthMenu": [[6,7,8,9,10,15,25,50,-1], [6,7,8,9,10,15,25,50, "All"]]
-        }
-        );
-    });
-
-  },3000);
-
-  setTimeout(()=>{
-    $(document).ready(function(){
-        $('#myTable4').dataTable(
-          {
-        "lengthMenu": [[6,7,8,9,10,15,25,50,-1], [6,7,8,9,10,15,25,50, "All"]]
-        }
-        );
-    });
-
-  },3000);
 
   setTimeout(()=>{
     $(document).ready(function(){
@@ -2396,16 +2428,7 @@
 
   },3000);
 
-  setTimeout(()=>{
-    $(document).ready(function(){
-        $('#myTable8').dataTable(
-          {
-        "lengthMenu": [[6,7,8,9,10,15,25,50,-1], [6,7,8,9,10,15,25,50, "All"]]
-        }
-        );
-    });
 
-  },3000);
    
     </script>
 

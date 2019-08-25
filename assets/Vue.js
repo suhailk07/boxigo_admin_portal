@@ -187,6 +187,9 @@ var drop=new Vue({
             fetch('http://boxigo.in/boxigo-backend-api/product/items_create_service.php', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
+                mode: 'no-cors',
+                 cache: 'reload',
+                credentials: 'same-origin',
                 body: JSON.stringify(
                     
                     {
@@ -569,40 +572,77 @@ var drop=new Vue({
            var datafinal=[...dataservice.serviceType];
 
           this.servicelists.push(datafinal);
-         
-          
-          
+      
+      }).then(()=>{
+        $(document).ready(function(){
+            $('#myTable3').dataTable(
+              {
+            "lengthMenu": [[6,7,8,9,10,15,25,50,-1], [6,7,8,9,10,15,25,50, "All"]]
+            }
+            );
+        });
+    
       })
 
       fetch("http://boxigo.in/boxigo-backend-api/product/vendor_get_service.php").then(res=>res.json()).then((data)=>{
         var datavendor=Object.assign(data,{});
         var datafinalvendor=[...datavendor.vendor];
         this.vendlists.push(datafinalvendor);
-       
-       
+    
+     
+   }).then(()=>{
+    $(document).ready(function(){
+        $('#myTable1').dataTable(
+          {
+        "lengthMenu": [[6,7,8,9,10,15,25,50,-1], [6,7,8,9,10,15,25,50, "All"]]
+        }
+        );
+    });
    })
 
    fetch("http://boxigo.in/boxigo-backend-api/product/customer_get_service.php").then(res=>res.json()).then((data)=>{
     var datacustomer=Object.assign(data,{});
     var datafinalcustomer=[...datacustomer.customers];
     this.custlists.push(datafinalcustomer);
-    
-   
+ 
+}).then(()=>{
+    $(document).ready(function(){
+        $('#myTable2').dataTable(
+          {
+        "lengthMenu": [[6,7,8,9,10,15,25,50,-1], [6,7,8,9,10,15,25,50, "All"]]
+        }
+        );
+    });
 })
 
 fetch("http://boxigo.in/boxigo-backend-api/product/items_get_service.php").then(res=>res.json()).then((data)=>{
     var dataitems=Object.assign(data,{});
     var datafinalitems=[...dataitems.items];
     this.items.push(datafinalitems);
-    
-   
+
+}).then(()=>{
+    $(document).ready(function(){
+        $('#myTable8').dataTable(
+          {
+        "lengthMenu": [[6,7,8,9,10,15,25,50,-1], [6,7,8,9,10,15,25,50, "All"]]
+        }
+        );
+    });
 })
 
 fetch("http://boxigo.in/boxigo-backend-api/product/vendor_request_get_service.php").then(res=>res.json()).then((data)=>{
     var datanewvendor=Object.assign(data,{});
     var datafinalnewvendor=[...datanewvendor.vendor_request];
     this.newvendlists.push(datafinalnewvendor);
-    
+     
+}).then(()=>{
+    $(document).ready(function(){
+        $('#myTable').dataTable(
+          {
+        "lengthMenu": [[6,7,8,9,10,15,25,50,-1], [6,7,8,9,10,15,25,50, "All"]]
+        }
+        );
+    });
 })
 
 
@@ -610,10 +650,22 @@ fetch("http://boxigo.in/boxigo-backend-api/product/estimate_get_service.php").th
     var dataestimate=Object.assign(data,{});
     var datafinalestimate=[...dataestimate.estimate];
     this.lists.push(datafinalestimate);
-    
+
+}).then(()=>{
+    $(document).ready(function(){
+        $('#myTable4').dataTable(
+          {
+        "lengthMenu": [[6,7,8,9,10,15,25,50,-1], [6,7,8,9,10,15,25,50, "All"]]
+        }
+        );
+    });
 })
 
-  }
+  
+
+
+
+}
 
 
 
